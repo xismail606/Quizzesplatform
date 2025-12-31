@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الكويز</title>
+  <link rel="stylesheet" href="css/quiz.css">
+</head>
+<body>
+<body class="no-scroll">
+  <!-- Back Button -->
+  <button class="back-button" onclick="goBack()">
+    <span>←</span>
+    <span>back</span>
+  </button>
+
+  <!-- Error Page -->
+  <div class="error-container" id="errorContainer">
+    <h1>😕 الكويز غير موجود</h1>
+    <p>يبدو أن هذا الكويز غير متاح حالياً.</p>
+    <button onclick="goBack()">العودة لاختيار الكويز</button>
+  </div>
+
+  <!-- Quiz Info Page -->
+  <div class="quiz-container" id="quizContainer">
+    <h1 id="quizTitle"></h1>
+    <p id="quizDescription"></p>
+
+    <div class="quiz-info">
+      <span id="quizQuestions"></span>
+      <span id="quizDuration"></span>
+      <span id="quizDifficulty"></span>
+    </div>
+
+    <button class="start-button" onclick="startQuiz()">Start the quiz</button>
+  </div>
+
+  <!-- Questions Box -->
+  <div class="question-box" id="questionBox" style="display: none;">
+    
+    <!-- Timer and View All Questions Button -->
+    <div class="quiz-header">
+      <div class="timer-container">
+        <span class="timer-icon">⏱️</span>
+        <span id="timer" class="timer-text">00:00</span>
+      </div>
+      <button class="view-all-btn" onclick="toggleQuestionsList()">
+        <span>📋</span>
+        <span>View all questions</span>
+      </button>
+    </div>
+
+    <div id="questionNumber"></div>
+    <h2 id="questionText"></h2>
+    <div id="optionsContainer"></div>
+    <button id="nextBtn">Next question</button>
+  </div>
+
+  <!-- Questions List Modal -->
+  <div class="questions-modal" id="questionsModal" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>All Questions</h3>
+        <button class="close-modal" onclick="toggleQuestionsList()">✕</button>
+      </div>
+      <div class="modal-body" id="questionsListContainer"></div>
+    </div>
+  </div>
+
+  <!-- Load Questions Based on Quiz ID -->
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const quizId = Number(params.get("id"));
+    
+    if (quizId === 1) {
+      document.write('<script src="./js/OS.js"><\/script>');
+    } else if (quizId === 2) {
+      document.write('<script src="./js/02.js"><\/script>');
+    } else if (quizId === 3) {
+      document.write('<script src="./js/01.js"><\/script>');
+    }
+  </script>
+
+  <!-- Main Quiz Script -->
+  <script src="./js/quiz.js"></script>
+
+</body>
+</html>

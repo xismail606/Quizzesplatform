@@ -1,0 +1,354 @@
+/* ===================================
+   GLOBAL RESET
+=================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+}
+
+/* ===================================
+   SPLASH SCREEN
+=================================== */
+.splash-screen {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+}
+
+/* Fade out animation */
+.splash-screen.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ===================================
+   ANIMATED BACKGROUND
+=================================== */
+.splash-screen::before {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background-image:
+    repeating-linear-gradient(45deg, transparent, transparent 50px, rgba(255, 255, 255, 0.02) 50px, rgba(255, 255, 255, 0.02) 100px),
+    repeating-linear-gradient(-45deg, transparent, transparent 50px, rgba(255, 255, 255, 0.02) 50px, rgba(255, 255, 255, 0.02) 100px);
+  animation: moveBackground 20s linear infinite;
+  z-index: 1;
+}
+
+@keyframes moveBackground {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(50px, 50px);
+  }
+}
+
+/* ===================================
+   PULSE EFFECT
+=================================== */
+.splash-screen::after {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(102, 126, 234, 0.15), transparent);
+  animation: pulse 3s ease-in-out infinite;
+  z-index: 1;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.1;
+  }
+}
+
+/* ===================================
+   SPLASH CONTENT
+=================================== */
+.splash-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  max-width: 500px;
+  width: 90%;
+  animation: fadeInUp 0.8s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===================================
+   ICON CONTAINER
+=================================== */
+.icon-container {
+  margin-bottom: 30px;
+}
+
+/* ===================================
+   BRAND LOGO
+=================================== */
+.brand-logo {
+  font-size: 4.5rem;
+  font-weight: 900;
+  letter-spacing: 6px;
+  color: transparent;
+  background: linear-gradient(135deg, #58dbf2, #2270ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: logoFloat 4s ease-in-out infinite,
+             logoGlow 2.5s ease-in-out infinite;
+  user-select: none;
+}
+
+/* Logo floating animation */
+@keyframes logoFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* Logo glow effect */
+@keyframes logoGlow {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
+  }
+  50% {
+    text-shadow:
+      0 0 20px rgba(102, 126, 234, 0.6),
+      0 0 40px rgba(118, 75, 162, 0.4);
+  }
+}
+
+/* ===================================
+   TEXT ELEMENTS
+=================================== */
+.splash-title {
+  font-size: 2.5rem;
+  color: white;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.splash-subtitle {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  font-weight: 400;
+}
+
+/* ===================================
+   LOADING TEXT
+=================================== */
+.splash-loading {
+  color: rgba(255, 255, 255, 0.7);
+  margin: 20px 0;
+  font-size: 1.1rem;
+  animation: blink 1.5s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* ===================================
+   PROGRESS BAR
+=================================== */
+.splash-progress-bar {
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 20px 0;
+}
+
+.splash-progress-fill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+  border-radius: 10px;
+  transition: width 0.3s ease;
+  box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+}
+
+/* ===================================
+   PROGRESS PERCENTAGE
+=================================== */
+.progress-percentage {
+  color: white;
+  margin-top: 10px;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* ===================================
+   FLOATING PARTICLES
+=================================== */
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(102, 126, 234, 0.6);
+  border-radius: 50%;
+  animation: particleRise 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes particleRise {
+  from {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+  10%, 90% {
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+}
+
+/* ===================================
+   RESPONSIVE DESIGN
+=================================== */
+@media (max-width: 768px) {
+  .splash-content {
+    padding: 35px 25px;
+    width: 85%;
+  }
+
+  .icon-container {
+    margin-bottom: 25px;
+  }
+
+  .brand-logo {
+    font-size: 3rem;
+    letter-spacing: 4px;
+  }
+
+  .splash-title {
+    font-size: 2rem;
+  }
+
+  .splash-subtitle {
+    font-size: 1rem;
+    margin-bottom: 25px;
+  }
+
+  .splash-loading {
+    font-size: 1rem;
+  }
+
+  .progress-percentage {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .splash-content {
+    padding: 30px 20px;
+    width: 90%;
+  }
+
+  .icon-container {
+    margin-bottom: 20px;
+  }
+
+  .brand-logo {
+    font-size: 2.5rem;
+    letter-spacing: 3px;
+  }
+
+  .splash-title {
+    font-size: 1.6rem;
+    margin-bottom: 8px;
+  }
+
+  .splash-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+  }
+
+  .splash-loading {
+    font-size: 0.95rem;
+    margin: 15px 0;
+  }
+
+  .splash-progress-bar {
+    height: 6px;
+    margin: 15px 0;
+  }
+
+  .progress-percentage {
+    font-size: 1rem;
+    margin-top: 8px;
+  }
+}
+
+@media (max-width: 360px) {
+  .splash-content {
+    padding: 25px 15px;
+    width: 95%;
+  }
+
+  .brand-logo {
+    font-size: 2rem;
+    letter-spacing: 2px;
+  }
+
+  .splash-title {
+    font-size: 1.4rem;
+  }
+
+  .splash-subtitle {
+    font-size: 0.85rem;
+  }
+
+  .splash-loading {
+    font-size: 0.9rem;
+  }
+
+  .progress-percentage {
+    font-size: 0.95rem;
+  }
+}

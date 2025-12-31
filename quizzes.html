@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select ur Quiz</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+      min-height: 100vh;
+      padding: 40px 20px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+
+    body::before {
+      content: '';
+      position: fixed;
+      width: 200%;
+      height: 200%;
+      background-image: 
+        repeating-linear-gradient(45deg, transparent, transparent 50px, rgba(255,255,255,0.02) 50px, rgba(255,255,255,0.02) 100px);
+      animation: moveBackground 20s linear infinite;
+      z-index: 0;
+      top: 0;
+      left: 0;
+    }
+
+    @keyframes moveBackground {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(50px, 50px); }
+    }
+
+
+    .circle {
+      position: fixed;
+      border-radius: 50%;
+      background: rgba(102, 126, 234, 0.1);
+      animation: float 8s ease-in-out infinite;
+      z-index: 0;
+    }
+
+    .circle:nth-child(1) {
+      width: 100px;
+      height: 100px;
+      top: 10%;
+      left: 15%;
+      animation-delay: 0s;
+    }
+
+    .circle:nth-child(2) {
+      width: 150px;
+      height: 150px;
+      top: 70%;
+      right: 10%;
+      animation-delay: 2s;
+    }
+
+    .circle:nth-child(3) {
+      width: 80px;
+      height: 80px;
+      bottom: 15%;
+      left: 20%;
+      animation-delay: 4s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-30px) scale(1.1); }
+    }
+
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+
+    h2 {
+      text-align: center;
+      color: white;
+      font-size: 2.5rem;
+      margin-bottom: 50px;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+      position: relative;
+      display: inline-block;
+      width: 100%;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(90deg, #667eea, #764ba2);
+      border-radius: 2px;
+    }
+
+
+    #quizList {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+
+    .quiz-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quiz-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #667eea, #764ba2);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.3s ease;
+    }
+
+    .quiz-card:hover::before {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .quiz-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+ 
+    .quiz-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 20px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      color: white;
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .quiz-card:hover .quiz-icon {
+      transform: rotate(360deg) scale(1.1);
+    }
+
+
+    .quiz-title {
+      color: white;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+
+    .quiz-description {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 1rem;
+      line-height: 1.6;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+
+    .quiz-info {
+      display: flex;
+      justify-content: space-around;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .info-item {
+      text-align: center;
+    }
+
+    .info-label {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.85rem;
+      margin-bottom: 5px;
+    }
+
+    .info-value {
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+
+    .back-button {
+      position: fixed;
+      top: 30px;
+      right: 30px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
+      padding: 12px 25px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 580;
+      transition: all 0.3s ease;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .back-button:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateX(5px);
+    }
+
+
+    .loading {
+      text-align: center;
+      color: white;
+      font-size: 1.2rem;
+      padding: 50px;
+    }
+
+
+    .empty-state {
+      text-align: center;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 1.2rem;
+      padding: 50px;
+    }
+
+
+    .new-badge {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: linear-gradient(135deg, #f093fb, #f5576c);
+      color: white;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      box-shadow: 0 3px 10px rgba(245, 87, 108, 0.4);
+    }
+
+
+    @media (max-width: 768px) {
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 30px;
+      }
+
+      #quizList {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .back-button {
+        top: 20px;
+        right: 20px;
+        padding: 10px 20px;
+        font-size: 0.9rem;
+      }
+
+      .quiz-card {
+        padding: 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+
+
+  <button class="back-button" onclick="goBack()">
+    <span>←</span>
+    <span>back</span>
+  </button>
+
+  <div class="container">
+    <h2>Select ur Quiz</h2>
+    <div id="quizList">
+
+      <div class="loading">Loading quizzes...</div>
+    </div>
+  </div>
+
+  <script>
+
+    const quizzesData = [
+      {
+        id: 1,
+        title: "OS",
+        description: "OPERATING SYSTEMS BANK",
+        icon: "⚙️",
+        questions: 106,
+        duration: 60,
+        difficulty: "متوسط",
+        isNew: true
+        
+      },
+      {
+        id: 2,
+        title: "Not yet 😴",
+        description: "Not yet 😴",
+        icon: "⚡",
+        questions: 20,
+        duration: 25,
+        difficulty: "Not yet 😴",
+        isNew: false
+      },
+      {
+        id: 3,
+        title: "Not yet 😴",
+        description: "Not yet 😴",
+        icon: "💻",
+        questions: 18,
+        duration: 22,
+        difficulty: "Not yet 😴",
+        isNew: true
+      },
+      {
+        id: 4,
+        title: "Not yet 😴",
+        description: "Not yet 😴",
+        icon: "🏗️",
+        questions: 12,
+        duration: 15,
+        difficulty: "Not yet 😴",
+        isNew: false
+      },
+      {
+        id: 5,
+        title: "Not yet 😴",
+        description: "Not yet 😴",
+        icon: "🧪",
+        questions: 16,
+        duration: 20,
+        difficulty: "Not yet 😴",
+        isNew: false
+      },
+      {
+        id: 6,
+        title: "Not yet 😴",
+        description: "Not yet 😴",
+        icon: "✈️",
+        questions: 14,
+        duration: 18,
+        difficulty: "Not yet 😴",
+        isNew: true
+      }
+    ];
+
+    function displayQuizzes() {
+      const quizList = document.getElementById('quizList');
+      
+      if (quizzesData.length === 0) {
+        quizList.innerHTML = '<div class="empty-state">No quizzes are currently available.</div>';
+        return;
+      }
+
+      quizList.innerHTML = quizzesData.map(quiz => `
+        <div class="quiz-card" onclick="selectQuiz(${quiz.id})">
+          ${quiz.isNew ? '<div class="new-badge">جديد</div>' : ''}
+          <div class="quiz-icon">${quiz.icon}</div>
+          <div class="quiz-title">${quiz.title}</div>
+          <div class="quiz-description">${quiz.description}</div>
+          <div class="quiz-info">
+            <div class="info-item">
+              <div class="info-label">الأسئلة</div>
+              <div class="info-value">${quiz.questions}</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">المدة</div>
+              <div class="info-value">${quiz.duration} د</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">المستوى</div>
+              <div class="info-value">${quiz.difficulty}</div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function selectQuiz(quizId) {
+  window.location.href = `quiz.html?id=${quizId}`;
+ 
+    }
+
+    function goBack() {
+    window.location.href = "index.html";
+  }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(displayQuizzes, 500);
+    });
+
+  </script>
+
+</body>
+</html>

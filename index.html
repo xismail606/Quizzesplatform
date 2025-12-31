@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quizzes Platform</title>
+  
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+  
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+<body class="no-scroll">
+
+  <!-- Floating Circles -->
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+
+  <!-- Static Particles -->
+  <div class="particle" style="left:10%; animation-delay:0s;"></div>
+  <div class="particle" style="left:25%; animation-delay:2s;"></div>
+  <div class="particle" style="left:40%; animation-delay:4s;"></div>
+  <div class="particle" style="left:60%; animation-delay:1s;"></div>
+  <div class="particle" style="left:75%; animation-delay:3s;"></div>
+  <div class="particle" style="left:90%; animation-delay:5s;"></div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    
+    <!-- Brand Logo -->
+    <div class="icon-container">
+      <div class="brand-logo">x606</div>
+    </div>
+
+    <!-- Title -->
+    <h1>Quizs Platform</h1>
+
+    <!-- Description -->
+    <p>this platform is designed by x606</p>
+
+    <!-- Start Button -->
+    <button onclick="goToQuizzes()">Start</button>
+    
+    <!-- Social Icons -->
+    <div class="social-icons">
+      <a href="https://www.linkedin.com" target="_blank" aria-label="LinkedIn">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+
+      <a href="https://github.com/xismail606" target="_blank" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      
+      <a href="https://forms.gle/DDkpuuua3Wwb4aFj7" target="_blank" aria-label="Complaint Form">
+        📝
+      </a>
+    </div>
+    
+  </section>
+
+  <!-- JavaScript -->
+  <script>
+    // Navigate to quizzes page
+    function goToQuizzes() {
+      window.location.href = "./quizzes.html";
+    }
+
+    // Check if loading screen was shown
+    if (!sessionStorage.getItem("loaded")) {
+      window.location.href = "./loading.html";
+    }
+
+    // Create dynamic particles
+    function createParticles() {
+      for (let i = 0; i < 10; i++) {
+        const p = document.createElement("div");
+        p.className = "particle";
+        p.style.left = Math.random() * 100 + "%";
+        p.style.animationDelay = Math.random() * 8 + "s";
+        p.style.animationDuration = (Math.random() * 4 + 6) + "s";
+        document.body.appendChild(p);
+      }
+    }
+    createParticles();
+  </script>
+
+</body>
+</html>
