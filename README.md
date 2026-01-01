@@ -51,7 +51,9 @@ QuizzesPlatform/
 ├── js/
 │   ├── quiz.js       # Core quiz logic
 │   ├── OS.js         # Quiz data (OS)
-│   ├── 01.js         # Quiz data
-│   └── 02.js         # Quiz data
+│   ├── 03.js         # Quiz data
+│   └── 04.js         # Quiz data
+│   ├── bigdata.js    # Quiz data
+│   └── loading.js    # Core loading logic
 │
-└── README.md
+└─ README.md
