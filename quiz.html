@@ -6,7 +6,6 @@
   <title>الكويز</title>
   <link rel="stylesheet" href="css/quiz.css">
 </head>
-<body>
 <body class="no-scroll">
   <!-- Back Button -->
   <button class="back-button" onclick="goBack()">
@@ -53,7 +52,12 @@
     <div id="questionNumber"></div>
     <h2 id="questionText"></h2>
     <div id="optionsContainer"></div>
-    <button id="nextBtn">Next question</button>
+    
+    <!-- Navigation Buttons -->
+    <div class="nav-buttons">
+      <button id="prevBtn" disabled>← Previous</button>
+      <button id="nextBtn" style="display: none;">Next Question →</button>
+    </div>
   </div>
 
   <!-- Questions List Modal -->

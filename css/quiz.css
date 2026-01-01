@@ -388,14 +388,29 @@ body::before {
   color: white;
 }
 
+.option-btn.selected {
+  border: 2px solid #3498db;
+  background: rgba(52, 152, 219, 0.2);
+}
+
 .option-btn:disabled {
   cursor: not-allowed;
   opacity: 0.7;
 }
 
+/* ===================================
+   NAVIGATION BUTTONS CONTAINER
+=================================== */
+.nav-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+#prevBtn,
 #nextBtn {
-  display: none;
-  margin: 30px auto 0;
   background: linear-gradient(135deg, #3498db, #2980b9);
   color: white;
   border: none;
@@ -405,11 +420,26 @@ body::before {
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
+#prevBtn:hover:not(:disabled),
 #nextBtn:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 30px rgba(52, 152, 219, 0.4);
+}
+
+#prevBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+#prevBtn:disabled:hover {
+  transform: none;
+  box-shadow: none;
 }
 
 /* ===================================
@@ -434,8 +464,15 @@ body::before {
   color: rgba(255, 255, 255, 0.9);
 }
 
+.result-container .button-group {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
 .result-container button {
-  margin: 15px 10px;
   background: linear-gradient(135deg, #3498db, #2980b9);
   color: white;
   border: none;
@@ -450,6 +487,14 @@ body::before {
 .result-container button:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 30px rgba(52, 152, 219, 0.4);
+}
+
+.result-container button.review-btn {
+  background: linear-gradient(135deg, #9b59b6, #8e44ad);
+}
+
+.result-container button.review-btn:hover {
+  box-shadow: 0 10px 30px rgba(155, 89, 182, 0.4);
 }
 
 /* ===================================
@@ -676,9 +721,16 @@ body::before {
     font-size: 0.95rem;
   }
 
+  .nav-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #prevBtn,
   #nextBtn {
     padding: 15px 40px;
     font-size: 1.1rem;
+    width: 100%;
   }
 
   .modal-content {
@@ -714,10 +766,13 @@ body::before {
     font-size: 1.2em;
   }
 
+  .result-container .button-group {
+    flex-direction: column;
+  }
+
   .result-container button {
     padding: 15px 30px;
     font-size: 1rem;
-    margin: 10px 5px;
     width: 100%;
     max-width: 280px;
   }
@@ -801,11 +856,10 @@ body::before {
     font-size: 0.9rem;
   }
 
+  #prevBtn,
   #nextBtn {
     padding: 14px 35px;
     font-size: 1rem;
-    width: 100%;
-    max-width: 250px;
   }
 
   .modal-header h3 {
@@ -840,10 +894,12 @@ body::before {
     font-size: 1rem;
   }
 }
+
 html, body {
   max-width: 100%;
   overflow-x: hidden;
 }
+
 .no-scroll {
   height: 100vh;
   overflow: hidden;

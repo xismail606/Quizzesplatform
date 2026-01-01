@@ -8,7 +8,7 @@ const quizzesData = [
     description: "operating systems FINAL bank",
     questions: 106,
     duration: 60,
-    difficulty: "MEDIUM",
+    difficulty: "medium",
   },
   {
     id: 2,
@@ -16,7 +16,7 @@ const quizzesData = [
     description: "BIG DATA FINAL BANK",
     questions: 125,
     duration: 60,
-    difficulty: "MEDIUM",
+    difficulty: "medium",
   },
   {
     id: 3,
@@ -53,6 +53,7 @@ let currentQuiz = null;
 let timerInterval = null;
 let timeRemaining = 0;
 let userAnswers = [];
+let isReviewMode = false;
 
 /* ===================================
    DOM ELEMENTS
@@ -66,6 +67,7 @@ const questionNumber = document.getElementById("questionNumber");
 const questionText = document.getElementById("questionText");
 const optionsContainer = document.getElementById("optionsContainer");
 const nextBtn = document.getElementById("nextBtn");
+const prevBtn = document.getElementById("prevBtn");
 const timerElement = document.getElementById("timer");
 const questionsListContainer = document.getElementById("questionsListContainer");
 
@@ -139,6 +141,7 @@ function startQuiz() {
   // Reset variables
   currentIndex = 0;
   score = 0;
+  isReviewMode = false;
   userAnswers = new Array(QUESTIONS.length).fill(null);
 
   // Hide quiz info and show questions
@@ -200,15 +203,71 @@ function showQuestion() {
   questionText.textContent = q.question;
 
   optionsContainer.innerHTML = "";
-  nextBtn.style.display = "none";
+  
+  // Update navigation buttons visibility
+  updateNavigationButtons();
+
+  // If in review mode or user has already answered this question
+  const hasAnswered = userAnswers[currentIndex] !== null;
 
   q.options.forEach(opt => {
     const btn = document.createElement("button");
     btn.className = "option-btn";
     btn.textContent = opt;
-    btn.onclick = () => checkAnswer(opt[0], btn);
+    
+    // If in review mode, show previous answers
+    if (isReviewMode || hasAnswered) {
+      const optionLetter = opt[0];
+      const correct = q.answer;
+      const userAnswer = userAnswers[currentIndex];
+
+      // Highlight user's answer
+      if (optionLetter === userAnswer) {
+        if (userAnswer === correct) {
+          btn.classList.add("correct");
+        } else {
+          btn.classList.add("wrong");
+        }
+      }
+
+      // Show correct answer
+      if (optionLetter === correct) {
+        btn.classList.add("correct");
+      }
+
+      btn.disabled = true;
+    } else {
+      btn.onclick = () => checkAnswer(opt[0], btn);
+    }
+
     optionsContainer.appendChild(btn);
   });
+}
+
+/* ===================================
+   UPDATE NAVIGATION BUTTONS
+=================================== */
+function updateNavigationButtons() {
+  // Show/hide prev button
+  if (currentIndex === 0) {
+    prevBtn.disabled = true;
+  } else {
+    prevBtn.disabled = false;
+  }
+
+  // Update next button text
+  if (currentIndex === QUESTIONS.length - 1) {
+    nextBtn.textContent = isReviewMode ? "Back to Results" : "Finish Quiz";
+  } else {
+    nextBtn.textContent = "Next Question →";
+  }
+
+  // Show next button if already answered or in review mode
+  if (userAnswers[currentIndex] !== null || isReviewMode) {
+    nextBtn.style.display = "block";
+  } else {
+    nextBtn.style.display = "none";
+  }
 }
 
 /* ===================================
@@ -245,17 +304,37 @@ function checkAnswer(selected, btn) {
 }
 
 /* ===================================
+   PREVIOUS QUESTION
+=================================== */
+prevBtn.onclick = () => {
+  if (currentIndex > 0) {
+    currentIndex--;
+    showQuestion();
+  }
+};
+
+/* ===================================
    NEXT QUESTION
 =================================== */
 nextBtn.onclick = () => {
-  currentIndex++;
-  
-  if (currentIndex < QUESTIONS.length) {
-    showQuestion();
+  if (isReviewMode) {
+    // If in review mode and at last question, go back to results
+    if (currentIndex === QUESTIONS.length - 1) {
+      showResult();
+      return;
+    }
   } else {
-    stopTimer();
-    showResult();
+    // If at last question, show results
+    if (currentIndex === QUESTIONS.length - 1) {
+      stopTimer();
+      showResult();
+      return;
+    }
   }
+
+  // Move to next question
+  currentIndex++;
+  showQuestion();
 };
 
 /* ===================================
@@ -268,13 +347,13 @@ function showResult() {
   let resultMessage = "Excellent!";
   
   if (percentage < 50) {
-    resultEmoji = "😔";
+    resultEmoji = "😢";
     resultMessage = "Try Again";
   } else if (percentage < 70) {
     resultEmoji = "😊";
     resultMessage = "Good";
   } else if (percentage < 90) {
-    resultEmoji = "👏";
+    resultEmoji = "👍";
     resultMessage = "Very Good";
   }
 
@@ -283,10 +362,67 @@ function showResult() {
       <h2>${resultEmoji} ${resultMessage}</h2>
       <p>Your Score: <strong>${score}</strong> of <strong>${QUESTIONS.length}</strong></p>
       <p>Percentage: <strong>${percentage}%</strong></p>
-      <button onclick="restartQuiz()">Restart Quiz</button>
-      <button onclick="goBack()">Back to Quizzes</button>
+      <div class="button-group">
+        <button class="review-btn" onclick="reviewAnswers()">📝 Review Answers</button>
+        <button onclick="restartQuiz()">🔄 Restart Quiz</button>
+        <button onclick="goBack()">← Back to Quizzes</button>
+      </div>
     </div>
   `;
+}
+
+/* ===================================
+   REVIEW ANSWERS
+=================================== */
+function reviewAnswers() {
+  isReviewMode = true;
+  currentIndex = 0;
+  questionBox.innerHTML = `
+    <div class="quiz-header">
+      <div class="timer-container" style="visibility: hidden;">
+        <span class="timer-icon">⏱️</span>
+        <span id="timer" class="timer-text">00:00</span>
+      </div>
+      <button class="view-all-btn" onclick="toggleQuestionsList()">
+        <span>📋</span>
+        <span>View all questions</span>
+      </button>
+    </div>
+
+    <div id="questionNumber"></div>
+    <h2 id="questionText"></h2>
+    <div id="optionsContainer"></div>
+    <div class="nav-buttons">
+      <button id="prevBtn">← Previous</button>
+      <button id="nextBtn">Next Question →</button>
+    </div>
+  `;
+
+  // Re-assign DOM elements
+  const questionNumber = document.getElementById("questionNumber");
+  const questionText = document.getElementById("questionText");
+  const optionsContainer = document.getElementById("optionsContainer");
+  const nextBtn = document.getElementById("nextBtn");
+  const prevBtn = document.getElementById("prevBtn");
+
+  // Re-attach event listeners
+  prevBtn.onclick = () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+      showQuestion();
+    }
+  };
+
+  nextBtn.onclick = () => {
+    if (currentIndex === QUESTIONS.length - 1) {
+      showResult();
+      return;
+    }
+    currentIndex++;
+    showQuestion();
+  };
+
+  showQuestion();
 }
 
 /* ===================================
@@ -341,6 +477,7 @@ function restartQuiz() {
   stopTimer();
   currentIndex = 0;
   score = 0;
+  isReviewMode = false;
   userAnswers = [];
   questionBox.style.display = "none";
   quizContainer.style.display = "block";
