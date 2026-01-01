@@ -20,11 +20,11 @@ const quizzesData = [
   },
   {
     id: 3,
-    title: "Not yet 😴",
-    description: "Not yet 😴",
-    questions: 18,
-    duration: 30,
-    difficulty: "Not yet 😴",
+    title: "Software Engineering",
+    description: "All Software Engineering Exams",
+    questions: 205,
+    duration: 200,
+    difficulty: "medium",
   },
   {
     id: 4,
@@ -125,7 +125,7 @@ function startQuiz() {
     } else if (quizId === 2) {
       quizName = "Big Data";
     } else if (quizId === 3) {
-      quizName = "Not yet 😴";
+      quizName = "Software Engineering";
     } else if (quizId === 4) {
       quizName = "Not yet 😴";
     } else if (quizId === 5) {
