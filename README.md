@@ -4,11 +4,6 @@ A modern, responsive **Quizzes Platform** built using **HTML, CSS, and JavaScrip
 
 ---
 
-## 🚀 Live Preview
-> *https://xismail606.github.io/Quizzesplatform/*
-
----
-
 ## 📌 Features
 
 - ✅ Clean & modern UI (Glassmorphism style)
@@ -49,11 +44,11 @@ QuizzesPlatform/
 │   └── loading.css   # Loading styles
 │
 ├── js/
-│   ├── quiz.js       # Core quiz logic
-│   ├── OS.js         # Quiz data (OS)
-│   ├── 03.js         # Quiz data
-│   └── 04.js         # Quiz data
-│   ├── bigdata.js    # Quiz data
-│   └── loading.js    # Core loading logic
+│   ├── quiz.js                       # Core quiz logic
+│   ├── OS.js                         # Quiz data (OS)
+│   └── 04.js                         # Quiz data
+│   ├── bigdata.js                    # Quiz data
+│   ├── SoftwareEngineering.js        # Quiz data
+│   └── loading.js                    # Core loading logic
 │
 └─ README.md
