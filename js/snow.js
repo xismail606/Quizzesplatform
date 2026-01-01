@@ -86,19 +86,12 @@ function clearAllSnowTimeouts() {
 
 
 function removeAllSnowflakes() {
-
-  snowEnabled = false;
-  
-
   clearAllSnowTimeouts();
-  
 
-  const allSnowflakes = document.querySelectorAll('.snowflake-item');
-  allSnowflakes.forEach(flake => {
+  document.querySelectorAll('.snowflake-item').forEach(flake => {
     flake.style.animation = 'none';
     flake.remove();
   });
-  
 
   snowflakes.length = 0;
 }
@@ -190,6 +183,4 @@ window.addEventListener('beforeunload', () => {
   if (cleanupInterval) {
     clearInterval(cleanupInterval);
   }
-  clearAllSnowTimeouts();
-  removeAllSnowflakes();
 });

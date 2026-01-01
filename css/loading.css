@@ -352,22 +352,3 @@ body {
     font-size: 0.95rem;
   }
 }
-/* ===================================
-   SNOWFALL ANIMATION
-=================================== */
-@keyframes snowfall {
-  0% {
-    transform: translate(0, 0) rotate(0deg);
-    opacity: 0;
-  }
-  10% {
-    opacity: 0.8;
-  }
-  90% {
-    opacity: 0.8;
-  }
-  100% {
-    transform: translate(var(--drift), 110vh) rotate(360deg);
-    opacity: 0;
-  }
-}
