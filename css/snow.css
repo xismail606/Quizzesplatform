@@ -1,0 +1,187 @@
+/* ===================================
+   زر التحكم في الثلج - محسّن
+=================================== */
+
+.snow-toggle-btn {
+  /* الموقع والأبعاد */
+  position: fixed;
+  bottom: 15px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  
+  /* التصميم الأساسي */
+  border-radius: 50%;
+  aspect-ratio: 1 / 1;
+  padding: 0;
+  margin: 0;
+  
+  /* المظهر */
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.15),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3);
+  
+  /* المحتوى */
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.95);
+  
+  /* التفاعل */
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  
+  /* الطبقات */
+  z-index: 10000;
+  overflow: hidden;
+}
+
+/* الأيقونة داخل الزر */
+.snow-toggle-btn i {
+  display: block;
+  line-height: 1;
+  pointer-events: none;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* تأثير الضوء الداخلي */
+.snow-toggle-btn::before {
+  content: '';
+  position: absolute;
+  inset: -50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.3) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+/* حالة Hover */
+.snow-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 
+    0 12px 35px rgba(0, 0, 0, 0.2),
+    inset 0 1px 3px rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+.snow-toggle-btn:hover::before {
+  opacity: 1;
+}
+
+/* حالة Active (الضغط) */
+.snow-toggle-btn:active {
+  transform: translateY(0);
+  box-shadow: 
+    0 5px 15px rgba(0, 0, 0, 0.15),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+/* حالة التشغيل */
+.snow-toggle-btn.active {
+  background: linear-gradient(
+    135deg,
+    rgba(100, 200, 255, 0.5),
+    rgba(80, 180, 255, 0.5)
+  );
+  border-color: rgba(100, 200, 255, 0.7);
+  box-shadow: 
+    0 8px 30px rgba(100, 200, 255, 0.4),
+    0 0 0 3px rgba(100, 200, 255, 0.2),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.snow-toggle-btn.active:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(100, 200, 255, 0.6),
+    rgba(80, 180, 255, 0.6)
+  );
+  box-shadow: 
+    0 12px 40px rgba(100, 200, 255, 0.5),
+    0 0 0 3px rgba(100, 200, 255, 0.3),
+    inset 0 1px 3px rgba(255, 255, 255, 0.4);
+}
+
+/* أنيميشن الأيقونة لما يكون مشغل */
+.snow-toggle-btn.active i {
+  animation: snowSpin 2s ease-in-out infinite;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.6));
+}
+
+@keyframes snowSpin {
+  0%, 100% { 
+    transform: rotate(0deg);
+  }
+  50% { 
+    transform: rotate(180deg);
+  }
+}
+
+/* تأثير الموجة عند الضغط */
+.snow-toggle-btn .wave {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(0);
+  animation: waveEffect 0.5s ease-out;
+  pointer-events: none;
+}
+
+@keyframes waveEffect {
+  to {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+/* ===================================
+   أنيميشن تساقط الثلج
+=================================== */
+
+@keyframes snowfall {
+  0% {
+    transform: translateY(-10px) translateX(0) rotate(0deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(100vh) translateX(var(--drift, 0)) rotate(360deg);
+    opacity: 0.2;
+  }
+}
+
+/* ===================================
+   Responsive Design
+=================================== */
+
+@media (max-width: 768px) {
+  .snow-toggle-btn {
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .snow-toggle-btn {
+    bottom: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+}
