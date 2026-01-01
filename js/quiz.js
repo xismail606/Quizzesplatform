@@ -23,7 +23,7 @@ const quizzesData = [
     title: "Software Engineering",
     description: "All Software Engineering Exams",
     questions: 205,
-    duration: 200,
+    duration: 120,
     difficulty: "medium",
   },
   {
