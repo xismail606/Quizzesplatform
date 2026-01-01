@@ -5,21 +5,37 @@ const quizzesData = [
   {
     id: 1,
     title: "Operating Systems",
-    description: "operating systems question bank",
+    description: "operating systems FINAL bank",
     questions: 106,
     duration: 60,
-    difficulty: "متوسط"
+    difficulty: "MEDIUM",
   },
   {
     id: 2,
-    title: "Not yet 😴",
-    description: "Not yet 😴",
-    questions: 20,
-    duration: 25,
-    difficulty: "Not yet 😴",
+    title: "Big Data",
+    description: "BIG DATA FINAL BANK",
+    questions: 125,
+    duration: 60,
+    difficulty: "MEDIUM",
   },
   {
     id: 3,
+    title: "Not yet 😴",
+    description: "Not yet 😴",
+    questions: 18,
+    duration: 30,
+    difficulty: "Not yet 😴",
+  },
+  {
+    id: 4,
+    title: "Not yet 😴",
+    description: "Not yet 😴",
+    questions: 18,
+    duration: 30,
+    difficulty: "Not yet 😴",
+  },
+  {
+    id: 5,
     title: "Not yet 😴",
     description: "Not yet 😴",
     questions: 18,
@@ -107,8 +123,12 @@ function startQuiz() {
     if (quizId === 1) {
       quizName = "Operating Systems";
     } else if (quizId === 2) {
-      quizName = "Not yet 😴";
+      quizName = "Big Data";
     } else if (quizId === 3) {
+      quizName = "Not yet 😴";
+    } else if (quizId === 4) {
+      quizName = "Not yet 😴";
+    } else if (quizId === 5) {
       quizName = "Not yet 😴";
     }
     
