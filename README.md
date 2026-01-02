@@ -3,8 +3,7 @@
 A modern, responsive **Quizzes Platform** built using **HTML, CSS, and Vanilla JavaScript**, designed to deliver an engaging quiz experience on **desktop & mobile devices**.
 
 ---
-🚀 **Live Demo:**  
-[https://xismail606.github.io/QuizzesPlatform/](https://xismail606.github.io/Quizzesplatform/)
+                                                      🚀 Live Demo:[https://xismail606.github.io/QuizzesPlatform/](https://xismail606.github.io/Quizzesplatform/)
 ---
 
 ## 📌 Features
