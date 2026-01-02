@@ -6,7 +6,7 @@ A modern, responsive **Quizzes Platform** built using **HTML, CSS, and JavaScrip
 
 ## 📌 Features
 
--✅ Clean & modern UI (Glassmorphism style)
+- ✅ Clean & modern UI (Glassmorphism style)
 - 📱 Fully responsive (Mobile & Desktop)
 - 🎯 Centered layout with consistent design
 - 🧠 Multiple quizzes support
