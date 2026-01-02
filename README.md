@@ -41,6 +41,7 @@ QuizzesPlatform/
 ├── css/
 │   ├── main.css      # Main styles
 │   ├── quiz.css      # Quiz styles
+│   ├── snow.css      # snow styles
 │   └── loading.css   # Loading styles
 │
 ├── js/
@@ -49,6 +50,7 @@ QuizzesPlatform/
 │   └── 04.js                         # Quiz data
 │   ├── bigdata.js                    # Quiz data
 │   ├── SoftwareEngineering.js        # Quiz data
+│   ├── snow.js                       # Core snow logic
 │   └── loading.js                    # Core loading logic
 │
 └─ README.md
