@@ -6,7 +6,7 @@ A modern, responsive **Quizzes Platform** built using **HTML, CSS, and JavaScrip
 
 ## 📌 Features
 
-- ✅ Clean & modern UI (Glassmorphism style)
+-✅ Clean & modern UI (Glassmorphism style)
 - 📱 Fully responsive (Mobile & Desktop)
 - 🎯 Centered layout with consistent design
 - 🧠 Multiple quizzes support
@@ -14,6 +14,9 @@ A modern, responsive **Quizzes Platform** built using **HTML, CSS, and JavaScrip
 - 📋 View all questions modal
 - 🔄 Smooth navigation between pages
 - 🎨 Animated background (optimized for mobile)
+- ❄️ Interactive snow effect with on/off toggle
+- 💾 Snow state persistence across pages (localStorage)
+- ⚡ Optimized snow animation (low CPU & GPU usage)
 - 🔗 Social & feedback links (LinkedIn, GitHub, Google Form)
 
 ---
