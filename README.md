@@ -1,7 +1,10 @@
 # 🎯 Quizzes Platform
 
-A modern, responsive **Quizzes Platform** built using **HTML, CSS, and JavaScript**, designed to deliver an engaging quiz experience across **desktop and mobile devices**.
+A modern, responsive **Quizzes Platform** built using **HTML, CSS, and Vanilla JavaScript**, designed to deliver an engaging quiz experience on **desktop & mobile devices**.
 
+---
+🚀 **Live Demo:**  
+👉 [https://xismail606.github.io/QuizzesPlatform/](https://xismail606.github.io/Quizzesplatform/)
 ---
 
 ## 📌 Features
@@ -10,24 +13,24 @@ A modern, responsive **Quizzes Platform** built using **HTML, CSS, and JavaScrip
 - 📱 Fully responsive (Mobile & Desktop)
 - 🎯 Centered layout with consistent design
 - 🧠 Multiple quizzes support
-- ⏱️ Timer for quizzes
+- ⏱️ Quiz timer
 - 📋 View all questions modal
 - 🔄 Smooth navigation between pages
-- 🎨 Animated background (optimized for mobile)
-- ❄️ Interactive snow effect with on/off toggle
-- 💾 Snow state persistence across pages (localStorage)
-- ⚡ Optimized snow animation (low CPU & GPU usage)
+- 🎨 Animated background
+- ❄️ Snow effect with enable / disable toggle
+- 💾 Snow state persistence using `localStorage`
+- ⚡ Optimized animations (low CPU usage)
 - 🔗 Social & feedback links (LinkedIn, GitHub, Google Form)
 
 ---
 
 ## 🛠️ Technologies Used
 
-- **HTML5** – Page structure
-- **CSS3** – Styling, animations, responsive design
-- **JavaScript (Vanilla)** – Quiz logic & navigation
-- **Font Awesome** – Icons
-- **GitHub Pages** – Hosting
+- **HTML5** – Page structure  
+- **CSS3** – Styling, animations & responsiveness  
+- **JavaScript (Vanilla)** – Quiz logic & interactions  
+- **Font Awesome** – Icons  
+- **GitHub Pages** – Hosting  
 
 ---
 
@@ -36,24 +39,30 @@ A modern, responsive **Quizzes Platform** built using **HTML, CSS, and JavaScrip
 ```text
 QuizzesPlatform/
 │
-├── index.html        # Landing page
-├── loading.html      # Loading screen
-├── quizzes.html      # Quizzes list
-├── quiz.html         # Quiz page
+├── assets/
+│   └── x606-logo.png
 │
 ├── css/
-│   ├── main.css      # Main styles
-│   ├── quiz.css      # Quiz styles
-│   ├── snow.css      # snow styles
-│   └── loading.css   # Loading styles
+│   ├── loading.css
+│   ├── main.css
+│   ├── navigationbar.css
+│   ├── quiz.css
+│   └── snow.css
 │
 ├── js/
-│   ├── quiz.js                       # Core quiz logic
-│   ├── OS.js                         # Quiz data (OS)
-│   └── 04.js                         # Quiz data
-│   ├── bigdata.js                    # Quiz data
-│   ├── SoftwareEngineering.js        # Quiz data
-│   ├── snow.js                       # Core snow logic
-│   └── loading.js                    # Core loading logic
+│   ├── 04.js
+│   ├── bigdata.js
+│   ├── loading.js
+│   ├── navbar.js
+│   ├── OS.js
+│   ├── quiz.js
+│   ├── snow.js
+│   └── SoftwareEngineering.js
 │
-└─ README.md
+├── about.html
+├── index.html
+├── loading.html
+├── quiz.html
+├── quizzes.html
+│
+└── README.md
