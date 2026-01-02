@@ -6,23 +6,33 @@
   <title>Quiz</title>
   <link rel="stylesheet" href="css/quiz.css">
   <link rel="stylesheet" href="./css/snow.css">
-    <!-- Font Awesome -->
-<link 
+  <link rel="stylesheet" href="./css/navigationbar.css">
+  <link 
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
   integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
   crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-/>
+  referrerpolicy="no-referrer"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☃️</text></svg>">
 </head>
 <body class="no-scroll">
-  <script src="./js/snow.js"></script>
 
-  <!-- Back Button -->
-  <button class="back-button" onclick="goBack()">
-    <span>←</span>
-    <span>back</span>
-  </button>
+   <nav>
+    <div class="logo">☃️ Quizzes Platform</div>
+    <div class="links" id="navLinks">
+      <a href="./index.html">Home</a>
+      <a href="./quizzes.html">Quizzes</a>
+      <a href="./about.html">About</a>
+    </div>
+    <!-- Menu Toggle Button -->
+    <button class="menu-toggle" id="menuToggle">
+      <i class="fas fa-bars"></i>
+    </button>
+  </nav>
+
+    <button class="snow-toggle-btn active" id="snowToggle">
+      <i class="fas fa-snowflake"></i>
+    </button>
 
   <!-- Error Page -->
   <div class="error-container" id="errorContainer">
@@ -104,12 +114,7 @@
 
   <!-- Main Quiz Script -->
   <script src="./js/quiz.js"></script>
-
- <!-- snow toggle button -->
-    <button class="snow-toggle-btn active" id="snowToggle">
-      <i class="fas fa-snowflake"></i>
-    </button>
-
-  </button>
+  <script src="./js/snow.js"></script>
+  <script src="./js/navbar.js"></script>
 </body>
 </html>

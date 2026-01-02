@@ -3,15 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Select ur Quiz</title>
-    <!-- Font Awesome -->
-<link 
+  <title>Select Your Quiz - Quizzes Platform</title>
+  <link 
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
   integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
   crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-/>
+  referrerpolicy="no-referrer"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☃️</text></svg>">
+  <link rel="stylesheet" href="./css/snow.css">
+  <link rel="stylesheet" href="./css/navigationbar.css">
   <style>
     * {
       margin: 0;
@@ -23,12 +24,12 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
       min-height: 100vh;
-      padding: 40px 20px;
+      padding: 100px 20px 40px;
       position: relative;
       overflow-x: hidden;
     }
 
-
+    /* Animated Background Pattern */
     body::before {
       content: '';
       position: fixed;
@@ -47,108 +48,115 @@
       100% { transform: translate(50px, 50px); }
     }
 
-
+    /* Floating Circles */
     .circle {
       position: fixed;
       border-radius: 50%;
       background: rgba(102, 126, 234, 0.1);
       animation: float 8s ease-in-out infinite;
       z-index: 0;
+      pointer-events: none;
     }
 
     .circle:nth-child(1) {
-      width: 100px;
-      height: 100px;
-      top: 10%;
-      left: 15%;
+      width: 120px;
+      height: 120px;
+      top: 15%;
+      left: 10%;
       animation-delay: 0s;
     }
 
     .circle:nth-child(2) {
-      width: 150px;
-      height: 150px;
-      top: 70%;
-      right: 10%;
+      width: 180px;
+      height: 180px;
+      top: 60%;
+      right: 8%;
       animation-delay: 2s;
     }
 
     .circle:nth-child(3) {
-      width: 80px;
-      height: 80px;
-      bottom: 15%;
-      left: 20%;
+      width: 100px;
+      height: 100px;
+      bottom: 20%;
+      left: 15%;
       animation-delay: 4s;
     }
 
     @keyframes float {
-      0%, 100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-30px) scale(1.1); }
+      0%, 100% { 
+        transform: translateY(0) scale(1); 
+        opacity: 0.5;
+      }
+      50% { 
+        transform: translateY(-30px) scale(1.1); 
+        opacity: 0.8;
+      }
     }
 
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
+    /* Page Header */
+    .page-header {
+      text-align: center;
+      margin-bottom: 50px;
       position: relative;
       z-index: 1;
     }
 
-
-    h2 {
-      text-align: center;
+    .page-title {
       color: white;
-      font-size: 2.5rem;
-      margin-bottom: 50px;
-      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-      position: relative;
-      display: inline-block;
-      width: 100%;
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+      letter-spacing: -0.5px;
     }
 
-    h2::after {
-      content: '';
-      position: absolute;
-      bottom: -15px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100px;
-      height: 4px;
-      background: linear-gradient(90deg, #667eea, #764ba2);
-      border-radius: 2px;
+    .page-subtitle {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 1.2rem;
+      font-weight: 400;
     }
 
-
+    /* Quiz List Container */
     #quizList {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: 35px;
+      position: relative;
+      z-index: 1;
+      max-width: 1500px;
+      margin: 0 auto;
     }
 
-
+    /* Quiz Card */
     .quiz-card {
       background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
       border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      padding: 30px;
+      border-radius: 28px;
+      padding: 45px 40px;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
       overflow: hidden;
+      min-height: 480px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
+    /* Top Gradient Border */
     .quiz-card::before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
-      height: 4px;
-      background: linear-gradient(90deg, #667eea, #764ba2);
+      height: 5px;
+      background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
       transform: scaleX(0);
       transform-origin: right;
-      transition: transform 0.3s ease;
+      transition: transform 0.4s ease;
     }
 
     .quiz-card:hover::before {
@@ -156,135 +164,181 @@
       transform-origin: left;
     }
 
+    /* Hover Effects */
     .quiz-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
-      background: rgba(255, 255, 255, 0.08);
+      transform: translateY(-12px);
+      box-shadow: 0 20px 50px rgba(102, 126, 234, 0.4);
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(102, 126, 234, 0.3);
     }
 
- 
+    .quiz-card:active {
+      transform: translateY(-8px);
+    }
+
+    /* Quiz Icon */
     .quiz-icon {
-      width: 80px;
-      height: 80px;
-      margin: 0 auto 20px;
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 35px;
       background: linear-gradient(135deg, #667eea, #764ba2);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2.5rem;
+      font-size: 4rem;
       color: white;
-      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
-      transition: all 0.3s ease;
+      box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+      transition: all 0.4s ease;
     }
 
     .quiz-card:hover .quiz-icon {
-      transform: rotate(360deg) scale(1.1);
+      transform: rotate(360deg) scale(1.15);
+      box-shadow: 0 12px 30px rgba(102, 126, 234, 0.6);
     }
 
-
+    /* Quiz Content */
     .quiz-title {
       color: white;
-      font-size: 1.5rem;
-      font-weight: 600;
-      margin-bottom: 15px;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 18px;
       text-align: center;
+      letter-spacing: -0.3px;
+      line-height: 1.3;
     }
-
 
     .quiz-description {
-      color: rgba(255, 255, 255, 0.7);
-      font-size: 1rem;
-      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 1.15rem;
+      line-height: 1.7;
       text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 35px;
+      min-height: 65px;
     }
 
-
+    /* Quiz Info Section */
     .quiz-info {
       display: flex;
       justify-content: space-around;
-      padding-top: 20px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 35px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      gap: 20px;
     }
 
     .info-item {
       text-align: center;
+      flex: 1;
     }
 
     .info-label {
       color: rgba(255, 255, 255, 0.5);
-      font-size: 0.85rem;
-      margin-bottom: 5px;
+      font-size: 1.05rem;
+      margin-bottom: 12px;
+      font-weight: 500;
     }
 
     .info-value {
       color: white;
-      font-size: 1.1rem;
-      font-weight: 600;
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
     }
 
-
-    .back-button {
-      position: fixed;
-      top: 30px;
-      right: 30px;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+    /* New Badge */
+    .new-badge {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: linear-gradient(135deg, #f093fb, #f5576c);
       color: white;
-      padding: 12px 25px;
-      border-radius: 50px;
-      cursor: pointer;
-      font-size: 1rem;
-      font-weight: 580;
-      transition: all 0.3s ease;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      box-shadow: 0 4px 15px rgba(245, 87, 108, 0.5);
+      animation: pulse-badge 2s ease-in-out infinite;
+      z-index: 2;
     }
 
-    .back-button:hover {
-      background: rgba(255, 255, 255, 0.15);
-      transform: translateX(5px);
+    @keyframes pulse-badge {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
     }
 
-
+    /* Loading State */
     .loading {
       text-align: center;
       color: white;
-      font-size: 1.2rem;
-      padding: 50px;
+      font-size: 1.3rem;
+      padding: 80px 20px;
+      grid-column: 1 / -1;
     }
 
+    .loading::after {
+      content: '...';
+      animation: dots 1.5s steps(4, end) infinite;
+    }
 
+    @keyframes dots {
+      0%, 20% { content: '.'; }
+      40% { content: '..'; }
+      60%, 100% { content: '...'; }
+    }
+
+    /* Empty State */
     .empty-state {
       text-align: center;
       color: rgba(255, 255, 255, 0.7);
-      font-size: 1.2rem;
-      padding: 50px;
+      font-size: 1.3rem;
+      padding: 80px 20px;
+      grid-column: 1 / -1;
     }
 
-
-    .new-badge {
-      position: absolute;
-      top: 15px;
-      left: 15px;
-      background: linear-gradient(135deg, #f093fb, #f5576c);
-      color: white;
-      padding: 5px 15px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      box-shadow: 0 3px 10px rgba(245, 87, 108, 0.4);
+    /* Disabled Card Style */
+    .quiz-card.disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
     }
 
+    .quiz-card.disabled:hover {
+      transform: none;
+      box-shadow: none;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .quiz-card.disabled .quiz-icon {
+      background: linear-gradient(135deg, #6b7280, #4b5563);
+    }
+
+    .quiz-card.disabled:hover .quiz-icon {
+      transform: none;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      #quizList {
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 28px;
+      }
+
+      .quiz-card {
+        min-height: 440px;
+        padding: 38px 35px;
+      }
+    }
 
     @media (max-width: 768px) {
-      h2 {
-        font-size: 2rem;
-        margin-bottom: 30px;
+      body {
+        padding: 90px 15px 30px;
+      }
+
+      .page-title {
+        font-size: 2.2rem;
+      }
+
+      .page-subtitle {
+        font-size: 1rem;
       }
 
       #quizList {
@@ -292,62 +346,126 @@
         gap: 20px;
       }
 
-      .back-button {
-        top: 20px;
-        right: 20px;
-        padding: 10px 20px;
-        font-size: 0.9rem;
+      .quiz-card {
+        padding: 32px;
+        min-height: 420px;
+      }
+
+      .quiz-icon {
+        width: 100px;
+        height: 100px;
+        font-size: 3.2rem;
+      }
+
+      .quiz-title {
+        font-size: 1.6rem;
+      }
+
+      .quiz-description {
+        font-size: 1.05rem;
+      }
+
+      .info-label {
+        font-size: 0.95rem;
+      }
+
+      .info-value {
+        font-size: 1.3rem;
+      }
+
+      .new-badge {
+        top: 15px;
+        right: 15px;
+        font-size: 0.8rem;
+        padding: 5px 14px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page-title {
+        font-size: 1.8rem;
       }
 
       .quiz-card {
-        padding: 25px;
+        padding: 24px;
+      }
+
+      .quiz-info {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .info-item {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 12px;
+      }
+
+      .info-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
       }
     }
   </style>
 </head>
 <body>
+  <!-- Navigation Bar -->
+  <nav>
+    <div class="logo">☃️ Quizzes Platform</div>
+    <div class="links" id="navLinks">
+      <a href="./index.html">Home</a>
+      <a href="./quizzes.html" class="active">Quizzes</a>
+      <a href="./about.html">About</a>
+    </div>
+    <button class="menu-toggle" id="menuToggle">
+      <i class="fas fa-bars"></i>
+    </button>
+  </nav>
 
-  <div class="circle"></div>
-  <div class="circle"></div>
-  <div class="circle"></div>
-
-
-  <button class="back-button" onclick="goBack()">
-    <span>←</span>
-    <span>back</span>
+  <!-- Snow Toggle Button -->
+  <button class="snow-toggle-btn active" id="snowToggle">
+    <i class="fas fa-snowflake"></i>
   </button>
 
-  <div class="container">
-    <h2>Select ur Quiz</h2>
-    <div id="quizList">
+  <!-- Background Elements -->
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
 
-      <div class="loading">Loading quizzes...</div>
-    </div>
+  <!-- Page Header -->
+  <div class="page-header">
+    <h1 class="page-title">Select Your Quiz</h1>
+    <p class="page-subtitle">Choose a quiz to test your knowledge</p>
+  </div>
+
+  <!-- Quiz List -->
+  <div id="quizList">
+    <div class="loading">Loading quizzes</div>
   </div>
 
   <script>
-
+    // Quiz Data
     const quizzesData = [
       {
         id: 1,
-        title: "OS",
-        description: "OPERATING SYSTEMS FINAL BANK",
+        title: "Operating Systems",
+        description: "OS Final Bank - Test your knowledge",
         icon: "⚙️",
         questions: 106,
         duration: 60,
-        difficulty: "MEDIUM",
-        isNew: true
-        
+        difficulty: "Medium",
+        isNew: true,
+        enabled: true
       },
       {
         id: 2,
         title: "Big Data",
-        description: "BIG DATA FINAL BANK",
-        icon: "📚",
+        description: "Big Data Final Bank - Analytics & Processing",
+        icon: "📊",
         questions: 125,
         duration: 60,
-        difficulty: "MEDIUM",
-        isNew: true
+        difficulty: "Medium",
+        isNew: true,
+        enabled: true
       },
       {
         id: 3,
@@ -356,97 +474,71 @@
         icon: "💻",
         questions: 205,
         duration: 120,
-        difficulty: "MEDIUM",
-        isNew: true
+        difficulty: "Medium",
+        isNew: true,
+        enabled: true
       },
       {
         id: 4,
-        title: "Not yet 😴",
-        description: "Not yet 😴",
-        icon: "🏗️",
-        questions: 12,
-        duration: 15,
-        difficulty: "Not yet 😴",
-        isNew: false
+        title: "Coming Soon",
+        description: "Database Management Systems",
+        icon: "🗄️",
+        questions: 0,
+        duration: 0,
+        difficulty: "Soon",
+        isNew: false,
+        enabled: false
       },
       {
         id: 5,
-        title: "Not yet 😴",
-        description: "Not yet 😴",
-        icon: "🧪",
-        questions: 16,
-        duration: 20,
-        difficulty: "Not yet 😴",
-        isNew: false
+        title: "Coming Soon",
+        description: "Computer Networks",
+        icon: "🌐",
+        questions: 0,
+        duration: 0,
+        difficulty: "Soon",
+        isNew: false,
+        enabled: false
       },
       {
         id: 6,
-        title: "Not yet 😴",
-        description: "Not yet 😴",
-        icon: "✈️",
-        questions: 14,
-        duration: 18,
-        difficulty: "Not yet 😴",
-        isNew: false
-      },
-      {
-        id: 7,
-        title: "Not yet 😴",
-        description: "Not yet 😴",
-        icon: "👾",
-        questions: 16,
-        duration: 20,
-        difficulty: "Not yet 😴",
-        isNew: false
-      },
-      {
-        id: 8,
-        title: "Not yet 😴",
-        description: "Not yet 😴",
-        icon: "🛰️",
-        questions: 16,
-        duration: 20,
-        difficulty: "Not yet 😴",
-        isNew: false
-      },
-      {
-        id: 9,
-        title: "Not yet 😴",
-        description: "Not yet 😴",
+        title: "Coming Soon",
+        description: "Artificial Intelligence",
         icon: "🤖",
-        questions: 16,
-        duration: 20,
-        difficulty: "Not yet 😴",
-        isNew: false
-      },
-
+        questions: 0,
+        duration: 0,
+        difficulty: "Soon",
+        isNew: false,
+        enabled: false
+      }
     ];
 
+    // Display Quizzes Function
     function displayQuizzes() {
       const quizList = document.getElementById('quizList');
       
       if (quizzesData.length === 0) {
-        quizList.innerHTML = '<div class="empty-state">No quizzes are currently available.</div>';
+        quizList.innerHTML = '<div class="empty-state"><i class="fas fa-inbox" style="font-size: 3rem; margin-bottom: 20px; display: block;"></i>No quizzes are currently available.</div>';
         return;
       }
 
       quizList.innerHTML = quizzesData.map(quiz => `
-        <div class="quiz-card" onclick="selectQuiz(${quiz.id})">
-          ${quiz.isNew ? '<div class="new-badge">جديد</div>' : ''}
+        <div class="quiz-card ${!quiz.enabled ? 'disabled' : ''}" onclick="${quiz.enabled ? `selectQuiz(${quiz.id})` : 'void(0)'}">
+          ${quiz.isNew ? '<div class="new-badge">New</div>' : ''}
           <div class="quiz-icon">${quiz.icon}</div>
           <div class="quiz-title">${quiz.title}</div>
           <div class="quiz-description">${quiz.description}</div>
           <div class="quiz-info">
             <div class="info-item">
-              <div class="info-label">الأسئلة</div>
-              <div class="info-value">${quiz.questions}</div>
+              <div class="info-label">Questions</div>
+              <div class="info-value">${quiz.enabled ? quiz.questions : '—'}</div>
             </div>
             <div class="info-item">
-              <div class="info-label">المدة</div>
-              <div class="info-value">${quiz.duration} د</div>
+              <div class="info-label">Duration</div>
+              <div class="info-value">${quiz.enabled ? quiz.duration + ' min' : '—'}</div>
             </div>
             <div class="info-item">
-              <div class="info-label">المستوى</div>
+              <div class="info-label">Level</div>
               <div class="info-value">${quiz.difficulty}</div>
             </div>
           </div>
@@ -454,27 +546,22 @@
       `).join('');
     }
 
+    // Select Quiz Function
     function selectQuiz(quizId) {
-  window.location.href = `quiz.html?id=${quizId}`;
- 
+      const quiz = quizzesData.find(q => q.id === quizId);
+      if (quiz && quiz.enabled) {
+        window.location.href = `quiz.html?id=${quizId}`;
+      }
     }
 
-    function goBack() {
-    window.location.href = "index.html";
-  }
-
+    // Initialize on Page Load
     window.addEventListener('DOMContentLoaded', () => {
       setTimeout(displayQuizzes, 500);
     });
-
   </script>
 
-  <!-- snow toggle button -->
-  <link rel="stylesheet" href="./css/snow.css">
   <script src="./js/snow.js"></script>
-  <button class="snow-toggle-btn active" id="snowToggle">
-  <i class="fas fa-snowflake"></i>
-  </button>
-  
+  <script src="./js/navbar.js"></script>
 </body>
 </html>
+<!-- BY X606 -->
