@@ -4,7 +4,7 @@ A modern, responsive **Quizzes Platform** built using **HTML, CSS, and Vanilla J
 
 ---
 🚀 **Live Demo:**  
-👉 [https://xismail606.github.io/QuizzesPlatform/](https://xismail606.github.io/Quizzesplatform/)
+[https://xismail606.github.io/QuizzesPlatform/](https://xismail606.github.io/Quizzesplatform/)
 ---
 
 ## 📌 Features
