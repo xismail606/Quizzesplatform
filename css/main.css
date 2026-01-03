@@ -107,14 +107,14 @@ body::before {
    ICON CONTAINER
 =================================== */
 .icon-container {
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 
 /* ===================================
    BRAND LOGO - IMAGE
 =================================== */
 .brand-logo {
-  max-width: 300px;
+  max-width: 270px;
   height: auto;
   filter: drop-shadow(0 0 10px rgba(102, 126, 234, 0.3));
   animation: logoFloat 4s ease-in-out infinite,
@@ -148,7 +148,7 @@ body::before {
 =================================== */
 h1 {
   font-size: 3rem;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   background: linear-gradient(to right, #fff, #3498db);
   -webkit-background-clip: text;
   background-clip: text;
@@ -157,7 +157,7 @@ h1 {
 
 p {
   font-size: 1.3rem;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   color: rgba(255, 255, 255, 0.9);
   line-height: 1.6;
 }
@@ -257,7 +257,7 @@ button:hover {
   }
 
   .brand-logo {
-    max-width: 150px;
+    max-width: 270px;
   }
 
   h1 {
@@ -292,7 +292,7 @@ button:hover {
   }
 
   .brand-logo {
-    max-width: 120px;
+    max-width: 200px;
   }
 
   h1 {
@@ -331,7 +331,7 @@ button:hover {
 /* Very Small Screens */
 @media (max-width: 360px) {
   .brand-logo {
-    max-width: 100px;
+    max-width: 170px;
   }
 
   h1 {
