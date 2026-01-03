@@ -37,7 +37,8 @@ A modern, responsive **Quizzes Platform** built using **HTML, CSS, and Vanilla J
 QuizzesPlatform/
 │
 ├── assets/
-│   └── x606-logo.png
+│   ├── x606-logo.png
+│   └── x606-logo1.png
 │
 ├── css/
 │   ├── loading.css
