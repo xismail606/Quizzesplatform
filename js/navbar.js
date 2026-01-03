@@ -127,6 +127,9 @@ function setActivePage(page) {
     }
   });
 }
+document.querySelector('.logo').addEventListener('click', () => {
+  window.location.href = './index.html';
+});
 
 // Initialize navbar when DOM is ready
 if (document.readyState === 'loading') {

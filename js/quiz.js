@@ -28,20 +28,44 @@ const quizzesData = [
   },
   {
     id: 4,
-    title: "Not yet 😴",
-    description: "Not yet 😴",
-    questions: 18,
-    duration: 30,
-    difficulty: "Not yet 😴",
+    title: "Coming Soon😴",
+    description: "—",
+    questions: 0,
+    duration: 0,
+    difficulty: "—",
   },
   {
     id: 5,
-    title: "Not yet 😴",
-    description: "Not yet 😴",
-    questions: 18,
-    duration: 30,
-    difficulty: "Not yet 😴",
-  }
+    title: "Coming Soon😴",
+    description: "—",
+    questions: 0,
+    duration: 0,
+    difficulty: "—",
+  },
+  {
+    id: 6,
+    title: "Coming Soon😴",
+    description: "—",
+    questions: 0,
+    duration: 0,
+    difficulty: "—",
+  },
+  {
+    id: 7,
+    title: "Coming Soon😴",
+    description: "—",
+    questions: 0,
+    duration: 0,
+    difficulty: "—",
+  },
+  {
+    id: 8,
+    title: "Coming Soon😴",
+    description: "—",
+    questions: 0,
+    duration: 0,
+    difficulty: "—",
+  },
 ];
 
 /* ===================================
@@ -54,29 +78,56 @@ let timerInterval = null;
 let timeRemaining = 0;
 let userAnswers = [];
 let isReviewMode = false;
+let quizStarted = false;
 
 /* ===================================
-   DOM ELEMENTS
+   DOM ELEMENTS - Global References
 =================================== */
-const quizContainer = document.getElementById("quizContainer");
-const errorContainer = document.getElementById("errorContainer");
-const questionBox = document.getElementById("questionBox");
-const questionsModal = document.getElementById("questionsModal");
+let quizContainer;
+let errorContainer;
+let questionBox;
+let questionsModal;
+let questionNumber;
+let questionText;
+let optionsContainer;
+let nextBtn;
+let prevBtn;
+let timerElement;
+let questionsListContainer;
 
-const questionNumber = document.getElementById("questionNumber");
-const questionText = document.getElementById("questionText");
-const optionsContainer = document.getElementById("optionsContainer");
-const nextBtn = document.getElementById("nextBtn");
-const prevBtn = document.getElementById("prevBtn");
-const timerElement = document.getElementById("timer");
-const questionsListContainer = document.getElementById("questionsListContainer");
+/* ===================================
+   PREVENT PAGE UNLOAD DURING QUIZ
+=================================== */
+window.addEventListener("beforeunload", function(e) {
+  if (quizStarted && !isReviewMode) {
+    e.preventDefault();
+    e.returnValue = "هتطلع من الكويز؟ هتخسر كل تقدمك!";
+    return "هتطلع من الكويز؟ هتخسر كل تقدمك!";
+  }
+});
 
 /* ===================================
    INITIALIZE QUIZ
 =================================== */
 window.addEventListener("DOMContentLoaded", () => {
+  // Initialize DOM elements
+  initializeDOMElements();
   initializeQuiz();
 });
+
+function initializeDOMElements() {
+  quizContainer = document.getElementById("quizContainer");
+  errorContainer = document.getElementById("errorContainer");
+  questionBox = document.getElementById("questionBox");
+  questionsModal = document.getElementById("questionsModal");
+  questionNumber = document.getElementById("questionNumber");
+  questionText = document.getElementById("questionText");
+  optionsContainer = document.getElementById("optionsContainer");
+  nextBtn = document.getElementById("nextBtn");
+  prevBtn = document.getElementById("prevBtn");
+  timerElement = document.getElementById("timer");
+  questionsListContainer = document.getElementById("questionsListContainer");
+}
 
 function initializeQuiz() {
   const params = new URLSearchParams(window.location.search);
@@ -128,13 +179,11 @@ function startQuiz() {
       quizName = "Big Data";
     } else if (quizId === 3) {
       quizName = "Software Engineering";
-    } else if (quizId === 4) {
-      quizName = "Not yet 😴";
-    } else if (quizId === 5) {
-      quizName = "Not yet 😴";
+    } else if (quizId >= 4) {
+      quizName = "This Quiz";
     }
     
-    alert(`${quizName} Not yet 😴`);
+    alert(`${quizName} is not available yet 😴`);
     return;
   }
 
@@ -143,6 +192,7 @@ function startQuiz() {
   score = 0;
   isReviewMode = false;
   userAnswers = new Array(QUESTIONS.length).fill(null);
+  quizStarted = true; // Enable exit warning
 
   // Hide quiz info and show questions
   quizContainer.style.display = "none";
@@ -306,41 +356,51 @@ function checkAnswer(selected, btn) {
 /* ===================================
    PREVIOUS QUESTION
 =================================== */
-prevBtn.onclick = () => {
-  if (currentIndex > 0) {
-    currentIndex--;
+function setupNavigationButtons() {
+  prevBtn.onclick = () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+      showQuestion();
+    }
+  };
+
+  nextBtn.onclick = () => {
+    if (isReviewMode) {
+      // If in review mode and at last question, go back to results
+      if (currentIndex === QUESTIONS.length - 1) {
+        showResult();
+        return;
+      }
+    } else {
+      // If at last question, show results
+      if (currentIndex === QUESTIONS.length - 1) {
+        stopTimer();
+        showResult();
+        return;
+      }
+    }
+
+    // Move to next question
+    currentIndex++;
     showQuestion();
-  }
-};
+  };
+}
 
-/* ===================================
-   NEXT QUESTION
-=================================== */
-nextBtn.onclick = () => {
-  if (isReviewMode) {
-    // If in review mode and at last question, go back to results
-    if (currentIndex === QUESTIONS.length - 1) {
-      showResult();
-      return;
+// Set up navigation buttons on page load
+window.addEventListener("DOMContentLoaded", () => {
+  setTimeout(() => {
+    if (prevBtn && nextBtn) {
+      setupNavigationButtons();
     }
-  } else {
-    // If at last question, show results
-    if (currentIndex === QUESTIONS.length - 1) {
-      stopTimer();
-      showResult();
-      return;
-    }
-  }
-
-  // Move to next question
-  currentIndex++;
-  showQuestion();
-};
+  }, 100);
+});
 
 /* ===================================
    SHOW RESULT
 =================================== */
 function showResult() {
+  quizStarted = false; // Disable exit warning
+  
   const percentage = Math.round((score / QUESTIONS.length) * 100);
   
   let resultEmoji = "🎉";
@@ -363,8 +423,8 @@ function showResult() {
       <p>Your Score: <strong>${score}</strong> of <strong>${QUESTIONS.length}</strong></p>
       <p>Percentage: <strong>${percentage}%</strong></p>
       <div class="button-group">
-        <button class="review-btn" onclick="reviewAnswers()">📝 Review Answers</button>
         <button onclick="restartQuiz()">🔄 Restart Quiz</button>
+        <button class="review-btn" onclick="reviewAnswers()">📝 Review Answers</button>
         <button onclick="goBack()">← Back to Quizzes</button>
       </div>
     </div>
@@ -377,6 +437,7 @@ function showResult() {
 function reviewAnswers() {
   isReviewMode = true;
   currentIndex = 0;
+  
   questionBox.innerHTML = `
     <div class="quiz-header">
       <div class="timer-container" style="visibility: hidden;">
@@ -398,30 +459,18 @@ function reviewAnswers() {
     </div>
   `;
 
-  // Re-assign DOM elements
-  const questionNumber = document.getElementById("questionNumber");
-  const questionText = document.getElementById("questionText");
-  const optionsContainer = document.getElementById("optionsContainer");
-  const nextBtn = document.getElementById("nextBtn");
-  const prevBtn = document.getElementById("prevBtn");
+  // Re-initialize DOM elements after innerHTML change
+  questionNumber = document.getElementById("questionNumber");
+  questionText = document.getElementById("questionText");
+  optionsContainer = document.getElementById("optionsContainer");
+  nextBtn = document.getElementById("nextBtn");
+  prevBtn = document.getElementById("prevBtn");
+  timerElement = document.getElementById("timer");
 
   // Re-attach event listeners
-  prevBtn.onclick = () => {
-    if (currentIndex > 0) {
-      currentIndex--;
-      showQuestion();
-    }
-  };
+  setupNavigationButtons();
 
-  nextBtn.onclick = () => {
-    if (currentIndex === QUESTIONS.length - 1) {
-      showResult();
-      return;
-    }
-    currentIndex++;
-    showQuestion();
-  };
-
+  // Show first question
   showQuestion();
 }
 
@@ -429,7 +478,11 @@ function reviewAnswers() {
    TOGGLE QUESTIONS LIST MODAL
 =================================== */
 function toggleQuestionsList() {
-  if (questionsModal.style.display === "none") {
+  if (!questionsModal) {
+    questionsModal = document.getElementById("questionsModal");
+  }
+  
+  if (questionsModal.style.display === "none" || questionsModal.style.display === "") {
     showQuestionsList();
     questionsModal.style.display = "flex";
   } else {
@@ -441,6 +494,10 @@ function toggleQuestionsList() {
    SHOW QUESTIONS LIST
 =================================== */
 function showQuestionsList() {
+  if (!questionsListContainer) {
+    questionsListContainer = document.getElementById("questionsListContainer");
+  }
+  
   questionsListContainer.innerHTML = "";
 
   QUESTIONS.forEach((q, index) => {
@@ -452,12 +509,13 @@ function showQuestionsList() {
       item.classList.add("current");
     }
     if (userAnswers[index] !== null) {
-      item.classList.add("answered");
+      const isCorrect = userAnswers[index] === q.answer;
+      item.classList.add(isCorrect ? "answered-correct" : "answered-wrong");
     }
 
     item.innerHTML = `
       <span class="question-item-number">Question ${index + 1}</span>
-      <div class="question-item-text">${q.question}</div>
+      <div class="question-item-text">${q.question.substring(0, 80)}${q.question.length > 80 ? '...' : ''}</div>
     `;
 
     item.onclick = () => {
@@ -474,19 +532,78 @@ function showQuestionsList() {
    RESTART QUIZ
 =================================== */
 function restartQuiz() {
+  // Stop timer
   stopTimer();
+  
+  // Reset all variables
   currentIndex = 0;
   score = 0;
   isReviewMode = false;
   userAnswers = [];
-  questionBox.style.display = "none";
-  quizContainer.style.display = "block";
+  timeRemaining = 0;
+  quizStarted = true; // Re-enable exit warning
+  
+  // Check if questions are available
+  if (typeof QUESTIONS === 'undefined' || !QUESTIONS || QUESTIONS.length === 0) {
+    alert('Questions are not available!');
+    goBack();
+    return;
+  }
+  
+  // Reset user answers array
+  userAnswers = new Array(QUESTIONS.length).fill(null);
+  
+  // Rebuild the question box HTML
+  questionBox.innerHTML = `
+    <div class="quiz-header">
+      <div class="timer-container">
+        <span class="timer-icon">⏱️</span>
+        <span id="timer" class="timer-text">00:00</span>
+      </div>
+      <button class="view-all-btn" onclick="toggleQuestionsList()">
+        <span>📋</span>
+        <span>View all questions</span>
+      </button>
+    </div>
+
+    <div id="questionNumber"></div>
+    <h2 id="questionText"></h2>
+    <div id="optionsContainer"></div>
+    <div class="nav-buttons">
+      <button id="prevBtn">← Previous</button>
+      <button id="nextBtn">Next Question →</button>
+    </div>
+  `;
+  
+  // Show question box
+  questionBox.style.display = "block";
+  
+  // Re-initialize DOM elements
+  questionNumber = document.getElementById("questionNumber");
+  questionText = document.getElementById("questionText");
+  optionsContainer = document.getElementById("optionsContainer");
+  nextBtn = document.getElementById("nextBtn");
+  prevBtn = document.getElementById("prevBtn");
+  timerElement = document.getElementById("timer");
+  
+  // Re-attach navigation event listeners
+  setupNavigationButtons();
+  
+  // Start timer again
+  if (currentQuiz && currentQuiz.duration) {
+    timeRemaining = currentQuiz.duration * 60;
+    startTimer();
+  }
+  
+  // Show first question
+  showQuestion();
 }
 
 /* ===================================
    GO BACK
 =================================== */
 function goBack() {
+  quizStarted = false; // Disable exit warning
   stopTimer();
   window.location.href = "./quizzes.html";
 }

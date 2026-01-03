@@ -3,12 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Loading...</title>
-  <link rel="stylesheet" href="css/loading.css">
+  <title>Loading - Quizzes Platform</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☃️</text></svg>">
+  <link rel="stylesheet" href="css/loading.css">
 </head>
 <body>
-
   <!-- Splash Screen Container -->
   <div id="splashScreen" class="splash-screen">
     
@@ -17,7 +16,7 @@
       
       <!-- Brand Logo -->
       <div class="icon-container">
-        <div class="brand-logo">x606</div>
+        <img src="assets/x606-logo.png" alt="x606 Logo" class="brand-logo" onerror="this.style.display='none'">
       </div>
 
       <!-- Title & Subtitle -->
@@ -25,29 +24,67 @@
       <h2 class="splash-subtitle">by xIsmail</h2>
 
       <!-- Loading Text -->
-      <div class="splash-loading">loading...</div>
+      <div class="splash-loading">Loading</div>
 
-
+      <!-- Progress Bar -->
       <div class="splash-progress-bar">
         <div class="splash-progress-fill" id="progressFill"></div>
       </div>
 
-
+      <!-- Progress Percentage -->
       <div class="progress-percentage" id="progressPercentage">0%</div>
       
     </div>
 
-
+    <!-- Floating Particles -->
     <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
     <div class="particle" style="left: 25%; animation-delay: 1s;"></div>
     <div class="particle" style="left: 40%; animation-delay: 2s;"></div>
     <div class="particle" style="left: 60%; animation-delay: 0.5s;"></div>
     <div class="particle" style="left: 75%; animation-delay: 1.5s;"></div>
     <div class="particle" style="left: 90%; animation-delay: 2.5s;"></div>
+    <div class="particle" style="left: 100%; animation-delay: 2.5s;"></div>
     
   </div>
 
-  <script src="./js/loading.js"></script>
+  <script>
+    // Loading animation
+    const progressFill = document.getElementById('progressFill');
+    const progressPercentage = document.getElementById('progressPercentage');
+    const splashScreen = document.getElementById('splashScreen');
+    
+    let progress = 0;
+    const duration = 2500; // 2.5 seconds
+    const interval = 30; // Update every 30ms
+    const increment = (100 / duration) * interval;
+    
+    const loadingInterval = setInterval(() => {
+      progress += increment;
+      
+      if (progress >= 100) {
+        progress = 100;
+        clearInterval(loadingInterval);
+        
+        // Wait a bit then redirect
+        setTimeout(() => {
+          splashScreen.classList.add('fade-out');
+          
+          // Mark as loaded and redirect
+          sessionStorage.setItem('loaded', 'true');
+          
+          setTimeout(() => {
+            window.location.href = 'index.html';
+          }, 500);
+        }, 300);
+      }
+      
+      // Update progress
+      progressFill.style.width = progress + '%';
+      progressPercentage.textContent = Math.floor(progress) + '%';
+      
+    }, interval);
+  </script>
   
 </body>
 </html>
+<!-- BY X606 -->
