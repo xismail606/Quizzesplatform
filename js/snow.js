@@ -170,14 +170,11 @@ function init() {
   }
   cleanupInterval = setInterval(cleanupOldSnowflakes, 5000);
 }
-
-
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', init);
 } else {
   init();
 }
-
 
 window.addEventListener('beforeunload', () => {
   if (cleanupInterval) {

@@ -28,11 +28,11 @@ const quizzesData = [
   },
   {
     id: 4,
-    title: "Coming Soon😴",
-    description: "—",
-    questions: 0,
-    duration: 0,
-    difficulty: "—",
+    title: "Internet Engineering",
+    description: "Internet Engineering Gemini mcq Q lec 1 to 5",
+    questions: 100,
+    duration: 100,
+    difficulty: "Medium",
   },
   {
     id: 5,
