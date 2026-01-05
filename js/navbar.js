@@ -1,5 +1,5 @@
 /* ===================================
-   Navigation Bar Script
+   Navigation Bar 
 =================================== */
 
 function initNavbar() {
@@ -15,16 +15,16 @@ function initNavbar() {
 
   // Toggle menu on button click
   menuToggle.addEventListener('click', (e) => {
-    e.stopPropagation(); // منع انتشار الحدث
+    e.stopPropagation();
     navLinks.classList.toggle('active');
     
     // Change icon
     if (navLinks.classList.contains('active')) {
       if (menuIcon) menuIcon.className = 'fas fa-times';
-      document.body.style.overflow = 'hidden'; // منع السكرول لما القائمة مفتوحة
+      document.body.style.overflow = 'hidden'; 
     } else {
       if (menuIcon) menuIcon.className = 'fas fa-bars';
-      document.body.style.overflow = ''; // إرجاع السكرول
+      document.body.style.overflow = ''; 
     }
   });
 
@@ -35,7 +35,7 @@ function initNavbar() {
       if (menuIcon) {
         menuIcon.className = 'fas fa-bars';
       }
-      document.body.style.overflow = ''; // إرجاع السكرول
+      document.body.style.overflow = ''; 
     });
   });
 
@@ -50,7 +50,7 @@ function initNavbar() {
         if (menuIcon) {
           menuIcon.className = 'fas fa-bars';
         }
-        document.body.style.overflow = ''; // إرجاع السكرول
+        document.body.style.overflow = ''; 
       }
     }
   });
@@ -81,7 +81,6 @@ function initNavbar() {
     }, 250);
   });
 
-  // إخفاء الأزرار في الموبايل
   function hideButtonsOnMobile() {
     const buttons = navLinks.querySelectorAll('button, .settings-btn, i.fa-cog, i.fa-gear');
     if (window.innerWidth <= 768) {
@@ -95,7 +94,7 @@ function initNavbar() {
     }
   }
 
-  // تشغيل عند التحميل والـ resize
+  //resize
   hideButtonsOnMobile();
   window.addEventListener('resize', hideButtonsOnMobile);
 }
