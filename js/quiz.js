@@ -66,6 +66,14 @@ const quizzesData = [
     duration: 0,
     difficulty: "—",
   },
+  {
+    id: 9,
+    title: "Coming Soon😴",
+    description: "—",
+    questions: 0,
+    duration: 0,
+    difficulty: "—",
+  },
 ];
 
 /* ===================================
@@ -180,7 +188,17 @@ function startQuiz() {
     } else if (quizId === 3) {
       quizName = "Software Engineering";
     } else if (quizId >= 4) {
-      quizName = "This Quiz";
+      quizName = "Internet Engineering";
+    } else if (quizId >= 5) {
+      quizName = "Coming Soon";
+    } else if (quizId >= 6) {
+      quizName = "Coming Soon";
+    }else if (quizId >= 7) {
+      quizName = "Coming Soon";
+    }else if (quizId >= 8) {
+      quizName = "Coming Soon";
+    }else if (quizId >= 9) {
+      quizName = "Coming Soon";
     }
     
     alert(`${quizName} is not available yet 😴`);
@@ -607,3 +625,29 @@ function goBack() {
   stopTimer();
   window.location.href = "./quizzes.html";
 }
+/* ===================================
+ Load Questions Based on Quiz ID 
+=================================== */
+
+    const params = new URLSearchParams(window.location.search);
+    const quizId = Number(params.get("id"));
+    
+    if (quizId === 1) {
+      document.write('<script src="./js/OS.js"><\/script>');
+    } else if (quizId === 2) {
+       document.write('<script src="./js/bigdata.js"><\/script>');
+    } else if (quizId === 3) {
+      document.write('<script src="./js/SoftwareEngineering.js"><\/script>');
+    } else if (quizId === 4) {
+      document.write('<script src="./js/interneteng.js"><\/script>');
+    } else if (quizId === 5) {
+      document.write('<script src="./js/.js"><\/script>');
+    } else if (quizId === 6) {
+      document.write('<script src="./js/.js"><\/script>');
+    } else if (quizId === 7) {
+      document.write('<script src="./js/.js"><\/script>');
+    } else if (quizId === 8) {
+      document.write('<script src="./js/.js"><\/script>');
+    } else if (quizId === 9) {
+      document.write('<script src="./js/.js"><\/script>');
+    }

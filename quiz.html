@@ -90,29 +90,9 @@
     </div>
   </div>
 
-  <!-- Load Questions Based on Quiz ID -->
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    const quizId = Number(params.get("id"));
-    
-    if (quizId === 1) {
-      document.write('<script src="./js/OS.js"><\/script>');
-    } else if (quizId === 2) {
-       document.write('<script src="./js/bigdata.js"><\/script>');
-    } else if (quizId === 3) {
-      document.write('<script src="./js/SoftwareEngineering.js"><\/script>');
-    } else if (quizId === 4) {
-      document.write('<script src="./js/interneteng.js"><\/script>');
-    } else if (quizId === 5) {
-      document.write('<script src="./js/.js"><\/script>');
-    } else if (quizId === 6) {
-      document.write('<script src="./js/.js"><\/script>');
-    }
-  </script>
-
-  <!-- Main Quiz Script -->
+        <!-- Script -->
   <script src="./js/quiz.js"></script>
-  <script src="./js/snow.js"></script>
   <script src="./js/navbar.js"></script>
+  <script src="./js/snow.js"></script>
 </body>
 </html>
