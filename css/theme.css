@@ -1,0 +1,243 @@
+/* ===================================
+   THEME TOGGLE BUTTON
+=================================== */
+.theme-toggle-btn {
+  position: fixed;
+  bottom: 75px; 
+  right: -60px;  
+  z-index: 10000;
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  
+  border-radius: 50%;
+  aspect-ratio: 1 / 1;
+  
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.15),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3);
+  
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  line-height: 1;
+  
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  transition: right 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+              background 0.3s ease,
+              transform 0.3s ease;
+  overflow: hidden;
+  transform: translateZ(0);
+}
+
+
+.theme-toggle-btn:hover,
+.theme-toggle-btn:focus {
+  right: 30px;
+}
+
+
+.theme-toggle-btn::after {
+  content: '';
+  position: absolute;
+  right: 100%;
+  top: 0;
+  width: 30px;
+  height: 100%;
+  cursor: pointer;
+}
+
+.theme-toggle-btn i {
+  display: block;
+  line-height: 1;
+  pointer-events: none;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  color: #fbbf24;
+  animation: iconFloat 3s ease-in-out infinite;
+}
+
+@keyframes iconFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-3px) rotate(-5deg);
+  }
+  50% {
+    transform: translateY(0) rotate(0deg);
+  }
+  75% {
+    transform: translateY(3px) rotate(5deg);
+  }
+}
+
+.theme-toggle-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.3) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.theme-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 
+    0 12px 35px rgba(0, 0, 0, 0.2),
+    inset 0 1px 3px rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+.theme-toggle-btn:hover::before {
+  opacity: 1;
+}
+
+.theme-toggle-btn:active {
+  transform: translateY(0);
+  box-shadow: 
+    0 5px 15px rgba(0, 0, 0, 0.15),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+@keyframes slideIn {
+  from {
+    right: -60px;
+  }
+  to {
+    right: 30px;
+  }
+}
+
+.theme-toggle-btn.show {
+  animation: slideIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation-delay: 2s;
+}
+
+/* ===================================
+   LIGHT MODE STYLES
+=================================== */
+body.light-mode {
+  background:
+    radial-gradient(circle at center, rgba(59, 130, 246, 0.08), transparent 45%),
+    linear-gradient(135deg, #252d45 0%, #243350 50%, #1a4670 100%);
+}
+
+body.light-mode::before {
+  background-image:
+    repeating-linear-gradient(45deg, transparent, transparent 50px, rgba(255,255,255,0.02) 50px, rgba(255,255,255,0.02) 100px),
+    repeating-linear-gradient(-45deg, transparent, transparent 50px, rgba(255,255,255,0.02) 50px, rgba(255,255,255,0.02) 100px);
+}
+
+body.light-mode .hero {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+body.light-mode h1 {
+  background: linear-gradient(to right, #cbd5e1, #60a5fa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+body.light-mode p {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+body.light-mode button {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+}
+
+body.light-mode .circle {
+  background: rgba(96, 165, 250, 0.12);
+}
+
+body.light-mode .particle {
+  background: rgba(96, 165, 250, 0.4);
+}
+
+body.light-mode .theme-toggle-btn i {
+  color: #450380;
+}
+
+body.light-mode .social-icons a {
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+}
+
+body.light-mode .theme-toggle-btn {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+body.light-mode .snow-toggle-btn {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* ===================================
+   RESPONSIVE DESIGN
+=================================== */
+@media (max-width: 768px) {
+  .theme-toggle-btn {
+    bottom: 70px;
+    right: -60px;
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+  }
+  
+  .theme-toggle-btn:hover,
+  .theme-toggle-btn:focus {
+    right: 20px;
+  }
+  
+  .theme-toggle-btn.show {
+    animation: slideInMobile 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    animation-delay: 2s;
+  }
+  
+  @keyframes slideInMobile {
+    from { right: -60px; }
+    to { right: 20px; }
+  }
+}
+
+@media (max-width: 480px) {
+  .theme-toggle-btn {
+    bottom: 60px;
+    right: -60px;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+  
+  .theme-toggle-btn:hover,
+  .theme-toggle-btn:focus {
+    right: 15px;
+  }
+  
+  .theme-toggle-btn.show {
+    animation: slideInSmall 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    animation-delay: 2s;
+  }
+  
+  @keyframes slideInSmall {
+    from { right: -60px; }
+    to { right: 15px; }
+  }
+}

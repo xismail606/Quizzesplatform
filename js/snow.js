@@ -181,3 +181,8 @@ window.addEventListener('beforeunload', () => {
     clearInterval(cleanupInterval);
   }
 });
+
+window.addEventListener('load', () => {
+  const snowBtn = document.querySelector('.snow-toggle-btn');
+  snowBtn.classList.add('show');
+});

@@ -9,7 +9,9 @@
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      background:
+      radial-gradient(circle at center, rgba(99,102,241,0.08), transparent 45%),
+      linear-gradient(135deg, #151829 0%, #020510 50%, #010308 100%);
       min-height: 100vh;
       position: relative;
       overflow-x: hidden;
