@@ -15,23 +15,30 @@
       overflow-x: hidden;
     }
 
-    /* Animated Background Pattern */
+    /* --- Animated Background Pattern --- */
     body::before {
       content: '';
       position: fixed;
-      width: 200%;
-      height: 200%;
-      background-image: 
-        repeating-linear-gradient(45deg, transparent, transparent 50px, rgba(255,255,255,0.02) 50px, rgba(255,255,255,0.02) 100px);
+      width: calc(100% + 100px); 
+      height: calc(100% + 100px);
+      background-image:
+      repeating-linear-gradient(45deg, transparent, transparent 50px, rgba(255,255,255,0.03) 50px, rgba(255,255,255,0.03) 100px),
+      repeating-linear-gradient(-45deg, transparent, transparent 50px, rgba(255,255,255,0.03) 50px, rgba(255,255,255,0.03) 100px);
       animation: moveBackground 20s linear infinite;
       z-index: 0;
-      top: 0;
-      left: 0;
+      top: -50px; 
+      left: -50px; 
+      pointer-events: none;
+      will-change: transform;
     }
 
     @keyframes moveBackground {
-      0% { transform: translate(0, 0); }
-      100% { transform: translate(50px, 50px); }
+      0% { 
+        transform: translate(0, 0); 
+      }
+      100% { 
+        transform: translate(50px, 50px); 
+      }
     }
 
     /* Floating Circles */
@@ -202,6 +209,15 @@
       margin-bottom: 35px;
       min-height: 65px;
     }
+    
+    .quiz-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+   }
 
     /* Quiz Info Section */
     .quiz-info {
@@ -285,6 +301,8 @@
     .quiz-card.disabled {
       opacity: 0.6;
       cursor: not-allowed;
+      pointer-events: none;
+     filter: grayscale(1);
     }
 
     .quiz-card.disabled:hover {
@@ -391,3 +409,14 @@
         padding-bottom: 0;
       }
     }
+    ::-webkit-scrollbar {
+    width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+        background: #020510;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: linear-gradient(#000000, #764ba2);
+        border-radius: 10px;
+    }
+    
