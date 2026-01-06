@@ -19,6 +19,7 @@ A modern, responsive **Quizzes Platform** built using **HTML, CSS, and Vanilla J
 - 🎨 Animated background
 - ❄️ Snow effect with enable / disable toggle
 - 💾 Snow & user preferences persistence using localStorage
+- 🌙 Dark / Light mode toggle
 - ⚡ Optimized animations (low CPU & GPU usage)
 - ⌨️ navigation bar support
 - 🔗 Social & feedback links (LinkedIn, GitHub, Google Form)
