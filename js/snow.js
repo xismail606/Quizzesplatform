@@ -4,7 +4,7 @@
 
 const SNOWFLAKE_COUNT = 50; 
 const snowflakes = [];
-const snowChars = ['❄', '❅', '❆', '•'];
+const snowChars = ['❄', '❅', '❆', '•', '❄️', '✴︎'];
 let snowEnabled = localStorage.getItem('snowEnabled') !== 'false';
 let cleanupInterval = null;
 let snowCreationTimeouts = []; 
