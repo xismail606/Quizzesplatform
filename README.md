@@ -9,14 +9,18 @@ A modern, responsive **Quizzes Platform** built using **HTML, CSS, and Vanilla J
 - ✅ Clean & modern UI (Glassmorphism style)
 - 📱 Fully responsive (Mobile & Desktop)
 - 🎯 Centered layout with consistent design
-- 🧠 Multiple quizzes support
-- ⏱️ Quiz timer
+- 🧠 Multiple quizzes support (categorized by topic)
+- ⏱️ Quiz timer with auto-submit
+- 📊 Quiz results summary (score, correct answers)
 - 📋 View all questions modal
+- 🔁 Retry quiz & review answers (highlight correct / wrong)
+- 📈 Progress indicator during quiz
 - 🔄 Smooth navigation between pages
 - 🎨 Animated background
 - ❄️ Snow effect with enable / disable toggle
-- 💾 Snow state persistence using `localStorage`
-- ⚡ Optimized animations (low CPU usage)
+- 💾 Snow & user preferences persistence using localStorage
+- ⚡ Optimized animations (low CPU & GPU usage)
+- ⌨️ navigation bar support
 - 🔗 Social & feedback links (LinkedIn, GitHub, Google Form)
 
 ---
