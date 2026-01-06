@@ -52,7 +52,8 @@ QuizzesPlatform/
 │   ├── navigationbar.css
 │   ├── quiz.css
 │   ├── quizzes.css
-│   └── snow.css
+│   ├── snow.css
+│   └── theme.css
 │
 ├── js/
 │   ├── bigdata.js
@@ -63,7 +64,8 @@ QuizzesPlatform/
 │   ├── quiz.js
 │   ├── quizzes.js
 │   ├── snow.js
-│   └── SoftwareEngineering.js
+│   ├── SoftwareEngineering.js
+│   └── theme.js
 │
 ├── about.html
 ├── index.html
