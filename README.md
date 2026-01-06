@@ -41,19 +41,22 @@ QuizzesPlatform/
 │   └── x606-logo1.png
 │
 ├── css/
+│   ├── about.css
 │   ├── loading.css
 │   ├── main.css
 │   ├── navigationbar.css
 │   ├── quiz.css
+│   ├── quizzes.css
 │   └── snow.css
 │
 ├── js/
-│   ├── 04.js
 │   ├── bigdata.js
+│   ├── interneteng.js
 │   ├── loading.js
 │   ├── navbar.js
 │   ├── OS.js
 │   ├── quiz.js
+│   ├── quizzes.js
 │   ├── snow.js
 │   └── SoftwareEngineering.js
 │
@@ -61,6 +64,5 @@ QuizzesPlatform/
 ├── index.html
 ├── loading.html
 ├── quiz.html
-├── quizzes.html
-│
-└── README.md
+└── quizzes.html
+
