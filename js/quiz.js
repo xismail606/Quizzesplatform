@@ -44,11 +44,11 @@ const quizzesData = [
   },
   {
     id: 6,
-    title: "Coming Soon😴",
-    description: "—",
-    questions: 0,
-    duration: 0,
-    difficulty: "—",
+    title: "Digital Signal Processing",
+    description: "Digital Signal Processing mcq",
+    questions: 91,
+    duration: 91,
+    difficulty: "Hard",
   },
   {
     id: 7,
@@ -192,7 +192,7 @@ function startQuiz() {
     } else if (quizId >= 5) {
       quizName = "Introduction to Computer Network";
     } else if (quizId >= 6) {
-      quizName = "Coming Soon";
+      quizName = "Digital Signal Processing";
     }else if (quizId >= 7) {
       quizName = "Coming Soon";
     }else if (quizId >= 8) {
@@ -643,7 +643,7 @@ function goBack() {
     } else if (quizId === 5) {
       document.write('<script src="./js/Computer-Network.js"><\/script>');
     } else if (quizId === 6) {
-      document.write('<script src="./js/.js"><\/script>');
+      document.write('<script src="./js/Signal.js"><\/script>');
     } else if (quizId === 7) {
       document.write('<script src="./js/.js"><\/script>');
     } else if (quizId === 8) {
