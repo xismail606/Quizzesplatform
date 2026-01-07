@@ -46,14 +46,14 @@
       },
       {
         id: 5,
-        title: "Coming Soon",
-        description: "Coming Soon",
-        icon: "🔒",
-        questions: 0,
-        duration: 0,
-        difficulty: "Soon",
-        isNew: false,
-        enabled: false
+        title: "Introduction to Computer Network",
+        description: "Computer Network Questions Bank",
+        icon: "🛜",
+        questions: 88,
+        duration: 88,
+        difficulty: "Medium",
+        isNew: true,
+        enabled: true
       },
       {
         id: 6,

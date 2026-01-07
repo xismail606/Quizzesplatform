@@ -36,11 +36,11 @@ const quizzesData = [
   },
   {
     id: 5,
-    title: "Coming Soon😴",
-    description: "—",
-    questions: 0,
-    duration: 0,
-    difficulty: "—",
+    title: "Introduction to Computer Network",
+    description: "Computer Network Questions Bank",
+    questions: 88,
+    duration: 88,
+    difficulty: "Medium",
   },
   {
     id: 6,
@@ -190,7 +190,7 @@ function startQuiz() {
     } else if (quizId >= 4) {
       quizName = "Internet Engineering";
     } else if (quizId >= 5) {
-      quizName = "Coming Soon";
+      quizName = "Introduction to Computer Network";
     } else if (quizId >= 6) {
       quizName = "Coming Soon";
     }else if (quizId >= 7) {
@@ -641,7 +641,7 @@ function goBack() {
     } else if (quizId === 4) {
       document.write('<script src="./js/interneteng.js"><\/script>');
     } else if (quizId === 5) {
-      document.write('<script src="./js/.js"><\/script>');
+      document.write('<script src="./js/Computer-Network.js"><\/script>');
     } else if (quizId === 6) {
       document.write('<script src="./js/.js"><\/script>');
     } else if (quizId === 7) {
