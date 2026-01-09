@@ -1,44 +1,96 @@
-# 🎯 Quizzes Platform
-
-A modern, responsive **Quizzes Platform** built using **HTML, CSS, and Vanilla JavaScript**, designed to deliver an engaging quiz experience on **desktop & mobile devices**.
-
----
-
-## 📌 Features
-
-- ✅ Clean & modern UI (Glassmorphism style)
-- 📱 Fully responsive (Mobile & Desktop)
-- 🎯 Centered layout with consistent design
-- 🧠 Multiple quizzes support (categorized by topic)
-- ⏱️ Quiz timer with auto-submit
-- 📊 Quiz results summary (score, correct answers)
-- 📋 View all questions modal
-- 🔁 Retry quiz & review answers (highlight correct / wrong)
-- 📈 Progress indicator during quiz
-- 🔄 Smooth navigation between pages
-- 🎨 Animated background
-- ❄️ Snow effect with enable / disable toggle
-- 💾 Snow & user preferences persistence using localStorage
-- 🌙 Dark / Light mode toggle
-- ⚡ Optimized animations (low CPU & GPU usage)
-- ⌨️ navigation bar support
-- 🔗 Social & feedback links (LinkedIn, GitHub, Google Form)
+<!-- ===================== HEADER ===================== -->
+<div align="center">
+  <img 
+    src="https://capsule-render.vercel.app/api?type=waving&color=gradient&text=Quizzes%20Platform&height=140&section=header"
+    alt="Quizzes Platform Header"
+    width="100%"
+  />
+</div>
 
 ---
 
-## 🛠️ Technologies Used
-
-- **HTML5** – Page structure  
-- **CSS3** – Styling, animations & responsiveness  
-- **JavaScript (Vanilla)** – Quiz logic & interactions  
-- **Font Awesome** – Icons  
-- **GitHub Pages** – Hosting  
+<!-- ===================== SOCIAL ===================== -->
+<div align="center">
+  <a href="https://www.linkedin.com/in/ismailabdelhameed">
+    <img 
+      height="55" 
+      src="https://user-images.githubusercontent.com/46517096/166973395-19676cd8-f8ec-4abf-83ff-da8243505b82.png"
+      alt="LinkedIn"
+    />
+  </a>
+</div>
 
 ---
 
-## 📂 Project Structure
+<!-- ===================== TITLE ===================== -->
+<h1 align="center"> 🎯 Quizzes Platform </h1>
 
-```text
+<p align="center">
+A modern, responsive <strong>Quizzes Platform</strong> built using <strong>HTML, CSS, and Vanilla JavaScript</strong>,<br>
+designed to deliver an engaging quiz experience on <strong>desktop & mobile devices</strong>.
+</p>
+
+---
+
+<!-- ===================== ABOUT ===================== -->
+<h2 align="center"> 💡 About The Project </h2>
+
+<pre><strong>
+project_name: Quizzes Platform
+type: Frontend Web Application
+focus:
+  - User Experience
+  - Performance Optimization
+  - Clean UI Design
+supported_devices:
+  - Desktop
+  - Mobile
+</strong></pre>
+
+---
+
+<!-- ===================== FEATURES ===================== -->
+<h2 align="center"> ✨ Features </h2>
+
+<ul>
+  <li>✅ Clean & modern UI (Glassmorphism style)</li>
+  <li>📱 Fully responsive (Mobile & Desktop)</li>
+  <li>🎯 Centered layout with consistent design</li>
+  <li>🧠 Multiple quizzes categorized by topic</li>
+  <li>⏱️ Quiz timer with auto-submit</li>
+  <li>📊 Results summary (score & correct answers)</li>
+  <li>📋 View all questions modal</li>
+  <li>🔁 Retry quiz & review answers (correct / wrong highlight)</li>
+  <li>📈 Progress indicator during quiz</li>
+  <li>🔄 Smooth navigation between pages</li>
+  <li>🎨 Animated background</li>
+  <li>❄️ Snow effect with enable / disable toggle</li>
+  <li>💾 User preferences persistence using <code>localStorage</code></li>
+  <li>🌙 Dark / Light mode toggle</li>
+  <li>⚡ Optimized animations (low CPU & GPU usage)</li>
+  <li>⌨️ Navigation bar support</li>
+  <li>🔗 Social & feedback links (LinkedIn, GitHub, Google Form)</li>
+</ul>
+
+---
+
+<!-- ===================== TECHNOLOGIES ===================== -->
+<h2 align="center"> 🛠️ Technologies Used </h2>
+
+<ul>
+  <li><strong>HTML5</strong> – Semantic structure</li>
+  <li><strong>CSS3</strong> – Styling, animations & responsiveness</li>
+  <li><strong>JavaScript (Vanilla)</strong> – Quiz logic & interactions</li>
+  <li><strong>Font Awesome</strong> – Icons</li>
+  <li><strong>GitHub Pages</strong> – Hosting</li>
+</ul>
+
+---
+
+<!-- ===================== STRUCTURE ===================== -->
+<h2 align="center"> 📂 Project Structure </h2>
+
+<pre><strong>
 QuizzesPlatform/
 │
 ├── assets/
@@ -56,7 +108,7 @@ QuizzesPlatform/
 │   └── theme.css
 │
 ├── js/
-|   ├── Computer-Network.js
+│   ├── Computer-Network.js
 │   ├── bigdata.js
 │   ├── interneteng.js
 │   ├── loading.js
@@ -73,4 +125,52 @@ QuizzesPlatform/
 ├── loading.html
 ├── quiz.html
 └── quizzes.html
+</strong></pre>
 
+---
+
+<!-- ===================== USAGE ===================== -->
+<h2 align="center"> ▶️ How To Use </h2>
+
+<pre><strong>
+1. Clone the repository
+2. Open index.html in your browser
+3. Start solving quizzes 🎯
+</strong></pre>
+
+<p align="center">
+No build tools or dependencies are required.
+</p>
+
+---
+
+<!-- ===================== DESIGN ===================== -->
+<h2 align="center"> 🎯 Design Philosophy </h2>
+
+<ul>
+  <li>✔️ User-first experience</li>
+  <li>✔️ Clean and readable UI</li>
+  <li>✔️ Performance-aware animations</li>
+  <li>✔️ Modular & scalable structure</li>
+  <li>✔️ No external frameworks</li>
+</ul>
+
+---
+
+<!-- ===================== AUTHOR ===================== -->
+<h2 align="center"> 👤 Author </h2>
+
+<p align="center">
+<strong>x606</strong><br>
+Frontend Developer & Security Enthusiast
+</p>
+
+---
+
+<!-- ===================== FOOTER ===================== -->
+<div align="center">
+  <img 
+    src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=100&section=footer"
+    width="100%"
+  />
+</div>
