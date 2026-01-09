@@ -10,7 +10,7 @@
 ---
 
 <!-- ===================== TITLE ===================== -->
-<h1 align="center"> 🎯 Quizzes Platform </h1>
+<h1 align="center"> ☃️ Quizzes Platform </h1>
 
 <p align="center">
 A modern, responsive <strong>Quizzes Platform</strong> built using <strong>HTML, CSS, and Vanilla JavaScript</strong>,<br>
