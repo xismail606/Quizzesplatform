@@ -105,6 +105,7 @@ QuizzesPlatform/
 │   ├── quizzes.js
 │   ├── snow.js
 │   ├── SoftwareEngineering.js
+│   ├── Signal.js
 │   └── theme.js
 │
 ├── about.html
