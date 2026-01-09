@@ -116,21 +116,6 @@ QuizzesPlatform/
 
 ---
 
-<!-- ===================== USAGE ===================== -->
-<h2 align="center"> ▶️ How To Use </h2>
-
-<pre><strong>
-1. Clone the repository
-2. Open index.html in your browser
-3. Start solving quizzes 🎯
-</strong></pre>
-
-<p align="center">
-No build tools or dependencies are required.
-</p>
-
----
-
 <!-- ===================== DESIGN ===================== -->
 <h2 align="center"> 🎯 Design Philosophy </h2>
 
