@@ -149,7 +149,6 @@ No build tools or dependencies are required.
 
 <p align="center">
 <strong>x606</strong><br>
-Frontend Developer & Security Enthusiast
 </p>
 
 ---
