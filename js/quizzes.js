@@ -8,8 +8,8 @@
         questions: 106,
         duration: 60,
         difficulty: "Medium",
-        isNew: true,
-        enabled: true
+        isNew: false,
+        enabled: false
       },
       {
         id: 2,
@@ -19,8 +19,8 @@
         questions: 125,
         duration: 60,
         difficulty: "Medium",
-        isNew: true,
-        enabled: true
+        isNew: false,
+        enabled: false
       },
       {
         id: 3,
@@ -146,3 +146,4 @@
     window.addEventListener('DOMContentLoaded', () => {
       setTimeout(displayQuizzes, 500);
     });
+
