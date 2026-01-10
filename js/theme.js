@@ -4,7 +4,7 @@ const body = document.body;
 const icon = themeToggle.querySelector('i');
 
 // Check saved theme
-const savedTheme = sessionStorage.getItem('theme') || 'dark';
+const savedTheme = localStorage.getItem('theme') || 'dark';
 if (savedTheme === 'light') {
   body.classList.add('light-mode');
   icon.classList.remove('fa-sun');
@@ -18,11 +18,11 @@ themeToggle.addEventListener('click', () => {
   if (body.classList.contains('light-mode')) {
     icon.classList.remove('fa-sun');
     icon.classList.add('fa-moon');
-    sessionStorage.setItem('theme', 'light');
+    localStorage.setItem('theme', 'light');
   } else {
     icon.classList.remove('fa-moon');
     icon.classList.add('fa-sun');
-    sessionStorage.setItem('theme', 'dark');
+    localStorage.setItem('theme', 'dark');
   }
 });
 

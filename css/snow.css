@@ -54,6 +54,7 @@
     width: 30px;
     height: 100%;
     cursor: pointer;
+    pointer-events: auto;
   }
 
   .snow-toggle-btn i {
@@ -173,11 +174,17 @@
   @keyframes snowfall {
     0% {
       transform: translateY(-10px) translateX(0) rotate(0deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 0.8;
+    }
+    90% {
       opacity: 0.8;
     }
     100% {
       transform: translateY(100vh) translateX(var(--drift, 0)) rotate(360deg);
-      opacity: 0.2;
+      opacity: 0;
     }
   }
 

@@ -115,11 +115,50 @@ window.addEventListener("beforeunload", function(e) {
 });
 
 /* ===================================
+   LOAD QUIZ QUESTIONS DYNAMICALLY
+=================================== */
+function loadQuizQuestions() {
+  const params = new URLSearchParams(window.location.search);
+  const quizId = Number(params.get("id"));
+  
+  const scriptSources = {
+    1: './js/OS.js',
+    2: './js/bigdata.js',
+    3: './js/SoftwareEngineering.js',
+    4: './js/interneteng.js',
+    5: './js/Computer-Network.js',
+    6: './js/New01.js',
+    7: './js/New02.js',
+    8: './js/New03.js',
+    9: './js/New04.js'
+  };
+
+  if (scriptSources[quizId]) {
+    const script = document.createElement('script');
+    script.src = scriptSources[quizId];
+    script.async = false;
+    script.onerror = () => {
+      console.error('Failed to load questions script');
+    };
+    document.head.appendChild(script);
+  }
+}
+
+/* ===================================
    INITIALIZE QUIZ
 =================================== */
 window.addEventListener("DOMContentLoaded", () => {
+  // Load questions script first
+  loadQuizQuestions();
+  
+  // Initialize DOM and quiz
   initializeDOMElements();
   initializeQuiz();
+  
+  // Setup navigation buttons
+  if (prevBtn && nextBtn) {
+    setupNavigationButtons();
+  }
 });
 
 function initializeDOMElements() {
@@ -178,28 +217,15 @@ function startQuiz() {
 
   // Check if questions are available
   if (typeof QUESTIONS === 'undefined' || !QUESTIONS || QUESTIONS.length === 0) {
-    let quizName = "This quiz";
+    const quizNames = {
+      1: "Operating Systems",
+      2: "Big Data",
+      3: "Software Engineering",
+      4: "Internet Engineering",
+      5: "Introduction to Computer Network"
+    };
     
-    if (quizId === 1) {
-      quizName = "Operating Systems";
-    } else if (quizId === 2) {
-      quizName = "Big Data";
-    } else if (quizId === 3) {
-      quizName = "Software Engineering";
-    } else if (quizId >= 4) {
-      quizName = "Internet Engineering";
-    } else if (quizId >= 5) {
-      quizName = "Introduction to Computer Network";
-    } else if (quizId >= 6) {
-      quizName = "Coming Soon";
-    }else if (quizId >= 7) {
-      quizName = "Coming Soon";
-    }else if (quizId >= 8) {
-      quizName = "Coming Soon";
-    }else if (quizId >= 9) {
-      quizName = "Coming Soon";
-    }
-    
+    const quizName = quizNames[quizId] || "This quiz";
     alert(`${quizName} is not available yet 😴`);
     return;
   }
@@ -209,7 +235,7 @@ function startQuiz() {
   score = 0;
   isReviewMode = false;
   userAnswers = new Array(QUESTIONS.length).fill(null);
-  quizStarted = true; // Enable exit warning
+  quizStarted = true;
 
   // Hide quiz info and show questions
   quizContainer.style.display = "none";
@@ -217,7 +243,7 @@ function startQuiz() {
 
   // Start timer
   if (currentQuiz && currentQuiz.duration) {
-    timeRemaining = currentQuiz.duration * 60; // Convert to seconds
+    timeRemaining = currentQuiz.duration * 60;
     startTimer();
   }
 
@@ -314,7 +340,6 @@ function showQuestion() {
    UPDATE NAVIGATION BUTTONS
 =================================== */
 function updateNavigationButtons() {
-
   if (currentIndex === 0) {
     prevBtn.disabled = true;
   } else {
@@ -370,7 +395,7 @@ function checkAnswer(selected, btn) {
 }
 
 /* ===================================
-   PREVIOUS QUESTION
+   NAVIGATION SETUP
 =================================== */
 function setupNavigationButtons() {
   prevBtn.onclick = () => {
@@ -402,20 +427,11 @@ function setupNavigationButtons() {
   };
 }
 
-// Set up navigation buttons on page load
-window.addEventListener("DOMContentLoaded", () => {
-  setTimeout(() => {
-    if (prevBtn && nextBtn) {
-      setupNavigationButtons();
-    }
-  }, 100);
-});
-
 /* ===================================
    SHOW RESULT
 =================================== */
 function showResult() {
-  quizStarted = false; // Disable exit warning
+  quizStarted = false;
   
   const percentage = Math.round((score / QUESTIONS.length) * 100);
   
@@ -557,7 +573,7 @@ function restartQuiz() {
   isReviewMode = false;
   userAnswers = [];
   timeRemaining = 0;
-  quizStarted = true; // Re-enable exit warning
+  quizStarted = true;
   
   // Check if questions are available
   if (typeof QUESTIONS === 'undefined' || !QUESTIONS || QUESTIONS.length === 0) {
@@ -619,33 +635,7 @@ function restartQuiz() {
    GO BACK
 =================================== */
 function goBack() {
-  quizStarted = false; // Disable exit warning
+  quizStarted = false;
   stopTimer();
   window.location.href = "./quizzes.html";
 }
-/* ===================================
- Load Questions Based on Quiz ID 
-=================================== */
-
-    const params = new URLSearchParams(window.location.search);
-    const quizId = Number(params.get("id"));
-    
-    if (quizId === 1) {
-      document.write('<script src="./js/OS.js"><\/script>');
-    } else if (quizId === 2) {
-       document.write('<script src="./js/bigdata.js"><\/script>');
-    } else if (quizId === 3) {
-      document.write('<script src="./js/SoftwareEngineering.js"><\/script>');
-    } else if (quizId === 4) {
-      document.write('<script src="./js/interneteng.js"><\/script>');
-    } else if (quizId === 5) {
-      document.write('<script src="./js/Computer-Network.js"><\/script>');
-    } else if (quizId === 6) {
-      document.write('<script src="./js/New01.js"><\/script>');
-    } else if (quizId === 7) {
-      document.write('<script src="./js/New02.js"><\/script>');
-    } else if (quizId === 8) {
-      document.write('<script src="./js/New03.js"><\/script>');
-    } else if (quizId === 9) {
-      document.write('<script src="./js/New04.js"><\/script>');
-    }

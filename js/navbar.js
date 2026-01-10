@@ -1,5 +1,5 @@
 /* ===================================
-   Navigation Bar 
+   Navigation Bar
 =================================== */
 
 function initNavbar() {
@@ -13,30 +13,30 @@ function initNavbar() {
   
   const menuIcon = menuToggle.querySelector('i');
 
+  // Helper function to close menu
+  function closeMenu() {
+    navLinks.classList.remove('active');
+    if (menuIcon) menuIcon.className = 'fas fa-bars';
+    document.body.style.overflow = '';
+  }
+
   // Toggle menu on button click
   menuToggle.addEventListener('click', (e) => {
     e.stopPropagation();
     navLinks.classList.toggle('active');
     
-    // Change icon
+    // Change icon and body overflow
     if (navLinks.classList.contains('active')) {
       if (menuIcon) menuIcon.className = 'fas fa-times';
-      document.body.style.overflow = 'hidden'; 
+      document.body.style.overflow = 'hidden';
     } else {
-      if (menuIcon) menuIcon.className = 'fas fa-bars';
-      document.body.style.overflow = ''; 
+      closeMenu();
     }
   });
 
   // Close menu when clicking on a link
   document.querySelectorAll('.links a').forEach(link => {
-    link.addEventListener('click', () => {
-      navLinks.classList.remove('active');
-      if (menuIcon) {
-        menuIcon.className = 'fas fa-bars';
-      }
-      document.body.style.overflow = ''; 
-    });
+    link.addEventListener('click', closeMenu);
   });
 
   // Set active link based on current page
@@ -46,11 +46,7 @@ function initNavbar() {
   document.addEventListener('click', (e) => {
     if (!menuToggle.contains(e.target) && !navLinks.contains(e.target)) {
       if (navLinks.classList.contains('active')) {
-        navLinks.classList.remove('active');
-        if (menuIcon) {
-          menuIcon.className = 'fas fa-bars';
-        }
-        document.body.style.overflow = ''; 
+        closeMenu();
       }
     }
   });
@@ -58,31 +54,15 @@ function initNavbar() {
   // Close menu on escape key
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && navLinks.classList.contains('active')) {
-      navLinks.classList.remove('active');
-      if (menuIcon) {
-        menuIcon.className = 'fas fa-bars';
-      }
-      document.body.style.overflow = '';
+      closeMenu();
     }
   });
 
-  // Handle window resize
-  let resizeTimer;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-      if (window.innerWidth > 768 && navLinks.classList.contains('active')) {
-        navLinks.classList.remove('active');
-        if (menuIcon) {
-          menuIcon.className = 'fas fa-bars';
-        }
-        document.body.style.overflow = '';
-      }
-    }, 250);
-  });
-
+  // Handle buttons visibility on mobile
   function hideButtonsOnMobile() {
-    const buttons = navLinks.querySelectorAll('button, .settings-btn, i.fa-cog, i.fa-gear');
+    // Update selector based on your actual HTML structure
+    const buttons = document.querySelectorAll('.nav-actions button, .nav-actions .settings-btn');
+    
     if (window.innerWidth <= 768) {
       buttons.forEach(btn => {
         btn.style.display = 'none';
@@ -94,9 +74,30 @@ function initNavbar() {
     }
   }
 
-  //resize
+  // Initialize button visibility
   hideButtonsOnMobile();
-  window.addEventListener('resize', hideButtonsOnMobile);
+
+  // Handle window resize with debounce
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      // Close menu if switching to desktop view
+      if (window.innerWidth > 768 && navLinks.classList.contains('active')) {
+        closeMenu();
+      }
+      // Update button visibility
+      hideButtonsOnMobile();
+    }, 250);
+  });
+
+  // Logo click handler
+  const logo = document.querySelector('.logo');
+  if (logo) {
+    logo.addEventListener('click', () => {
+      window.location.href = './index.html';
+    });
+  }
 }
 
 // Set active link based on current page
@@ -126,9 +127,6 @@ function setActivePage(page) {
     }
   });
 }
-document.querySelector('.logo').addEventListener('click', () => {
-  window.location.href = './index.html';
-});
 
 // Initialize navbar when DOM is ready
 if (document.readyState === 'loading') {
