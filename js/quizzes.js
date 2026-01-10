@@ -57,14 +57,14 @@
       },
       {
         id: 6,
-        title: "Digital Signal Processing",
-        description: "Digital Signal Processing mcq",
-        icon: "🔊",
-        questions: 91,
-        duration: 91,
-        difficulty: "Hard",
-        isNew: true,
-        enabled: true
+        title: "Coming Soon",
+        description: "Coming Soon",
+        icon: "🔒",
+        questions: 0,
+        duration: 0,
+        difficulty: "Soon",
+        isNew: false,
+        enabled: false
       },
       {
         id: 7,

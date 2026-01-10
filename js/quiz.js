@@ -44,11 +44,11 @@ const quizzesData = [
   },
   {
     id: 6,
-    title: "Digital Signal Processing",
-    description: "Digital Signal Processing mcq",
-    questions: 91,
-    duration: 91,
-    difficulty: "Hard",
+    title: "Coming Soon😴",
+    description: "—",
+    questions: 0,
+    duration: 0,
+    difficulty: "—",
   },
   {
     id: 7,
@@ -109,8 +109,8 @@ let questionsListContainer;
 window.addEventListener("beforeunload", function(e) {
   if (quizStarted && !isReviewMode) {
     e.preventDefault();
-    e.returnValue = "هتطلع من الكويز؟ هتخسر كل تقدمك!";
-    return "هتطلع من الكويز؟ هتخسر كل تقدمك!";
+    e.returnValue = "Are you going to exit the quiz? You will lose all your progress";
+    return "Are you going to exit the quiz? You will lose all your progress";
   }
 });
 
@@ -118,7 +118,6 @@ window.addEventListener("beforeunload", function(e) {
    INITIALIZE QUIZ
 =================================== */
 window.addEventListener("DOMContentLoaded", () => {
-  // Initialize DOM elements
   initializeDOMElements();
   initializeQuiz();
 });
@@ -179,7 +178,7 @@ function startQuiz() {
 
   // Check if questions are available
   if (typeof QUESTIONS === 'undefined' || !QUESTIONS || QUESTIONS.length === 0) {
-    let quizName = "هذا الكويز";
+    let quizName = "This quiz";
     
     if (quizId === 1) {
       quizName = "Operating Systems";
@@ -192,7 +191,7 @@ function startQuiz() {
     } else if (quizId >= 5) {
       quizName = "Introduction to Computer Network";
     } else if (quizId >= 6) {
-      quizName = "Digital Signal Processing";
+      quizName = "Coming Soon";
     }else if (quizId >= 7) {
       quizName = "Coming Soon";
     }else if (quizId >= 8) {
@@ -272,7 +271,6 @@ function showQuestion() {
 
   optionsContainer.innerHTML = "";
   
-  // Update navigation buttons visibility
   updateNavigationButtons();
 
   // If in review mode or user has already answered this question
@@ -316,7 +314,7 @@ function showQuestion() {
    UPDATE NAVIGATION BUTTONS
 =================================== */
 function updateNavigationButtons() {
-  // Show/hide prev button
+
   if (currentIndex === 0) {
     prevBtn.disabled = true;
   } else {
@@ -643,11 +641,11 @@ function goBack() {
     } else if (quizId === 5) {
       document.write('<script src="./js/Computer-Network.js"><\/script>');
     } else if (quizId === 6) {
-      document.write('<script src="./js/Signal.js"><\/script>');
+      document.write('<script src="./js/New01.js"><\/script>');
     } else if (quizId === 7) {
-      document.write('<script src="./js/.js"><\/script>');
+      document.write('<script src="./js/New02.js"><\/script>');
     } else if (quizId === 8) {
-      document.write('<script src="./js/.js"><\/script>');
+      document.write('<script src="./js/New03.js"><\/script>');
     } else if (quizId === 9) {
-      document.write('<script src="./js/.js"><\/script>');
+      document.write('<script src="./js/New04.js"><\/script>');
     }
