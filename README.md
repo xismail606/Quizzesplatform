@@ -77,7 +77,7 @@ supported_devices:
 <!-- ===================== STRUCTURE ===================== -->
 <h2 align="center"> 📂 Project Structure </h2>
 
-<pre><strong>
+```md
 QuizzesPlatform/
 │
 ├── assets/
@@ -111,12 +111,13 @@ QuizzesPlatform/
 │   ├── New04.js
 │   └── theme.js
 │
+├── README.md
 ├── about.html
 ├── index.html
 ├── loading.html
 ├── quiz.html
 └── quizzes.html
-</strong></pre>
+```
 
 ---
 
