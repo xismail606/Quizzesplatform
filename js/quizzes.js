@@ -158,6 +158,4 @@ window.addEventListener('DOMContentLoaded', () => {
   
   // Display quizzes on load
   displayQuizzes();
-
 });
-
