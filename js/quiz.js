@@ -29,7 +29,7 @@ const quizzesData = [
   {
     id: 4,
     title: "Internet Engineering",
-    description: "Internet Engineering Gemini mcq Q lec 1 to 10",
+    description: "Internet Engineering Gemini MCQ Questions from Lectures 1 to 10",
     questions: 200,
     duration: 200,
     difficulty: "Medium",
@@ -641,4 +641,5 @@ function goBack() {
   quizStarted = false;
   stopTimer();
   window.location.href = "./quizzes.html";
+
 }
