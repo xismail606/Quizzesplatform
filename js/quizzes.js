@@ -57,14 +57,14 @@ const quizzesData = [
   },
   {
     id: 6,
-    title: "Coming Soon",
-    description: "Coming Soon",
-    icon: "🔒",
-    questions: 0,
-    duration: 0,
-    difficulty: "Soon",
-    isNew: false,
-    enabled: false
+    title: "Internet Engineering",
+    description: "Internet Engineering bank",
+    icon: "🌐",
+    questions: 50,
+    duration: 50,
+    difficulty: "Medium",
+    isNew: true,
+    enabled: true
   },
   {
     id: 7,

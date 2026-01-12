@@ -49,11 +49,12 @@ const quizzesData = [
   },
   {
     id: 6,
-    title: "Coming Soon😴",
-    description: "—",
-    questions: 0,
-    duration: 0,
-    difficulty: "—",
+    title: "Internet Engineering",
+    description: "Internet Engineering bank",
+    questions: 50,
+    duration: 50,
+    difficulty: "medium",
+    enabled: true
   },
   {
     id: 7,
