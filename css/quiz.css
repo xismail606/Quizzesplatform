@@ -393,16 +393,27 @@
     .result-container h2 {
       font-size: 3em;
       margin-bottom: 25px;
-      background: linear-gradient(to right, #2ecc71, #3498db);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(to right, #6f4edb, #ba6fe0);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
+    .emoji {
+      font-size: 1em;
+    }
+
     .result-container p {
       font-size: 1.6em;
       margin: 25px 0;
-      color: rgba(255, 255, 255, 0.9);
+      color: rgba(163, 98, 255, 0.9);
     }
 
     .result-container .button-group {
@@ -414,7 +425,7 @@
     }
 
     .result-container button {
-      background: linear-gradient(135deg, #3498db, #2980b9);
+      background: linear-gradient(135deg, #a58cf7, #6d4083);
       color: white;
       border: none;
       padding: 18px 50px;
@@ -427,11 +438,11 @@
 
     .result-container button:hover {
       transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba(52, 152, 219, 0.4);
+      box-shadow: 0 10px 30px rgba(239, 16, 255, 0.4);
     }
 
     .result-container button.review-btn {
-      background: linear-gradient(135deg, #9b59b6, #8e44ad);
+      background: linear-gradient(135deg, #a58cf7, #6d4083);
     }
 
     .result-container button.review-btn:hover {
@@ -444,8 +455,8 @@
     .questions-modal {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.8);
-      backdrop-filter: blur(5px);
+      background: linear-gradient(to right, #0f0f0f, #21132887);
+      backdrop-filter: blur(4px);
       z-index: 1000;
       display: flex;
       align-items: center;
@@ -492,7 +503,7 @@
     }
 
     .modal-header h3 {
-      color: white;
+      color: rgb(158, 1, 255);
       font-size: 2rem;
       margin: 0;
     }
@@ -533,12 +544,12 @@
     }
 
     .modal-body::-webkit-scrollbar-thumb {
-      background: rgba(52, 152, 219, 0.5);
+      background: rgba(133, 52, 219, 0.5);
       border-radius: 10px;
     }
 
     .modal-body::-webkit-scrollbar-thumb:hover {
-      background: rgba(52, 152, 219, 0.7);
+      background: rgba(141, 52, 219, 0.7);
     }
 
     .question-item {
@@ -553,14 +564,14 @@
     }
 
     .question-item:hover {
-      background: rgba(52, 152, 219, 0.2);
-      border-color: rgba(52, 152, 219, 0.5);
+      background: rgba(102, 52, 219, 0.2);
+      border-color: rgba(147, 52, 219, 0.5);
       transform: translateX(10px);
     }
 
     .question-item.current {
-      background: rgba(52, 152, 219, 0.3);
-      border-color: rgba(52, 152, 219, 0.6);
+      background: rgba(133, 52, 219, 0.3);
+      border-color: rgba(110, 52, 219, 0.6);
     }
 
     .question-item.answered {
@@ -568,7 +579,7 @@
     }
 
     .question-item-number {
-      color: #3498db;
+      color: #bd6bc6;
       font-weight: 700;
       font-size: 1.2rem;
       margin-bottom: 10px;

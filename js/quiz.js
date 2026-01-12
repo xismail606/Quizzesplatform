@@ -29,9 +29,9 @@ const quizzesData = [
   {
     id: 4,
     title: "Internet Engineering",
-    description: "Internet Engineering Gemini mcq Q lec 1 to 5",
-    questions: 100,
-    duration: 100,
+    description: "Internet Engineering Gemini mcq Q lec 1 to 10",
+    questions: 200,
+    duration: 200,
     difficulty: "Medium",
   },
   {
@@ -195,8 +195,8 @@ function initializeQuiz() {
 function displayQuizInfo(quiz) {
   document.getElementById("quizTitle").textContent = quiz.title;
   document.getElementById("quizDescription").textContent = quiz.description;
-  document.getElementById("quizQuestions").textContent = `📝 ${quiz.questions} سؤال`;
-  document.getElementById("quizDuration").textContent = `⏱️ ${quiz.duration} دقيقة`;
+  document.getElementById("quizQuestions").textContent = `📝 ${quiz.questions} question`;
+  document.getElementById("quizDuration").textContent = `⏱️ ${quiz.duration} minutes`;
   document.getElementById("quizDifficulty").textContent = `📊 ${quiz.difficulty}`;
 }
 
@@ -451,7 +451,10 @@ function showResult() {
 
   questionBox.innerHTML = `
     <div class="result-container">
-      <h2>${resultEmoji} ${resultMessage}</h2>
+       <h2>
+        <span class="emoji">${resultEmoji}</span>
+        <span class="gradient-text">${resultMessage}</span>
+      </h2>
       <p>Your Score: <strong>${score}</strong> of <strong>${QUESTIONS.length}</strong></p>
       <p>Percentage: <strong>${percentage}%</strong></p>
       <div class="button-group">

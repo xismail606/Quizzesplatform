@@ -36,10 +36,10 @@ const quizzesData = [
   {
     id: 4,
     title: "Internet Engineering",
-    description: "Internet Engineering Gemini mcq Q lec 1 to 5",
+    description: "Internet Engineering Gemini mcq Q lec 1 to 10",
     icon: "🛰️",
-    questions: 100,
-    duration: 100,
+    questions: 200,
+    duration: 200,
     difficulty: "Medium",
     isNew: true,
     enabled: true

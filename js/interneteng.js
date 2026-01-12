@@ -107,7 +107,616 @@ const MCQ_DATA = [
   { id: 97, question: "17) Retransmission in TCP can be triggered by a timeout or triple duplicate ACKs.", options: ["A) True", "B) False"], answer: "A" },
   { id: 98, question: "18) Transport layer protocols run in the core routers.", options: ["A) True", "B) False"], answer: "B" },
   { id: 99, question: "19) TCP is 'Full Duplex,' meaning data can flow in both directions simultaneously.", options: ["A) True", "B) False"], answer: "A" },
-  { id: 100, question: "20) The initial sequence number in TCP is always zero.", options: ["A) True", "B) False"], answer: "B" }
+  { id: 100, question: "20) The initial sequence number in TCP is always zero.", options: ["A) True", "B) False"], answer: "B" },
+  // Lecture 6: Transport Layer (Pipelining & TCP)
+  { 
+    id: 101, 
+    question: "101) In Go-Back-N (GBN), what does the receiver do when it receives an out-of-order packet?", 
+    options: ["A) Buffers it for later.", "B) Discards it and resends an ACK for the last in-order packet.", "C) Sends a NACK for the missing packet."], 
+    answer: "B" 
+  },
+  { 
+    id: 102, 
+    question: "102) In Selective Repeat (SR), the sender retransmits all unacknowledged packets in the window upon a single timeout.", 
+    options: ["A) True", "B) False"], 
+    answer: "B" 
+  },
+  { 
+    id: 103, 
+    question: "103) Which flag in the TCP header is used to signal the start of a connection?", 
+    options: ["A) ACK", "B) FIN", "C) SYN"], 
+    answer: "C" 
+  },
+  { 
+    id: 104, 
+    question: "104) TCP sequence numbers are based on the number of segments sent, not the number of bytes.", 
+    options: ["A) True", "B) False"], 
+    answer: "B" 
+  },
+  { 
+    id: 105, 
+    question: "105) What is the primary purpose of the 'rwnd' (Receive Window) field in the TCP header?", 
+    options: ["A) Congestion control.", "B) Flow control (to prevent overwhelming the receiver).", "C) Error detection."], 
+    answer: "B" 
+  },
+  { 
+    id: 106, 
+    question: "106) Pipelining improves network utilization by allowing multiple 'in-flight' packets.", 
+    options: ["A) True", "B) False"], 
+    answer: "A" 
+  },
+  { 
+    id: 107, 
+    question: "107) The TCP Three-Way Handshake involves which sequence of flags?", 
+    options: ["A) SYN -> ACK -> SYN", "B) SYN -> SYN-ACK -> ACK", "C) SYN -> FIN -> ACK"], 
+    answer: "B" 
+  },
+  { 
+    id: 108, 
+    question: "108) UDP provides ordered delivery and error correction.", 
+    options: ["A) True", "B) False"], 
+    answer: "B" 
+  },
+  { 
+    id: 109, 
+    question: "109) TCP Fast Retransmit is triggered after the sender receives how many duplicate ACKs?", 
+    options: ["A) 1", "B) 2", "C) 3"], 
+    answer: "C" 
+  },
+  { 
+    id: 110, 
+    question: "110) A cumulative ACK in TCP indicates that all bytes up to the sequence number have been received.", 
+    options: ["A) True", "B) False"], 
+    answer: "A" 
+  },
+  { 
+    id: 111, 
+    question: "111) What is the maximum segment size (MSS) typically limited by?", 
+    options: ["A) Application layer data.", "B) Maximum Transmission Unit (MTU) of the link layer.", "C) CPU speed."], 
+    answer: "B" 
+  },
+  { 
+    id: 112, 
+    question: "112) Closing a TCP connection is typically a 4-way handshake process.", 
+    options: ["A) True", "B) False"], 
+    answer: "A" 
+  },
+  { 
+    id: 113, 
+    question: "113) Which of these applications is more likely to use UDP?", 
+    options: ["A) HTTP", "B) FTP", "C) VoIP (Voice over IP)"], 
+    answer: "C" 
+  },
+  { 
+    id: 114, 
+    question: "114) The transport layer provides logical communication between hosts.", 
+    options: ["A) True", "B) False"], 
+    answer: "B" 
+  },
+  { 
+    id: 115, 
+    question: "115) In SR, if packet 2 is lost but 0, 1, and 3 are received, what does the receiver send for packet 3?", 
+    options: ["A) ACK 1", "B) ACK 3", "C) NACK 2"], 
+    answer: "B" 
+  },
+  { 
+    id: 116, 
+    question: "116) Retransmission in TCP can be caused by a timeout or triple duplicate ACKs.", 
+    options: ["A) True", "B) False"], 
+    answer: "A" 
+  },
+  { 
+    id: 117, 
+    question: "117) What is the size of the standard TCP header without options?", 
+    options: ["A) 8 bytes", "B) 20 bytes", "C) 40 bytes"], 
+    answer: "B" 
+  },
+  { 
+    id: 118, 
+    question: "118) UDP header size is 16 bytes.", 
+    options: ["A) True", "B) False"], 
+    answer: "B" 
+  },
+  { 
+    id: 119, 
+    question: "119) Which field is used to detect bit-level errors in the segment?", 
+    options: ["A) Sequence number", "B) Checksum", "C) Window size"], 
+    answer: "B" 
+  },
+  { 
+    id: 120, 
+    question: "120) Full duplex data means bi-directional flow in the same connection.", 
+    options: ["A) True", "B) False"], 
+    answer: "A" 
+  },
+
+  // Lecture 7: Network Layer - Data Plane
+  { 
+    id: 121, 
+    question: "121) What is the 'Data Plane' function in a router?", 
+    options: ["A) Planning the trip from source to destination.", "B) Moving packets from an input port to the appropriate output port (Forwarding).", "C) Managing routing protocols."], 
+    answer: "B" 
+  },
+  { 
+    id: 122, 
+    question: "122) Routing is a local, per-router function.", 
+    options: ["A) True", "B) False"], 
+    answer: "B" 
+  },
+  { 
+    id: 123, 
+    question: "123) Which network type maintains connection state in every router along a path?", 
+    options: ["A) Datagram networks.", "B) Virtual Circuit (VC) networks.", "C) Peer-to-peer networks."], 
+    answer: "B" 
+  },
+  { 
+    id: 124, 
+    question: "124) Datagram networks forward packets based on the destination host address.", 
+    options: ["A) True", "B) False"], 
+    answer: "A" 
+  },
+  { 
+    id: 125, 
+    question: "125) When matching a destination address, a router uses the:", 
+    options: ["A) Shortest prefix.", "B) Longest prefix matching.", "C) Exact match only."], 
+    answer: "B" 
+  },
+  { 
+    id: 126, 
+    question: "126) IPv4 datagram reassembly happens at every intermediate router.", 
+    options: ["A) True", "B) False"], 
+    answer: "B" 
+  },
+  { 
+    id: 127, 
+    question: "127) What is the primary motivation for NAT (Network Address Translation)?", 
+    options: ["A) Speeding up the internet.", "B) Using a single IP address for multiple devices in a local network.", "C) Encrypting data packets."], 
+    answer: "B" 
+  },
+  { 
+    id: 128, 
+    question: "128) IPv6 addresses are 64 bits long.", 
+    options: ["A) True", "B) False"], 
+    answer: "B" 
+  },
+  { 
+    id: 129, 
+    question: "129) What does 'MTU' stand for?", 
+    options: ["A) Minimum Transfer Unit.", "B) Maximum Transfer Unit (largest possible link-level frame).", "C) Multi-Tier Unit."], 
+    answer: "B" 
+  },
+  { 
+    id: 130, 
+    question: "130) DHCP allows a host to dynamically obtain an IP address from a network server.", 
+    options: ["A) True", "B) False"], 
+    answer: "A" 
+  },
+  { 
+    id: 131, 
+    question: "131) Which organization manages IP address allocation and DNS?", 
+    options: ["A) IEEE", "B) ICANN", "C) IETF"], 
+    answer: "B" 
+  },
+  { 
+    id: 132, 
+    question: "132) IPv6 allows fragmentation at intermediate routers to speed up processing.", 
+    options: ["A) True", "B) False"], 
+    answer: "B" 
+  },
+  { 
+    id: 133, 
+    question: "133) What is 'Tunneling'?", 
+    options: ["A) Encapsulating an IPv6 datagram as a payload in an IPv4 datagram.", "B) Creating a physical tunnel for cables.", "C) A method for increasing bandwidth."], 
+    answer: "A" 
+  },
+  { 
+    id: 134, 
+    question: "134) A router examines header fields in all IP datagrams passing through it.", 
+    options: ["A) True", "B) False"], 
+    answer: "A" 
+  },
+  { 
+    id: 135, 
+    question: "135) How many bytes is the typical IPv4 header?", 
+    options: ["A) 10 bytes", "B) 20 bytes", "C) 40 bytes"], 
+    answer: "B" 
+  },
+  { 
+    id: 136, 
+    question: "136) 10.0.0.0/8 is a range of private IP addresses.", 
+    options: ["A) True", "B) False"], 
+    answer: "A" 
+  },
+  { 
+    id: 137, 
+    question: "137) What is the role of the 'TTL' (Time To Live) field in IP?", 
+    options: ["A) To record the time sent.", "B) To prevent packets from circulating infinitely by being decremented at each router.", "C) To determine the speed of the link."], 
+    answer: "B" 
+  },
+  { 
+    id: 138, 
+    question: "138) NAT violates the end-to-end argument.", 
+    options: ["A) True", "B) False"], 
+    answer: "A" 
+  },
+  { 
+    id: 139, 
+    question: "139) Which field in IPv6 identifies datagrams in the same 'flow'?", 
+    options: ["A) Next Header", "B) Flow Label", "C) Hop Limit"], 
+    answer: "B" 
+  },
+  { 
+    id: 140, 
+    question: "140) CIDR (Classless InterDomain Routing) uses an arbitrary length for the subnet portion of an address.", 
+    options: ["A) True", "B) False"], 
+    answer: "A" 
+  },
+
+  // Lecture 8: Network Layer - Control Plane
+  { 
+    id: 141, 
+    question: "141) In graph abstraction, what do the edges represent?", 
+    options: ["A) Routers.", "B) Communication links.", "C) IP addresses."], 
+    answer: "B" 
+  },
+  { 
+    id: 142, 
+    question: "142) 'Good' paths in routing protocols always mean the fastest path.", 
+    options: ["A) True", "B) False"], 
+    answer: "B" 
+  },
+  { 
+    id: 143, 
+    question: "143) Which routing algorithm requires all routers to have complete topology and link cost info?", 
+    options: ["A) Distance Vector (DV).", "B) Link State (LS) / Dijkstra.", "C) Path Vector."], 
+    answer: "B" 
+  },
+  { 
+    id: 144, 
+    question: "144) Distance Vector algorithms are decentralized and iterative.", 
+    options: ["A) True", "B) False"], 
+    answer: "A" 
+  },
+  { 
+    id: 145, 
+    question: "145) The Bellman-Ford equation is used in which algorithm?", 
+    options: ["A) Dijkstra.", "B) Distance Vector.", "C) BGP."], 
+    answer: "B" 
+  },
+  { 
+    id: 146, 
+    question: "146) Dijkstra's algorithm gives the forwarding table for the node it is run on.", 
+    options: ["A) True", "B) False"], 
+    answer: "A" 
+  },
+  { 
+    id: 147, 
+    question: "147) What is the 'count-to-infinity' problem associated with?", 
+    options: ["A) Link State algorithms.", "B) Distance Vector algorithms (when bad news travels slow).", "C) Hierarchical OSPF."], 
+    answer: "B" 
+  },
+  { 
+    id: 148, 
+    question: "148) Poison reverse is used to solve routing loops in distance vector.", 
+    options: ["A) True", "B) False"], 
+    answer: "A" 
+  },
+  { 
+    id: 149, 
+    question: "149) Scalable routing aggregates routers into regions known as:", 
+    options: ["A) Subnets.", "B) Autonomous Systems (AS).", "C) LANs."], 
+    answer: "B" 
+  },
+  { 
+    id: 150, 
+    question: "150) RIP (Routing Information Protocol) uses link-state logic.", 
+    options: ["A) True", "B) False"], 
+    answer: "B" 
+  },
+  { 
+    id: 151, 
+    question: "151) What is the distance metric used by RIP?", 
+    options: ["A) Bandwidth.", "B) Hop count (max 15).", "C) Congestion."], 
+    answer: "B" 
+  },
+  { 
+    id: 152, 
+    question: "152) OSPF (Open Shortest Path First) uses Dijkstra’s algorithm.", 
+    options: ["A) True", "B) False"], 
+    answer: "A" 
+  },
+  { 
+    id: 153, 
+    question: "153) Which router is at the 'edge' of its own AS and connects to other ASes?", 
+    options: ["A) Internal router.", "B) Gateway router.", "C) Backbone router."], 
+    answer: "B" 
+  },
+  { 
+    id: 154, 
+    question: "154) Static routes change quickly over time.", 
+    options: ["A) True", "B) False"], 
+    answer: "B" 
+  },
+  { 
+    id: 155, 
+    question: "155) OSPF messages are carried directly over:", 
+    options: ["A) TCP.", "B) UDP.", "C) IP."], 
+    answer: "C" 
+  },
+  { 
+    id: 156, 
+    question: "156) Intra-AS routing protocols must be the same for all routers within that AS.", 
+    options: ["A) True", "B) False"], 
+    answer: "A" 
+  },
+  { 
+    id: 157, 
+    question: "157) Hierarchical OSPF uses which area as the central connector for other areas?", 
+    options: ["A) Area 1.", "B) Backbone.", "C) Boundary area."], 
+    answer: "B" 
+  },
+  { 
+    id: 158, 
+    question: "158) Link State algorithms are generally more robust against incorrect path cost advertisements than Distance Vector.", 
+    options: ["A) True", "B) False"], 
+    answer: "A" 
+  },
+  { 
+    id: 159, 
+    question: "159) In OSPF, advertisements are flooded to:", 
+    options: ["A) Only neighbors.", "B) All routers in the entire AS.", "C) Only gateway routers."], 
+    answer: "B" 
+  },
+  { 
+    id: 160, 
+    question: "160) A path is a sequence of routers that packets traverse from source to destination.", 
+    options: ["A) True", "B) False"], 
+    answer: "A" 
+  },
+
+  // Lecture 9: Subnetting & BGP
+  { 
+    id: 161, 
+    question: "161) What does VLSM stand for?", 
+    options: ["A) Virtual Link Subnet Mask.", "B) Variable Length Subnet Mask.", "C) Valid Loop Subnet Management."], 
+    answer: "B" 
+  },
+  { 
+    id: 162, 
+    question: "162) In FLSM, every subnet must have the same prefix length.", 
+    options: ["A) True", "B) False"], 
+    answer: "A" 
+  },
+  { 
+    id: 163, 
+    question: "163) To support 320 hosts, how many bits must be borrowed for the host portion?", 
+    options: ["A) 8 bits (254 hosts).", "B) 9 bits (510 hosts).", "C) 10 bits."], 
+    answer: "B" 
+  },
+  { 
+    id: 164, 
+    question: "164) BGP (Border Gateway Protocol) is the de facto inter-domain routing protocol.", 
+    options: ["A) True", "B) False"], 
+    answer: "A" 
+  },
+  { 
+    id: 165, 
+    question: "165) Which BGP connection is used to propagate reachability within an AS?", 
+    options: ["A) eBGP.", "B) iBGP.", "C) OSPF."], 
+    answer: "B" 
+  },
+  { 
+    id: 166, 
+    question: "166) BGP sessions exchange messages over a semi-permanent TCP connection.", 
+    options: ["A) True", "B) False"], 
+    answer: "A" 
+  },
+  { 
+    id: 167, 
+    question: "167) What is the prefix length for a network with only 2 usable hosts (Point-to-Point)?", 
+    options: ["A) /24", "B) /29", "C) /30"], 
+    answer: "C" 
+  },
+  { 
+    id: 168, 
+    question: "168) The prefix 10.0.0.0/23 provides 510 usable host addresses.", 
+    options: ["A) True", "B) False"], 
+    answer: "A" 
+  },
+  { 
+    id: 169, 
+    question: "169) Which BGP message is used to advertise new paths?", 
+    options: ["A) OPEN", "B) UPDATE", "C) KEEPALIVE"], 
+    answer: "B" 
+  },
+  { 
+    id: 170, 
+    question: "170) FLSM is more efficient than VLSM because it saves address space.", 
+    options: ["A) True", "B) False"], 
+    answer: "B" 
+  },
+  { 
+    id: 171, 
+    question: "171) What is the broadcast address for the subnet 192.168.1.0/25?", 
+    options: ["A) 192.168.1.1", "B) 192.168.1.127", "C) 192.168.1.255"], 
+    answer: "B" 
+  },
+  { 
+    id: 172, 
+    question: "172) BGP allows a subnet to advertise its existence to the rest of the Internet.", 
+    options: ["A) True", "B) False"], 
+    answer: "A" 
+  },
+  { 
+    id: 173, 
+    question: "173) Which message reports errors in a previous BGP message?", 
+    options: ["A) NOTIFICATION", "B) UPDATE", "C) KEEPALIVE"], 
+    answer: "A" 
+  },
+  { 
+    id: 174, 
+    question: "174) iBGP is used to obtain reachability info from neighboring ASes.", 
+    options: ["A) True", "B) False"], 
+    answer: "B" 
+  },
+  { 
+    id: 175, 
+    question: "175) What is the subnet mask for a /23 prefix?", 
+    options: ["A) 255.255.255.0", "B) 255.255.254.0", "C) 255.255.0.0"], 
+    answer: "B" 
+  },
+  { 
+    id: 176, 
+    question: "176) Administrative autonomy allows each network admin to control routing in its own network.", 
+    options: ["A) True", "B) False"], 
+    answer: "A" 
+  },
+  { 
+    id: 177, 
+    question: "177) BGP is described as a 'path vector' protocol because it advertises:", 
+    options: ["A) Individual link costs.", "B) Sequences of ASes (paths) to a destination.", "C) Router hop counts."], 
+    answer: "B" 
+  },
+  { 
+    id: 178, 
+    question: "178) A /30 subnet has 4 total IP addresses, but only 2 are usable for hosts.", 
+    options: ["A) True", "B) False"], 
+    answer: "A" 
+  },
+  { 
+    id: 179, 
+    question: "179) In VLSM, the broadcast address always ends in which bit pattern relative to the host bits?", 
+    options: ["A) All 0s.", "B) All 1s.", "C) 1010."], 
+    answer: "B" 
+  },
+  { 
+    id: 180, 
+    question: "180) BGP is known as the 'glue that holds the Internet together.'", 
+    options: ["A) True", "B) False"], 
+    answer: "A" 
+  },
+
+  // Lecture 10: Link Layer & LANs
+  { 
+    id: 181, 
+    question: "181) What is the PDU (Protocol Data Unit) of the Link Layer?", 
+    options: ["A) Segment.", "B) Datagram.", "C) Frame."], 
+    answer: "C" 
+  },
+  { 
+    id: 182, 
+    question: "182) Link layer services are implemented in the network core routers only.", 
+    options: ["A) True", "B) False"], 
+    answer: "B" 
+  },
+  { 
+    id: 183, 
+    question: "183) Which error detection technique can detect and correct single bit errors?", 
+    options: ["A) Single bit parity.", "B) Two-dimensional bit parity.", "C) Standard Checksum."], 
+    answer: "B" 
+  },
+  { 
+    id: 184, 
+    question: "184) CRC (Cyclic Redundancy Check) is widely used in Ethernet and WiFi.", 
+    options: ["A) True", "B) False"], 
+    answer: "A" 
+  },
+  { 
+    id: 185, 
+    question: "185) What happens if two nodes transmit at the same time on a broadcast channel?", 
+    options: ["A) The signals amplify each other.", "B) A collision occurs.", "C) The router buffers one of them."], 
+    answer: "B" 
+  },
+  { 
+    id: 186, 
+    question: "186) TDMA (Time Division Multiple Access) allocates a fixed frequency band to each station.", 
+    options: ["A) True", "B) False"], 
+    answer: "B" 
+  },
+  { 
+    id: 187, 
+    question: "187) CSMA (Carrier Sense Multiple Access) 'listen before transmit' means:", 
+    options: ["A) If the channel is busy, transmit immediately.", "B) If the channel is idle, transmit the entire frame.", "C) Always wait 10ms before sending."], 
+    answer: "B" 
+  },
+  { 
+    id: 188, 
+    question: "188) CSMA/CD aborts transmissions quickly if a collision is detected to reduce wastage.", 
+    options: ["A) True", "B) False"], 
+    answer: "A" 
+  },
+  { 
+    id: 189, 
+    question: "189) How long is a typical MAC address?", 
+    options: ["A) 32 bits.", "B) 48 bits.", "C) 128 bits."], 
+    answer: "B" 
+  },
+  { 
+    id: 190, 
+    question: "190) MAC addresses are hierarchical, meaning they depend on the subnet they are attached to.", 
+    options: ["A) True", "B) False"], 
+    answer: "B" 
+  },
+  { 
+    id: 191, 
+    question: "191) What is the purpose of the ARP (Address Resolution Protocol)?", 
+    options: ["A) To find an IP address given a hostname.", "B) To determine a MAC address given an IP address.", "C) To route packets between LANs."], 
+    answer: "B" 
+  },
+  { 
+    id: 192, 
+    question: "192) An ARP query is sent as a broadcast (destination MAC FF-FF-FF-FF-FF-FF).", 
+    options: ["A) True", "B) False"], 
+    answer: "A" 
+  },
+  { 
+    id: 193, 
+    question: "193) Which link layer technology uses 'Token Passing'?", 
+    options: ["A) Ethernet.", "B) Token Ring / FDDI.", "C) WiFi."], 
+    answer: "B" 
+  },
+  { 
+    id: 194, 
+    question: "194) Half-duplex means nodes at both ends can transmit, but not at the same time.", 
+    options: ["A) True", "B) False"], 
+    answer: "A" 
+  },
+  { 
+    id: 195, 
+    question: "195) Where does the link layer 'adaptor' usually sit?", 
+    options: ["A) In the OS kernel only.", "B) On a Network Interface Card (NIC) or a chip.", "C) In the web browser."], 
+    answer: "B" 
+  },
+  { 
+    id: 196, 
+    question: "196) Error detection bits (EDC) are 100% reliable and never miss an error.", 
+    options: ["A) True", "B) False"], 
+    answer: "B" 
+  },
+  { 
+    id: 197, 
+    question: "197) In Ethernet's CSMA/CD, what is the 'Binary Backoff' used for?", 
+    options: ["A) To increase transmission speed.", "B) To randomly wait before retransmitting after a collision.", "C) To encrypt the frame."], 
+    answer: "B" 
+  },
+  { 
+    id: 198, 
+    question: "198) The Link Layer is responsible for moving a datagram from one node to a physically adjacent node.", 
+    options: ["A) True", "B) False"], 
+    answer: "A" 
+  },
+  { 
+    id: 199, 
+    question: "199) Which protocol is used locally to get a frame from one interface to another physically-connected interface?", 
+    options: ["A) BGP", "B) MAC Protocol", "C) TCP"], 
+    answer: "B" 
+  },
+  { 
+    id: 200, 
+    question: "200) ARP is a 'plug-and-play' protocol because nodes create tables without administrator intervention.", 
+    options: ["A) True", "B) False"], 
+    answer: "A" 
+  }
 ];
 
 const QUESTIONS = [
