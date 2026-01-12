@@ -49,10 +49,10 @@ const quizzesData = [
   },
   {
     id: 6,
-    title: "Internet Engineering",
+    title: "Internet Engineering1",
     description: "Internet Engineering bank",
-    questions: 50,
-    duration: 50,
+    questions: 60,
+    duration: 60,
     difficulty: "medium",
     enabled: true
   },
@@ -244,7 +244,8 @@ function startQuiz() {
       2: "Big Data",
       3: "Software Engineering",
       4: "Internet Engineering",
-      5: "Introduction to Computer Network"
+      5: "Introduction to Computer Network",
+      6: "Internet Engineering1",
     };
     
     const quizName = quizNames[quizId] || "This quiz";

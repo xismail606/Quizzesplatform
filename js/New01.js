@@ -309,6 +309,136 @@ const mcqData = [
     answer: "C"
   }
 ];
+
+const allQuestions = [
+  // --- Quiz 1 Questions ---
+  {
+    id: 1,
+    question: "1) Which layer of the OSI model provides routing functionality?",
+    options: ["A) Network", "B) Physical", "C) Transport", "D) Data Link"],
+    answer: "A"
+  },
+  {
+    id: 2,
+    question: "2) internet is a public network, therefore anyone can access it, but intranet is a private network therefore anyone can't access it.",
+    options: ["A) Ethernet/Wifi", "B) Wifi/Ethernet", "C) internet/intranet", "D) intranet/internet"],
+    answer: "C"
+  },
+  {
+    id: 3,
+    question: "3) ... is the amount of time required for a signal to be received after it has been sent.",
+    options: ["A) transmission delay", "B) processing delay", "C) propagation delay", "D) queuing delay"],
+    answer: "C"
+  },
+  {
+    id: 4,
+    question: "4) metric measures the average rate at which transmitted messages successfully arrive at the relevant destination",
+    options: ["A) data rate", "B) throughput", "C) bandwidth", "D) transmission rate"],
+    answer: "B"
+  },
+  {
+    id: 5,
+    question: "5) Accessing the network through DSL is a type of.",
+    options: ["A) mobile access networks", "B) institutional access network", "C) wireless access networks", "D) residential access network"],
+    answer: "D"
+  },
+
+  // --- Quiz 2 Questions ---
+  {
+    id: 6,
+    question: "1) When does TCP enter the 'fast recovery' phase?",
+    options: ["A) After SYN is sent", "B) During slow start", "C) After receiving duplicate ACKs", "D) After timeout expiration"],
+    answer: "C"
+  },
+  {
+    id: 7,
+    question: "2) The function of a Mail Transfer Agent (MTA) is to:",
+    options: ["A) Display received messages", "B) Deliver mail between mail servers", "C) Encrypt user messages", "D) Provide DNS lookup for mail"],
+    answer: "B"
+  },
+  {
+    id: 8,
+    question: "3) Which layer of the OSI model is DNS most closely associated with?",
+    options: ["A) Application layer", "B) Session layer", "C) Network layer", "D) Transport layer"],
+    answer: "A"
+  },
+  {
+    id: 9,
+    question: "4) In Rtd 3.0, For 10 Mbps link, 20 ms prop. delay, 4000 bit packet, network utilization equals.....",
+    options: ["A) 0.0099", "B) 0.00027", "C) 0.0196", "D) 0.09"],
+    answer: "A"
+  },
+  {
+    id: 10,
+    question: "5) Which device connects different networks together?",
+    options: ["A) Hub", "B) Switch", "C) Router", "D) Repeater"],
+    answer: "C"
+  },
+
+  // --- Quiz 3 Questions ---
+  {
+    id: 11,
+    question: "1) 10.0.0.0/8 is subnetted with VLSM. A department requires 4000 hosts. Which mask?",
+    options: ["A) /23", "B) /22", "C) /20", "D) /19"],
+    answer: "C"
+  },
+  {
+    id: 12,
+    question: "2) The number of usable hosts in a /17 network is:",
+    options: ["A) 65,534", "B) 131,068", "C) 16,382", "D) 32,766"],
+    answer: "D"
+  },
+  {
+    id: 13,
+    question: "3) What is the subnet mask for creating 4 equal subnets in a Class B network?",
+    options: ["A) 255.255.0.0", "B) 255.255.255.0", "C) 255.255.128.0", "D) 255.255.192.0"],
+    answer: "D"
+  },
+  {
+    id: 14,
+    question: "4) The network ID of 172.16.19.250/20 is:",
+    options: ["A) 172.16.16.0", "B) 172.16.19.0", "C) 172.16.0.0", "D) 172.16.20.0"],
+    answer: "A"
+  },
+  {
+    id: 15,
+    question: "5) 10.0.0.0/16 broken with VLSM. Need 600 hosts. Best mask:",
+    options: ["A) /22", "B) /23", "C) /21", "D) /20"],
+    answer: "A"
+  },
+  {
+    id: 16,
+    question: "6) VLSM is most useful when:",
+    options: ["A) Only 1 subnet is needed", "B) All networks have equal host requirements", "C) Different departments need different host sizes", "D) Classful addressing is used"],
+    answer: "C"
+  },
+  {
+    id: 17,
+    question: "7) What is the broadcast of 172.16.8.0/21?",
+    options: ["A) 172.16.9.255", "B) 172.16.14.255", "C) 172.16.15.255", "D) 172.16.8.255"],
+    answer: "C"
+  },
+  {
+    id: 18,
+    question: "8) 192.168.10.33/28 belongs to which subnet?",
+    options: ["A) 192.168.10.48", "B) 192.168.10.0", "C) 192.168.10.32", "D) 192.168.10.16"],
+    answer: "C"
+  },
+  {
+    id: 19,
+    question: "9) Which mask supports 1000 hosts in VLSM?",
+    options: ["A) /23", "B) /24", "C) /22", "D) /21"],
+    answer: "C"
+  },
+  {
+    id: 20,
+    question: "10) A company has four subnet needs (100, 50, 20, 10 hosts). Which subnet mask should be assigned to the 100-host subnet?",
+    options: ["A) /25", "B) /27", "C) /26", "D) /24"],
+    answer: "A"
+  }
+];
+
 const QUESTIONS = [
-  ...mcqData
+  ...mcqData,
+  ...allQuestions
 ];
