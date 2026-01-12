@@ -9,6 +9,7 @@ const quizzesData = [
     questions: 106,
     duration: 60,
     difficulty: "medium",
+    enabled: false
   },
   {
     id: 2,
@@ -17,6 +18,7 @@ const quizzesData = [
     questions: 125,
     duration: 60,
     difficulty: "medium",
+    enabled: false,
   },
   {
     id: 3,
@@ -25,6 +27,7 @@ const quizzesData = [
     questions: 205,
     duration: 120,
     difficulty: "medium",
+    enabled: true,
   },
   {
     id: 4,
@@ -33,6 +36,7 @@ const quizzesData = [
     questions: 200,
     duration: 200,
     difficulty: "Medium",
+    enabled: true,
   },
   {
     id: 5,
@@ -41,6 +45,7 @@ const quizzesData = [
     questions: 88,
     duration: 88,
     difficulty: "Medium",
+    enabled: false,
   },
   {
     id: 6,
@@ -57,6 +62,7 @@ const quizzesData = [
     questions: 0,
     duration: 0,
     difficulty: "—",
+    enabled: false,
   },
   {
     id: 8,
@@ -65,6 +71,7 @@ const quizzesData = [
     questions: 0,
     duration: 0,
     difficulty: "—",
+    enabled: false,
   },
   {
     id: 9,
@@ -73,6 +80,7 @@ const quizzesData = [
     questions: 0,
     duration: 0,
     difficulty: "—",
+    enabled: false,
   },
 ];
 
@@ -183,6 +191,19 @@ function initializeQuiz() {
 
   if (!currentQuiz) {
     showError();
+    return;
+  }
+
+  // Check if quiz is enabled - if not, redirect immediately
+  if (!currentQuiz.enabled) {
+    // Hide everything first
+    if (quizContainer) quizContainer.style.display = "none";
+    if (questionBox) questionBox.style.display = "none";
+    if (errorContainer) errorContainer.style.display = "none";
+    
+    // Show alert and redirect
+    alert("This quiz is not available 😴");
+    window.location.href = "./quizzes.html";
     return;
   }
 
@@ -641,5 +662,4 @@ function goBack() {
   quizStarted = false;
   stopTimer();
   window.location.href = "./quizzes.html";
-
 }
