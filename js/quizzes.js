@@ -36,7 +36,7 @@ const quizzesData = [
   {
     id: 4,
     title: "Internet Engineering",
-    description: "Internet Engineering Gemini mcq Q lec 1 to 10",
+    description: "Internet Engineering Gemini MCQ Questions from Lectures 1 to 10",
     icon: "🛰️",
     questions: 200,
     duration: 200,
@@ -160,3 +160,4 @@ window.addEventListener('DOMContentLoaded', () => {
   displayQuizzes();
 
 });
+
