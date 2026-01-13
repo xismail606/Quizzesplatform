@@ -60,8 +60,8 @@ const quizzesData = [
     title: "Internet Engineering",
     description: "Internet Engineering bank",
     icon: "🌐",
-    questions: 60,
-    duration: 60,
+    questions: 95,
+    duration: 95,
     difficulty: "Medium",
     isNew: true,
     enabled: true

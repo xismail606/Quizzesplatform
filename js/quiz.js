@@ -51,8 +51,8 @@ const quizzesData = [
     id: 6,
     title: "Internet Engineering1",
     description: "Internet Engineering bank",
-    questions: 60,
-    duration: 60,
+    questions: 95,
+    duration: 95,
     difficulty: "medium",
     enabled: true
   },

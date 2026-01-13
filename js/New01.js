@@ -435,6 +435,156 @@ const allQuestions = [
     question: "10) A company has four subnet needs (100, 50, 20, 10 hosts). Which subnet mask should be assigned to the 100-host subnet?",
     options: ["A) /25", "B) /27", "C) /26", "D) /24"],
     answer: "A"
+  },
+  {
+    id: 21,
+    question: "1) Which of the following has the highest possible throughput?",
+    options: ["A) STP", "B) UTP", "C) Coax", "D) Fiber-optic"],
+    answer: "D"
+  },
+  {
+    id: 22,
+    question: "2) Which layer of the OSI model provides routing functionality?",
+    options: ["A) Transport", "B) Data Link", "C) Network", "D) Physical"],
+    answer: "C"
+  },
+  {
+    id: 23,
+    question: "3) Internet is a computer network that interconnects billions of ........ throughout the world",
+    options: ["A) web pages", "B) computing devices", "C) emails", "D) networking edges"],
+    answer: "B"
+  },
+  {
+    id: 24,
+    question: "4) The physical layer is concerned with",
+    options: ["A) bit-by-bit delivery", "B) process-to-process delivery", "C) application to application delivery", "D) port to port delivery"],
+    answer: "A"
+  },
+  {
+    id: 25,
+    question: "5) The flow control method in TCP is based on:",
+    options: ["A) Sequence counters", "B) TTL expiration", "C) Checksum validation", "D) Sliding window protocol"],
+    answer: "D"
+  },
+  {
+    id: 26,
+    question: "6) The command 'traceroute' is used to...........",
+    options: ["A) Encrypt packets", "B) Measure delay and path", "C) Assign IP addresses", "D) Test web servers"],
+    answer: "B"
+  },
+  {
+    id: 27,
+    question: "7) In email communication, which protocol handles mail transfer between servers?",
+    options: ["A) POP3", "B) IMAP", "C) SMTP", "D) FTP"],
+    answer: "C"
+  },
+  {
+    id: 28,
+    question: "8) TCP/IP model does not have ........ layer but OSI model have this layer.",
+    options: ["A) transport layer", "B) session layer", "C) application layer", "D) network layer"],
+    answer: "B"
+  },
+  {
+    id: 29,
+    question: "9) internet is a public network, therefore anyone can access it, but intranet is a private network therefore anyone can't access it.",
+    options: ["A) Ethernet/Wifi", "B) intranet/internet", "C) internet/intranet", "D) Wifi/Ethernet"],
+    answer: "C"
+  },
+  {
+    id: 30,
+    question: "10) ........ devices provide connectivity to the network, while ........ devices connect individual networks",
+    options: ["A) Network Access/Internetworking", "B) Internetworking/Network Access", "C) routers/switches", "D) none of them"],
+    answer: "A"
+  },
+  {
+    id: 31,
+    question: "11) Which of the following is used to convert analog signals to digital signals?",
+    options: ["A) NIC", "B) Modem", "C) Hub", "D) Switch"],
+    answer: "B"
+  },
+  {
+    id: 32,
+    question: "12) The TCP field 'Sequence Number' represents:",
+    options: ["A) The total number of bytes in the segment", "B) The packet's checksum", "C) The number of segments sent", "D) The byte number of the first byte in the segment"],
+    answer: "D"
+  },
+  {
+    id: 33,
+    question: "13) ........ use header info to deliver received segments to the correct socket",
+    options: ["A) Demultiplexing", "B) Multiplexing", "C) Encapsulation", "D) Decapsulation"],
+    answer: "A"
+  },
+  {
+    id: 34,
+    question: "14) Which of the following is not a feature of a proxy server?",
+    options: ["A) It can reduce Internet traffic requests", "B) It can assist with security", "C) It can convert a non-routable protocol to a routable protocol", "D) It can reduce user wait time for a request"],
+    answer: "C"
+  },
+  {
+    id: 35,
+    question: "15) For a given LAN calculate the time required to transmit (2 MByte file), Assume the transmission environment will be Coaxial cable with 10 Mbps.",
+    options: ["A) 1.6 sec", "B) 2 sec", "C) 0.2 sec", "D) 5 sec"],
+    answer: "A"
+  },
+  {
+    id: 36,
+    question: "16) In Go-Back-N protocol, when a packet is lost.",
+    options: ["A) Only that packet is retransmitted", "B) All packets after the lost one are retransmitted", "C) The sender continues without retransmission", "D) Receiver requests retransmission"],
+    answer: "B"
+  },
+  {
+    id: 37,
+    question: "17) ........ define format, order of messages sent and received among network entities, and actions taken on message transmission, receipt",
+    options: ["A) packet", "B) domain", "C) protocol", "D) header"],
+    answer: "C"
+  },
+  {
+    id: 38,
+    question: "18) An image is 1024 x 768 pixels with 3 bytes/pixel. How long does it take to transmit it over 100-Mbps Ethernet?",
+    options: ["A) 188.7 msec", "B) 1.88 sec", "C) 18.87 sec", "D) 1.88 msec"],
+    answer: "A"
+  },
+  {
+    id: 39,
+    question: "19) Accessing the network through DSL is a type of",
+    options: ["A) residential access network", "B) institutional access network", "C) mobile access networks", "D) All previous"],
+    answer: "A"
+  },
+  {
+    id: 40,
+    question: "20) The HTTP response code 301 means:",
+    options: ["A) Document not found", "B) Bad request", "C) Request succeeded", "D) Resource moved permanently"],
+    answer: "D"
+  },
+  {
+    id: 41,
+    question: "21) The DNS record that maps a mail domain to a mail server is of type:",
+    options: ["A) CNAME", "B) MX", "C) A", "D) PTR"],
+    answer: "B"
+  },
+  {
+    id: 42,
+    question: "22) ........ metric measures the average rate at which transmitted messages successfully arrive at the relevant destination",
+    options: ["A) data rate", "B) transmission rate", "C) bandwidth", "D) throughput"],
+    answer: "D"
+  },
+  {
+    id: 43,
+    question: "23) ........ is the amount of time required for a signal to be received after it has been sent.",
+    options: ["A) processing delay", "B) queuing delay", "C) propagation delay", "D) transmission delay"],
+    answer: "C"
+  },
+  {
+    id: 44,
+    question: "24) The main disadvantage of a star topology is:",
+    options: ["A) Complex troubleshooting", "B) Central device failure causes the entire network failure", "C) Poor scalability", "D) High latency"],
+    answer: "B"
+  },
+  {
+    id: 45,
+    question: "25) Which of the following is TRUE about encapsulation?",
+    options: ["A) It adds protocol headers as data moves down the layers", "B) It removes headers", "C) It occurs only at the Network Layer", "D) It converts packets into bits only"],
+    answer: "A"
   }
 ];
 
