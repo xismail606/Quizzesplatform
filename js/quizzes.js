@@ -41,8 +41,8 @@ const quizzesData = [
     questions: 200,
     duration: 200,
     difficulty: "Medium",
-    isNew: true,
-    enabled: true
+    isNew: false,
+    enabled: false
   },
   {
     id: 5,
@@ -63,8 +63,8 @@ const quizzesData = [
     questions: 95,
     duration: 95,
     difficulty: "Medium",
-    isNew: true,
-    enabled: true
+    isNew: false,
+    enabled: false
   },
   {
     id: 7,
@@ -158,4 +158,5 @@ window.addEventListener('DOMContentLoaded', () => {
   
   // Display quizzes on load
   displayQuizzes();
+
 });
