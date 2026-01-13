@@ -36,7 +36,7 @@ const quizzesData = [
     questions: 200,
     duration: 200,
     difficulty: "Medium",
-    enabled: false
+    enabled: false,
   },
   {
     id: 5,
@@ -54,7 +54,7 @@ const quizzesData = [
     questions: 95,
     duration: 95,
     difficulty: "medium",
-    enabled: false
+    enabled: false,
   },
   {
     id: 7,
@@ -664,5 +664,4 @@ function goBack() {
   quizStarted = false;
   stopTimer();
   window.location.href = "./quizzes.html";
-
 }
