@@ -56,6 +56,7 @@ supported_devices:
   <li>🌙 Dark / Light mode toggle</li>
   <li>⚡ Optimized animations (low CPU & GPU usage)</li>
   <li>⌨️ Navigation bar support</li>
+  <li>📚 Support Quiz mode / Practice mode</li>
   <li>🔗 Social & feedback links (LinkedIn, GitHub, Google Form)</li>
 </ul>
 
