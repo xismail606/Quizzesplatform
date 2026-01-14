@@ -25,7 +25,7 @@ const quizzesData = [
     title: "Software Engineering",
     description: "All Software Engineering Exams",
     questions: 205,
-    duration: 120,
+    duration: 205,
     difficulty: "medium",
     enabled: true,
   },
@@ -96,21 +96,14 @@ let timeRemaining = 0;
 let userAnswers = [];
 let isReviewMode = false;
 let quizStarted = false;
+let isPracticeMode = false;
 
 /* ===================================
    DOM ELEMENTS - Global References
 =================================== */
-let quizContainer;
-let errorContainer;
-let questionBox;
-let questionsModal;
-let questionNumber;
-let questionText;
-let optionsContainer;
-let nextBtn;
-let prevBtn;
-let timerElement;
-let questionsListContainer;
+let quizContainer, errorContainer, questionBox, questionsModal;
+let questionNumber, questionText, optionsContainer;
+let nextBtn, prevBtn, timerElement, questionsListContainer;
 
 /* ===================================
    PREVENT PAGE UNLOAD DURING QUIZ
@@ -119,7 +112,7 @@ window.addEventListener("beforeunload", function(e) {
   if (quizStarted && !isReviewMode) {
     e.preventDefault();
     e.returnValue = "Are you going to exit the quiz? You will lose all your progress";
-    return "Are you going to exit the quiz? You will lose all your progress";
+    return e.returnValue;
   }
 });
 
@@ -146,8 +139,14 @@ function loadQuizQuestions() {
     const script = document.createElement('script');
     script.src = scriptSources[quizId];
     script.async = false;
+    
+    script.onload = () => {
+        console.log("Questions script loaded successfully.");
+    };
+    
     script.onerror = () => {
       console.error('Failed to load questions script');
+      alert("Error loading quiz questions. Please refresh.");
     };
     document.head.appendChild(script);
   }
@@ -157,14 +156,10 @@ function loadQuizQuestions() {
    INITIALIZE QUIZ
 =================================== */
 window.addEventListener("DOMContentLoaded", () => {
-  // Load questions script first
   loadQuizQuestions();
-  
-  // Initialize DOM and quiz
   initializeDOMElements();
   initializeQuiz();
   
-  // Setup navigation buttons
   if (prevBtn && nextBtn) {
     setupNavigationButtons();
   }
@@ -195,14 +190,11 @@ function initializeQuiz() {
     return;
   }
 
-  // Check if quiz is enabled - if not, redirect immediately
   if (!currentQuiz.enabled) {
-    // Hide everything first
     if (quizContainer) quizContainer.style.display = "none";
     if (questionBox) questionBox.style.display = "none";
     if (errorContainer) errorContainer.style.display = "none";
     
-    // Show alert and redirect
     alert("This quiz is not available 😴");
     window.location.href = "./quizzes.html";
     return;
@@ -220,85 +212,218 @@ function displayQuizInfo(quiz) {
   document.getElementById("quizQuestions").textContent = `📝 ${quiz.questions} question`;
   document.getElementById("quizDuration").textContent = `⏱️ ${quiz.duration} minutes`;
   document.getElementById("quizDifficulty").textContent = `📊 ${quiz.difficulty}`;
+  
+  const startButton = document.querySelector('.start-button');
+  if (startButton) {
+    startButton.onclick = showModeSelection;
+    startButton.textContent = "Start Quiz";
+  }
+}
+
+/* ===================================
+   SHOW MODE SELECTION
+=================================== */
+function showModeSelection() {
+  if (typeof QUESTIONS === 'undefined' || !QUESTIONS || QUESTIONS.length === 0) {
+    alert(`Questions are not loaded yet or empty. Please wait a moment or refresh.`);
+    return;
+  }
+
+  quizContainer.innerHTML = `
+    <div class="mode-selection">
+      <h2>Select Quiz Mode</h2>
+      <p>Choose how you want to take this quiz:</p>
+      
+      <div class="mode-options">
+        <button class="mode-btn quiz-mode-btn" onclick="startQuiz(false)">
+          <div class="mode-icon">📝</div>
+          <h3>Quiz Mode</h3>
+          <p>All questions at once</p>
+          <p class="mode-detail">• Timed quiz</p>
+          <p class="mode-detail">• Scroll through all questions</p>
+          <p class="mode-detail">• See results at the end</p>
+        </button>
+        
+        <button class="mode-btn practice-mode-btn" onclick="startQuiz(true)">
+          <div class="mode-icon">📚</div>
+          <h3>Practice Mode</h3>
+          <p>One question at a time</p>
+          <p class="mode-detail">• No timer</p>
+          <p class="mode-detail">• Navigate between questions</p>
+          <p class="mode-detail">• Instant feedback</p>
+        </button>
+      </div>
+      
+      <button class="back-btn" onclick="location.reload()">← Back</button>
+    </div>
+  `;
 }
 
 /* ===================================
    SHOW ERROR PAGE
 =================================== */
 function showError() {
-  quizContainer.style.display = "none";
-  errorContainer.style.display = "block";
+  if(quizContainer) quizContainer.style.display = "none";
+  if(errorContainer) errorContainer.style.display = "block";
 }
 
 /* ===================================
    START QUIZ
 =================================== */
-function startQuiz() {
-  const params = new URLSearchParams(window.location.search);
-  const quizId = Number(params.get("id"));
-
-  // Check if questions are available
-  if (typeof QUESTIONS === 'undefined' || !QUESTIONS || QUESTIONS.length === 0) {
-    const quizNames = {
-      1: "Operating Systems",
-      2: "Big Data",
-      3: "Software Engineering",
-      4: "Internet Engineering",
-      5: "Introduction to Computer Network",
-      6: "Internet Engineering1",
-    };
-    
-    const quizName = quizNames[quizId] || "This quiz";
-    alert(`${quizName} is not available yet 😴`);
-    return;
-  }
-
-  // Reset variables
+function startQuiz(practiceMode = false) {
+  isPracticeMode = practiceMode;
+  
   currentIndex = 0;
   score = 0;
   isReviewMode = false;
   userAnswers = new Array(QUESTIONS.length).fill(null);
   quizStarted = true;
 
-  // Hide quiz info and show questions
   quizContainer.style.display = "none";
   questionBox.style.display = "block";
 
-  // Start timer
-  if (currentQuiz && currentQuiz.duration) {
-    timeRemaining = currentQuiz.duration * 60;
+  if (isPracticeMode) {
+    if (currentQuiz && currentQuiz.duration) {
+      timeRemaining = currentQuiz.duration * 60;
+    }
+    showQuestion();
+  } else {
+    showQuizMode();
     startTimer();
   }
+}
 
-  // Show first question
-  showQuestion();
+/* ===================================
+   SHOW QUIZ MODE (ALL QUESTIONS)
+=================================== */
+function showQuizMode() {
+  questionBox.innerHTML = `
+    <div class="quiz-mode-header">
+      <h2>📝 Quiz Mode </h2>
+      <div class="quiz-mode-stats">
+        <div class="timer-container">
+          <span class="timer-icon">⏱️</span>
+          <span id="timer" class="timer-text">00:00</span>
+        </div>
+        <span>Total: ${QUESTIONS.length} questions</span>
+        <span id="quizModeScore">Answered: 0/${QUESTIONS.length}</span>
+      </div>
+    </div>
+    
+    <div class="quiz-mode-container" id="quizModeContainer"></div>
+    
+    <div class="quiz-mode-footer">
+      <button class="finish-quiz-btn" onclick="finishQuizMode()"> Finish Quiz</button>
+    </div>
+  `;
+
+  timerElement = document.getElementById('timer');
+  const quizModeContainer = document.getElementById('quizModeContainer');
+  
+  const fragment = document.createDocumentFragment();
+
+  QUESTIONS.forEach((q, index) => {
+    const questionCard = document.createElement('div');
+    questionCard.className = 'quiz-mode-question-card';
+    questionCard.id = `quiz-q-${index}`;
+    
+    questionCard.innerHTML = `
+      <div class="quiz-mode-question-header">
+        <span class="quiz-mode-question-number">Question ${index + 1}</span>
+      </div>
+      <h3 class="quiz-mode-question-text">${q.question}</h3>
+      <div class="quiz-mode-options" id="quiz-mode-options-${index}">
+        ${q.options.map(opt => `
+          <button class="quiz-mode-option-btn" onclick="selectQuizModeAnswer(${index}, '${opt[0]}')" data-option="${opt[0]}">
+            ${opt}
+          </button>
+        `).join('')}
+      </div>
+    `;
+    fragment.appendChild(questionCard);
+  });
+
+  quizModeContainer.appendChild(fragment);
+}
+
+/* ===================================
+   SELECT QUIZ MODE ANSWER
+=================================== */
+function selectQuizModeAnswer(questionIndex, selected) {
+  const optionsContainer = document.getElementById(`quiz-mode-options-${questionIndex}`);
+  const buttons = optionsContainer.querySelectorAll('.quiz-mode-option-btn');
+  
+  buttons.forEach(btn => {
+    btn.classList.remove('selected');
+    if (btn.getAttribute('data-option') === selected) {
+      btn.classList.add('selected');
+    }
+  });
+  
+  userAnswers[questionIndex] = selected;
+  
+  const answeredCount = userAnswers.filter(a => a !== null).length;
+  const scoreDisplay = document.getElementById('quizModeScore');
+  if(scoreDisplay) scoreDisplay.textContent = `Answered: ${answeredCount}/${QUESTIONS.length}`;
+}
+
+/* ===================================
+   FINISH QUIZ MODE
+=================================== */
+function finishQuizMode() {
+  const answeredCount = userAnswers.filter(a => a !== null).length;
+  
+  if (answeredCount < QUESTIONS.length) {
+    const unanswered = QUESTIONS.length - answeredCount;
+    if (!confirm(`You have ${unanswered} unanswered question(s). Do you want to finish?`)) {
+      return;
+    }
+  }
+  
+  stopTimer();
+  
+  score = 0;
+  QUESTIONS.forEach((q, index) => {
+    if (userAnswers[index] === q.answer) {
+      score++;
+    }
+  });
+  
+  quizStarted = false;
+  showResult();
 }
 
 /* ===================================
    TIMER FUNCTIONS
 =================================== */
 function startTimer() {
+  stopTimer();
+
+  if(timeRemaining <= 0 && currentQuiz) {
+     timeRemaining = currentQuiz.duration * 60;
+  }
+
   timerInterval = setInterval(() => {
     timeRemaining--;
     
-    // Update timer display
     const minutes = Math.floor(timeRemaining / 60);
     const seconds = timeRemaining % 60;
-    timerElement.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
     
-    // Add warning colors
-    timerElement.classList.remove('warning', 'danger');
-    if (timeRemaining <= 60) {
-      timerElement.classList.add('danger');
-    } else if (timeRemaining <= 300) {
-      timerElement.classList.add('warning');
+    if(timerElement) {
+        timerElement.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        
+        timerElement.classList.remove('warning', 'danger');
+        if (timeRemaining <= 60) {
+          timerElement.classList.add('danger');
+        } else if (timeRemaining <= 300) {
+          timerElement.classList.add('warning');
+        }
     }
     
-    // Time's up
     if (timeRemaining <= 0) {
       clearInterval(timerInterval);
       alert("Time's up!");
-      showResult();
+      finishQuizMode();
     }
   }, 1000);
 }
@@ -306,11 +431,12 @@ function startTimer() {
 function stopTimer() {
   if (timerInterval) {
     clearInterval(timerInterval);
+    timerInterval = null;
   }
 }
 
 /* ===================================
-   SHOW QUESTION
+   SHOW QUESTION (PRACTICE MODE)
 =================================== */
 function showQuestion() {
   const q = QUESTIONS[currentIndex];
@@ -319,10 +445,8 @@ function showQuestion() {
   questionText.textContent = q.question;
 
   optionsContainer.innerHTML = "";
-  
   updateNavigationButtons();
 
-  // If in review mode or user has already answered this question
   const hasAnswered = userAnswers[currentIndex] !== null;
 
   q.options.forEach(opt => {
@@ -330,13 +454,11 @@ function showQuestion() {
     btn.className = "option-btn";
     btn.textContent = opt;
     
-    // If in review mode, show previous answers
     if (isReviewMode || hasAnswered) {
       const optionLetter = opt[0];
       const correct = q.answer;
       const userAnswer = userAnswers[currentIndex];
 
-      // Highlight user's answer
       if (optionLetter === userAnswer) {
         if (userAnswer === correct) {
           btn.classList.add("correct");
@@ -345,7 +467,6 @@ function showQuestion() {
         }
       }
 
-      // Show correct answer
       if (optionLetter === correct) {
         btn.classList.add("correct");
       }
@@ -363,20 +484,14 @@ function showQuestion() {
    UPDATE NAVIGATION BUTTONS
 =================================== */
 function updateNavigationButtons() {
-  if (currentIndex === 0) {
-    prevBtn.disabled = true;
-  } else {
-    prevBtn.disabled = false;
-  }
+  prevBtn.disabled = (currentIndex === 0);
 
-  // Update next button text
   if (currentIndex === QUESTIONS.length - 1) {
-    nextBtn.textContent = isReviewMode ? "Back to Results" : "Finish Quiz";
+    nextBtn.textContent = isReviewMode ? "Back to Results" : "Finish Practice";
   } else {
     nextBtn.textContent = "Next Question →";
   }
 
-  // Show next button if already answered or in review mode
   if (userAnswers[currentIndex] !== null || isReviewMode) {
     nextBtn.style.display = "block";
   } else {
@@ -385,12 +500,10 @@ function updateNavigationButtons() {
 }
 
 /* ===================================
-   CHECK ANSWER
+   CHECK ANSWER (PRACTICE MODE)
 =================================== */
 function checkAnswer(selected, btn) {
   const correct = QUESTIONS[currentIndex].answer;
-
-  // Save user answer
   userAnswers[currentIndex] = selected;
 
   if (selected === correct) {
@@ -398,8 +511,6 @@ function checkAnswer(selected, btn) {
     score++;
   } else {
     btn.classList.add("wrong");
-    
-    // Show correct answer
     const buttons = document.querySelectorAll(".option-btn");
     buttons.forEach(b => {
       if (b.textContent[0] === correct) {
@@ -408,12 +519,10 @@ function checkAnswer(selected, btn) {
     });
   }
 
-  // Disable all buttons
   document.querySelectorAll(".option-btn").forEach(b => {
     b.disabled = true;
   });
 
-  // Show next button
   nextBtn.style.display = "block";
 }
 
@@ -421,6 +530,14 @@ function checkAnswer(selected, btn) {
    NAVIGATION SETUP
 =================================== */
 function setupNavigationButtons() {
+  const newPrevBtn = prevBtn.cloneNode(true);
+  const newNextBtn = nextBtn.cloneNode(true);
+  prevBtn.parentNode.replaceChild(newPrevBtn, prevBtn);
+  nextBtn.parentNode.replaceChild(newNextBtn, nextBtn);
+  
+  prevBtn = newPrevBtn;
+  nextBtn = newNextBtn;
+
   prevBtn.onclick = () => {
     if (currentIndex > 0) {
       currentIndex--;
@@ -429,22 +546,11 @@ function setupNavigationButtons() {
   };
 
   nextBtn.onclick = () => {
-    if (isReviewMode) {
-      // If in review mode and at last question, go back to results
-      if (currentIndex === QUESTIONS.length - 1) {
-        showResult();
-        return;
-      }
-    } else {
-      // If at last question, show results
-      if (currentIndex === QUESTIONS.length - 1) {
-        stopTimer();
-        showResult();
-        return;
-      }
+    if (currentIndex === QUESTIONS.length - 1) {
+      showResult();
+      return;
     }
 
-    // Move to next question
     currentIndex++;
     showQuestion();
   };
@@ -455,6 +561,7 @@ function setupNavigationButtons() {
 =================================== */
 function showResult() {
   quizStarted = false;
+  stopTimer();
   
   const percentage = Math.round((score / QUESTIONS.length) * 100);
   
@@ -480,9 +587,10 @@ function showResult() {
       </h2>
       <p>Your Score: <strong>${score}</strong> of <strong>${QUESTIONS.length}</strong></p>
       <p>Percentage: <strong>${percentage}%</strong></p>
+      <p class="mode-indicator">${isPracticeMode ? '📚 Practice Mode' : '📝 Quiz Mode'}</p>
       <div class="button-group">
-        <button onclick="restartQuiz()">🔄 Restart Quiz</button>
         <button class="review-btn" onclick="reviewAnswers()">📝 Review Answers</button>
+        <button onclick="restartQuiz()">🔄 Restart Quiz</button>
         <button onclick="goBack()">← Back to Quizzes</button>
       </div>
     </div>
@@ -498,9 +606,9 @@ function reviewAnswers() {
   
   questionBox.innerHTML = `
     <div class="quiz-header">
-      <div class="timer-container" style="visibility: hidden;">
-        <span class="timer-icon">⏱️</span>
-        <span id="timer" class="timer-text">00:00</span>
+      <div class="review-mode-label">
+        <span class="review-icon">📝</span>
+        <span>Review Mode - Your Score: ${score}/${QUESTIONS.length}</span>
       </div>
       <button class="view-all-btn" onclick="toggleQuestionsList()">
         <span>📋</span>
@@ -517,18 +625,13 @@ function reviewAnswers() {
     </div>
   `;
 
-  // Re-initialize DOM elements after innerHTML change
   questionNumber = document.getElementById("questionNumber");
   questionText = document.getElementById("questionText");
   optionsContainer = document.getElementById("optionsContainer");
   nextBtn = document.getElementById("nextBtn");
   prevBtn = document.getElementById("prevBtn");
-  timerElement = document.getElementById("timer");
-
-  // Re-attach event listeners
+  
   setupNavigationButtons();
-
-  // Show first question
   showQuestion();
 }
 
@@ -557,12 +660,12 @@ function showQuestionsList() {
   }
   
   questionsListContainer.innerHTML = "";
+  const fragment = document.createDocumentFragment();
 
   QUESTIONS.forEach((q, index) => {
     const item = document.createElement("div");
     item.className = "question-item";
     
-    // Add current and answered classes
     if (index === currentIndex) {
       item.classList.add("current");
     }
@@ -571,9 +674,11 @@ function showQuestionsList() {
       item.classList.add(isCorrect ? "answered-correct" : "answered-wrong");
     }
 
+    const shortText = q.question.length > 80 ? q.question.substring(0, 80) + '...' : q.question;
+
     item.innerHTML = `
       <span class="question-item-number">Question ${index + 1}</span>
-      <div class="question-item-text">${q.question.substring(0, 80)}${q.question.length > 80 ? '...' : ''}</div>
+      <div class="question-item-text">${shortText}</div>
     `;
 
     item.onclick = () => {
@@ -582,84 +687,37 @@ function showQuestionsList() {
       toggleQuestionsList();
     };
 
-    questionsListContainer.appendChild(item);
+    fragment.appendChild(item);
   });
+
+  questionsListContainer.appendChild(fragment);
 }
 
 /* ===================================
-   RESTART QUIZ
+   RESTART QUIZ (SMART RESET) / BACK
 =================================== */
 function restartQuiz() {
-  // Stop timer
+  quizStarted = false;
+  
   stopTimer();
-  
-  // Reset all variables
-  currentIndex = 0;
-  score = 0;
-  isReviewMode = false;
-  userAnswers = [];
-  timeRemaining = 0;
-  quizStarted = true;
-  
-  // Check if questions are available
-  if (typeof QUESTIONS === 'undefined' || !QUESTIONS || QUESTIONS.length === 0) {
-    alert('Questions are not available!');
-    goBack();
-    return;
-  }
-  
-  // Reset user answers array
-  userAnswers = new Array(QUESTIONS.length).fill(null);
-  
-  // Rebuild the question box HTML
-  questionBox.innerHTML = `
-    <div class="quiz-header">
-      <div class="timer-container">
-        <span class="timer-icon">⏱️</span>
-        <span id="timer" class="timer-text">00:00</span>
-      </div>
-      <button class="view-all-btn" onclick="toggleQuestionsList()">
-        <span>📋</span>
-        <span>View all questions</span>
-      </button>
-    </div>
 
-    <div id="questionNumber"></div>
-    <h2 id="questionText"></h2>
-    <div id="optionsContainer"></div>
-    <div class="nav-buttons">
-      <button id="prevBtn">← Previous</button>
-      <button id="nextBtn">Next Question →</button>
-    </div>
-  `;
+  score = 0;
+  currentIndex = 0;
+  userAnswers = new Array(QUESTIONS.length).fill(null);
+  isReviewMode = false;
+  timeRemaining = 0;
+
+  questionBox.style.display = "none";
+  quizContainer.style.display = "block";
   
-  // Show question box
-  questionBox.style.display = "block";
-  
-  // Re-initialize DOM elements
-  questionNumber = document.getElementById("questionNumber");
-  questionText = document.getElementById("questionText");
-  optionsContainer = document.getElementById("optionsContainer");
-  nextBtn = document.getElementById("nextBtn");
-  prevBtn = document.getElementById("prevBtn");
-  timerElement = document.getElementById("timer");
-  
-  // Re-attach navigation event listeners
-  setupNavigationButtons();
-  
-  // Start timer again
-  if (currentQuiz && currentQuiz.duration) {
-    timeRemaining = currentQuiz.duration * 60;
-    startTimer();
+  if(timerElement) {
+     timerElement.classList.remove('warning', 'danger');
+     timerElement.textContent = "00:00";
   }
-  
-  // Show first question
-  showQuestion();
+
+  showModeSelection();
 }
 
-/* ===================================
-   GO BACK
-=================================== */
 function goBack() {
   quizStarted = false;
   stopTimer();

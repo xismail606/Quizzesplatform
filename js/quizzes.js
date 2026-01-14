@@ -28,7 +28,7 @@ const quizzesData = [
     description: "All Software Engineering Exams",
     icon: "💻",
     questions: 205,
-    duration: 120,
+    duration: 205,
     difficulty: "Medium",
     isNew: true,
     enabled: true
