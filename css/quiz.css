@@ -455,7 +455,7 @@ button, .option-btn, .mode-btn, .start-button {
 
 .quiz-mode-question-card {
   background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.05);
+  border: 1px solid rgba(235, 27, 27, 0.05);
   border-radius: 15px;
   padding: 25px;
   transition: border-color 0.3s ease;
@@ -509,10 +509,10 @@ button, .option-btn, .mode-btn, .start-button {
 }
 
 .quiz-mode-option-btn.selected {
-  background: rgba(52, 152, 219, 0.2);
-  border-color: var(--primary-color);
+  background: rgba(133, 52, 219, 0.2);
+  border-color: rgba(152, 122, 253, 0.872);
   color: #fff;
-  box-shadow: 0 0 15px rgba(52, 152, 219, 0.1);
+  box-shadow: 0 0 15px rgba(42, 19, 70, 0.1);
 }
 
 /* ===================================
