@@ -321,11 +321,12 @@ button, .option-btn, .mode-btn, .start-button {
 .timer-container {
   display: flex;
   align-items: center;
-  gap: 12px;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 15px 25px;
-  border-radius: 15px;
-  border: 2px solid rgba(52, 152, 219, 0.3);
+  gap: 10px;
+  background: rgba(116, 52, 219, 0.15);
+  padding: 10px 20px;
+  border-radius: 50px;
+  border: 1px solid rgba(169, 52, 219, 0.4);
+  box-shadow: 0 0 15px rgba(116, 52, 219, 0.1);
 }
 
 .timer-icon {
@@ -333,10 +334,11 @@ button, .option-btn, .mode-btn, .start-button {
 }
 
 .timer-text {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--primary-color);
-  min-width: 80px;
+  font-family: 'Courier New', monospace;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #3498db;
+  letter-spacing: 1px;
 }
 
 .timer-text.warning {
@@ -358,8 +360,8 @@ button, .option-btn, .mode-btn, .start-button {
   display: flex;
   align-items: center;
   gap: 10px;
-  background: rgba(52, 152, 219, 0.2);
-  border: 2px solid rgba(52, 152, 219, 0.3);
+  background: rgba(138, 52, 219, 0.2);
+  border: 2px solid rgba(124, 52, 219, 0.3);
   color: white;
   padding: 15px 25px;
   border-radius: 15px;
@@ -380,37 +382,49 @@ button, .option-btn, .mode-btn, .start-button {
    QUIZ MODE SPECIFIC STYLES
 =================================== */
 .quiz-mode-header {
+
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 30px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid var(--glass-border);
+  gap: 20px;
+  
   position: sticky;
-  top: -30px; 
+  position: -webkit-sticky;
+  top: 80px;
   z-index: 100;
-  background: rgba(18, 22, 41, 0.429); 
+  
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 30px auto;
+  
+  background: rgba(23, 17, 43, 0.559);
   backdrop-filter: blur(15px);
-  padding: 20px;
-  margin: -20px -20px 30px -20px;
-  border-radius: 20px 20px 0 0;
+  padding: 15px 30px;
+  border-radius: 20px;
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(3px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0);
 }
 
 .quiz-mode-header h2 {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
   background: linear-gradient(to right, #fff, var(--primary-color));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  white-space: nowrap;
 }
 
 .quiz-mode-stats {
   display: flex;
   align-items: center;
-  gap: 20px;
-  font-size: 0.95rem;
-  color: #ccc;
+  gap: 25px;
+  font-size: 1rem;
+  color: #cbd5e1;
 }
 
 .finish-quiz-btn {
@@ -863,10 +877,8 @@ button, .option-btn, .mode-btn, .start-button {
 =================================== */
 @media (max-width: 768px) {
   body {
-    padding: 15px;
-    padding-top: 100px;
+    padding-top: 110px;
   }
-
   .quiz-container,
   .question-box {
     padding: 30px 20px;
@@ -910,14 +922,18 @@ button, .option-btn, .mode-btn, .start-button {
   .quiz-mode-header {
     flex-direction: column;
     gap: 15px;
-    top: -30px;
+    top: 10px;
+    position: sticky;
+    z-index: 90;
   }
   
-  .quiz-mode-stats {
-    width: 100%;
-    justify-content: space-between;
-    font-size: 0.85rem;
-  }
+.quiz-mode-stats {
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  font-size: 0.9rem;
+}
   
   .finish-quiz-btn {
     width: 100%;
@@ -953,17 +969,17 @@ button, .option-btn, .mode-btn, .start-button {
     justify-content: center;
   }
 
-  .timer-container {
-    padding: 12px 20px;
-  }
+.timer-container {
+  padding: 8px 15px;
+  width: auto;
+}
 
   .timer-icon {
     font-size: 1.4rem;
   }
 
-  .timer-text {
+.timer-text {
     font-size: 1.2rem;
-    min-width: 70px;
   }
 
   .view-all-btn {
@@ -1196,7 +1212,10 @@ button, .option-btn, .mode-btn, .start-button {
 
 html, body {
   max-width: 100%;
-  overflow-x: hidden;
+}
+body {
+  overflow-y: auto;
+  overflow-x: clip;
 }
 
 .no-scroll {

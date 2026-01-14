@@ -297,8 +297,8 @@ function startQuiz(practiceMode = false) {
    SHOW QUIZ MODE (ALL QUESTIONS)
 =================================== */
 function showQuizMode() {
-  questionBox.innerHTML = `
-    <div class="quiz-mode-header">
+  const headerHTML = `
+    <div class="quiz-mode-header" id="stickyQuizHeader">
       <h2>📝 Quiz Mode </h2>
       <div class="quiz-mode-stats">
         <div class="timer-container">
@@ -309,13 +309,20 @@ function showQuizMode() {
         <span id="quizModeScore">Answered: 0/${QUESTIONS.length}</span>
       </div>
     </div>
+  `;
     
+  const bodyHTML = `
     <div class="quiz-mode-container" id="quizModeContainer"></div>
-    
     <div class="quiz-mode-footer">
       <button class="finish-quiz-btn" onclick="finishQuizMode()"> Finish Quiz</button>
     </div>
   `;
+  const oldHeader = document.getElementById('stickyQuizHeader');
+  if (oldHeader) oldHeader.remove();
+
+  questionBox.insertAdjacentHTML('beforebegin', headerHTML);
+
+  questionBox.innerHTML = bodyHTML;
 
   timerElement = document.getElementById('timer');
   const quizModeContainer = document.getElementById('quizModeContainer');
@@ -564,6 +571,8 @@ function showResult() {
   stopTimer();
   
   const percentage = Math.round((score / QUESTIONS.length) * 100);
+  const stickyHeader = document.getElementById('stickyQuizHeader');
+  if (stickyHeader) stickyHeader.remove();
   
   let resultEmoji = "🎉";
   let resultMessage = "Excellent!";
@@ -698,7 +707,10 @@ function showQuestionsList() {
 =================================== */
 function restartQuiz() {
   quizStarted = false;
-  
+
+  const stickyHeader = document.getElementById('stickyQuizHeader');
+  if (stickyHeader) stickyHeader.remove();
+
   stopTimer();
 
   score = 0;
@@ -723,3 +735,14 @@ function goBack() {
   stopTimer();
   window.location.href = "./quizzes.html";
 }
+// في نهاية ملف quiz.js
+window.addEventListener('scroll', () => {
+  const header = document.querySelector('.quiz-mode-header');
+  if (header) {
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  }
+});
