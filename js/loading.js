@@ -17,7 +17,7 @@ window.addEventListener("DOMContentLoaded", () => {
 // Loading animation function
 function startLoadingAnimation() {
   let progressValue = 0;
-  const speed = 50; 
+  const speed = 65; 
   const increment = 2; 
   
   const loadingInterval = setInterval(() => {

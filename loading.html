@@ -22,15 +22,26 @@
       <!-- Title & Subtitle -->
       <h1 class="splash-title">Quizzes Platform</h1>
       <h2 class="splash-subtitle">Designed and Developed By xIsmail</h2>
+     
+      <!-- Loading Animation -->
+      <div class="loader">
+        <div class="blackhole">
+          <div class="blackhole-circle"></div>
+          <div class="blackhole-disc"></div>
+        </div>
 
-      <!-- Loading Text -->
-      <div class="splash-loading">Loading</div>
-
-      <!-- Progress Bar -->
-      <div class="splash-progress-bar">
-        <div class="splash-progress-fill" id="progressFill"></div>
+      <div class="curve">
+          <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <path id="loading" d="M73.2,148.6c4-6.1,65.5-96.8,178.6-95.6c111.3,1.2,170.8,90.3,175.1,97" fill="transparent"></path>
+            
+            <text width="500">
+              <textPath xlink:href="#loading" startOffset="50%" text-anchor="middle">
+                loading...
+              </textPath>
+            </text>
+          </svg>
+        </div>
       </div>
-
       <!-- Progress Percentage -->
       <div class="progress-percentage" id="progressPercentage">0%</div>
       
