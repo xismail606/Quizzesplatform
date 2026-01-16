@@ -1,0 +1,64 @@
+  /* ===================================
+  SOCIAL SIDEBAR
+=================================== */
+.social {
+  position: fixed;
+  top: 150px;
+  left: 0;
+  z-index: 999;
+}
+
+.social ul {
+  padding: 0;
+  list-style: none;
+  transform: translate(-270px, 0);
+}
+
+.social ul li {
+  display: block;
+  margin: 5px;
+  background: rgba(21, 24, 41, 0.85);
+  backdrop-filter: blur(5px);
+  width: 300px;
+  text-align: right;
+  padding: 10px;
+  border-radius: 0 30px 30px 0;
+  transition: all 1s;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.social ul li:hover {
+  transform: translate(110px, 0);
+  background: rgba(96, 165, 250, 0.6);
+}
+
+.social ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.social ul li:hover i {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.36);
+  transform: rotate(360deg);
+  transition: all 1s;
+}
+
+.social ul li i {
+  color: #338cdf;
+  background: #4141415d;
+  padding: 10px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(0deg);
+}
