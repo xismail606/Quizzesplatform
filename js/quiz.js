@@ -735,7 +735,7 @@ function goBack() {
   stopTimer();
   window.location.href = "./quizzes.html";
 }
-// في نهاية ملف quiz.js
+
 window.addEventListener('scroll', () => {
   const header = document.querySelector('.quiz-mode-header');
   if (header) {
@@ -745,4 +745,5 @@ window.addEventListener('scroll', () => {
       header.classList.remove('scrolled');
     }
   }
+
 });
