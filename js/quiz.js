@@ -24,9 +24,9 @@ const quizzesData = [
     id: 3,
     title: "Software Engineering",
     description: "All Software Engineering Exams",
-    questions: 205,
-    duration: 205,
-    difficulty: "medium",
+    questions: 264,
+    duration: 264,
+    difficulty: "hard",
     enabled: true,
   },
   {
@@ -35,7 +35,7 @@ const quizzesData = [
     description: "Internet Engineering Gemini MCQ Questions from Lectures 1 to 10",
     questions: 200,
     duration: 200,
-    difficulty: "Medium",
+    difficulty: "hard",
     enabled: false,
   },
   {
@@ -745,5 +745,4 @@ window.addEventListener('scroll', () => {
       header.classList.remove('scrolled');
     }
   }
-
 });

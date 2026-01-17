@@ -1,4 +1,6 @@
-// Quiz Data
+/* ===================================
+   QUIZ DATA
+=================================== */
 const quizzesData = [
   {
     id: 1,
@@ -27,9 +29,9 @@ const quizzesData = [
     title: "Software Engineering",
     description: "All Software Engineering Exams",
     icon: "💻",
-    questions: 205,
-    duration: 205,
-    difficulty: "Medium",
+    questions: 264,
+    duration: 264,
+    difficulty: "hard",
     isNew: true,
     enabled: true
   },
@@ -40,7 +42,7 @@ const quizzesData = [
     icon: "🛰️",
     questions: 200,
     duration: 200,
-    difficulty: "Medium",
+    difficulty: "hard",
     isNew: false,
     enabled: false
   },
