@@ -1,5 +1,5 @@
 /* ===================================
-   THEME TOGGLE BUTTON - FIXED
+   THEME TOGGLE BUTTON
 =================================== */
 .theme-toggle-btn {
   position: fixed;
@@ -138,7 +138,7 @@
 
 .theme-toggle-btn.show {
   animation: slideIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-  animation-delay: 1s;
+  animation-delay: 0.3s;
 }
 
 /* ===================================
@@ -174,7 +174,7 @@ body.light-mode p {
 }
 
 body.light-mode button {
-  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  background: linear-gradient(135deg, #3bbef676, #517cf173);
   color: white;
 }
 
@@ -218,7 +218,7 @@ body.light-mode .snow-toggle-btn {
   }
   
   .theme-toggle-btn.show {
-    animation-delay: 2s;
+    animation-delay: 0.3s;
   }
 }
 
