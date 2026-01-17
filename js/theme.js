@@ -1,29 +1,29 @@
-// Theme Toggle
 const themeToggle = document.getElementById('themeToggle');
 const body = document.body;
 const icon = themeToggle.querySelector('i');
 
-// Check saved theme
-const savedTheme = localStorage.getItem('theme') || 'dark';
-if (savedTheme === 'light') {
-  body.classList.add('light-mode');
-  icon.classList.remove('fa-sun');
-  icon.classList.add('fa-moon');
-}
-
-// Toggle theme
-themeToggle.addEventListener('click', () => {
-  body.classList.toggle('light-mode');
-  
-  if (body.classList.contains('light-mode')) {
-    icon.classList.remove('fa-sun');
-    icon.classList.add('fa-moon');
+const applyTheme = (theme) => {
+  if (theme === 'light') {
+    body.classList.add('light-mode');
+    icon.classList.replace('fa-sun', 'fa-moon');
     localStorage.setItem('theme', 'light');
   } else {
-    icon.classList.remove('fa-moon');
-    icon.classList.add('fa-sun');
+    body.classList.remove('light-mode');
+    icon.classList.replace('fa-moon', 'fa-sun');
     localStorage.setItem('theme', 'dark');
   }
+};
+
+const savedTheme = localStorage.getItem('theme') || 'dark';
+applyTheme(savedTheme);
+
+
+themeToggle.addEventListener('click', () => {
+
+  const currentTheme = body.classList.contains('light-mode') ? 'light' : 'dark';
+  const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+  
+  applyTheme(newTheme);
 });
 
 setTimeout(() => {
