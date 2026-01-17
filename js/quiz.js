@@ -339,6 +339,7 @@ function showQuizMode() {
         <span class="quiz-mode-question-number">Question ${index + 1}</span>
       </div>
       <h3 class="quiz-mode-question-text">${q.question}</h3>
+      ${q.image ? `<img src="${q.image}" alt="Question ${index + 1}" style="max-width: 100%; height: auto; margin: 15px auto; border-radius: 8px; display: block;">` : ''}
       <div class="quiz-mode-options" id="quiz-mode-options-${index}">
         ${q.options.map(opt => `
           <button class="quiz-mode-option-btn" onclick="selectQuizModeAnswer(${index}, '${opt[0]}')" data-option="${opt[0]}">
@@ -450,6 +451,24 @@ function showQuestion() {
 
   questionNumber.textContent = `Question ${currentIndex + 1} of ${QUESTIONS.length}`;
   questionText.textContent = q.question;
+
+  const questionTextElement = document.getElementById('questionText');
+  
+  if (q.image) {
+    const existingImage = document.getElementById('questionImage');
+    if (existingImage) existingImage.remove();
+    
+    const img = document.createElement('img');
+    img.id = 'questionImage';
+    img.src = q.image;
+    img.alt = `Question ${currentIndex + 1}`;
+    img.style.cssText = 'max-width: 100%; height: auto; margin: 15px auto; border-radius: 8px; display: block;';
+    
+    questionTextElement.after(img);
+  } else {
+    const existingImage = document.getElementById('questionImage');
+    if (existingImage) existingImage.remove();
+  }
 
   optionsContainer.innerHTML = "";
   updateNavigationButtons();

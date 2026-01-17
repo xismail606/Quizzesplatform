@@ -113,6 +113,7 @@ const allQuestions = [
   },
   { 
     id: 90, 
+    image: "./images/25-28.png",
     question: "4. The following figure is an example of....... ", 
     options: ["a) Use case.", "b) Scenario.", "c) Sequence diagram.", "d) Class diagram."], 
     answer: "a" 
@@ -137,6 +138,7 @@ const allQuestions = [
   },
   { 
     id: 94, 
+    image: "./images/25-8.png", 
     question: "8. The following figure describes ", 
     options: ["a) The waterfall model", "b) Incremental development.", "c) Reuse-oriented software engineering", "d) None of the mentioned."], 
     answer: "c" 
@@ -209,6 +211,7 @@ const allQuestions = [
   },
   { 
     id: 106, 
+    image: "./images/25-20.png",
     question: "20. The following figure represents........ ", 
     options: ["a) IEEE template", "b) Volere template", "c) Design description language.", "d) None of the mentioned"], 
     answer: "b" 
@@ -343,6 +346,7 @@ const allQuestions = [
   },
   { 
     id: 128, 
+    image: "./images/25-2.png",
     question: "2. The following figure describes ", 
     options: ["a) The waterfall model.", "b) Incremental development.", "c) Spiral model.", "d) None of the mentioned."], 
     answer: "a" 
@@ -391,6 +395,7 @@ const allQuestions = [
   },
   { 
     id: 136, 
+    image: "./images/25-35.png",
     question: "10. The following figure describes ", 
     options: ["a) a The waterfall model.", "b) Incremental development.", "c) Reuse-oriented software engineering.", "d) None of the mendoned."], 
     answer: "b" 
@@ -541,6 +546,7 @@ const allQuestions = [
   },
   { 
     id: 161, 
+    image: "./images/25-161.png",
     question: "35.following figure is an example of ", 
     options: ["a) Use case diagram.", "b) Scenario.", "c) Sequence diagram.", "d) Class diagram."], 
     answer: "a" 
@@ -892,7 +898,8 @@ const allQuestions = [
   },
   { 
     id: 218, 
-    question: "4. The following figure describes............ [Image: Requirements -> Component Analysis -> ...]", 
+    image: "./images/25-4.png",
+    question: "4. The following figure describes............", 
     options: ["a) The waterfall model.", "b) Incremental development.", "c) Reuse-oriented software engineering", "d) None of the mentioned."], 
     answer: "c" 
   },
@@ -1000,7 +1007,8 @@ const allQuestions = [
   },
   { 
     id: 236, 
-    question: "22. The following figure represents. [Image: Requirement #, Description, Rationale...]", 
+    image: "./images/25-22.png",
+    question: "22. The following figure represents....", 
     options: ["a) IEEE template", "b) Volere template", "c) Design description language.", "d) None of the mentioned"], 
     answer: "b" 
   },
@@ -1036,7 +1044,8 @@ const allQuestions = [
   },
   { 
     id: 242, 
-    question: "28. The following figure is an example of [Image: Library System Use Case]", 
+    image: "./images/25-28.png",
+    question: "28. The following figure is an example of ........... ", 
     options: ["a) Use case.", "b) Scenario.", "c) Sequence diagram.", "d) Class diagram."], 
     answer: "a" 
   },
@@ -1078,7 +1087,8 @@ const allQuestions = [
   },
   { 
     id: 249, 
-    question: "35. The following figure describes.......... [Image: Requirements -> System/Software Design -> ...]", 
+    image: "./images/25-35.png",
+    question: "35. The following figure describes..........", 
     options: ["a) The waterfall model.", "b) Incremental development.", "c) Reuse-oriented software engineering", "d) None of the mentioned."], 
     answer: "b" 
   },
