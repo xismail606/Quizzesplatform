@@ -93,6 +93,7 @@ QuizzesPlatform/
 │   ├── quiz.css
 │   ├── quizzes.css
 │   ├── snow.css
+│   ├── socialmedia.css
 │   └── theme.css
 │
 ├── js/
