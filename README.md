@@ -86,7 +86,7 @@ QuizzesPlatform/
 │   └── x606-logo1.png
 │
 ├── images/
-│  └── *.png
+│   └── *.png
 │
 │
 ├── css/
