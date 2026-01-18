@@ -440,7 +440,7 @@ const allQuestions = [
     id: 143, 
     question: "17. The waterfall model of software development is suitable when", 
     options: ["a) The project is short.", "b) The best approach to use for projects with large development teams.", "c) There are no ambiguous requirements.", "d) All of the mentioned."], 
-    answer: "c" 
+    answer: "d" 
   },
   { 
     id: 144, 
@@ -452,7 +452,7 @@ const allQuestions = [
     id: 145, 
     question: "19. Which of the following software development approach is ngt applicable to projects that demand continuous maintenance?", 
     options: ["a) Agile development.", "b) DevOps deployment.", "c) The waterfall model.", "d) None of these."], 
-    answer: "c" 
+    answer: "b" 
   },
   { 
     id: 146, 
@@ -482,7 +482,7 @@ const allQuestions = [
     id: 150, 
     question: "24. Which of the following is a user of a user requitements document.", 
     options: ["a) Client engineer", "b) Software engineer", "c) Client Manager", "d) System Architect"], 
-    answer: "c" 
+    answer: "b" 
   },
   { 
     id: 151, 
@@ -550,7 +550,8 @@ const allQuestions = [
     question: "35.following figure is an example of ", 
     options: ["a) Use case diagram.", "b) Scenario.", "c) Sequence diagram.", "d) Class diagram."], 
     answer: "a" 
-  },{ 
+  },
+  { 
     id: 162, 
     question: "36. Effective interviewers with stakeholders should be........", 
     options: [
@@ -592,7 +593,7 @@ const allQuestions = [
       "c) A description of the system state when the scenario finishes.", 
       "d) All of the mentioned"
     ], 
-    answer: "d" 
+    answer: "b" 
   },
   { 
     id: 166, 
@@ -682,7 +683,7 @@ const allQuestions = [
     id: 179, 
     question: "13. People usually find it easier to relate to abstract descriptions rather than real-life examples in requirements description.", 
     options: ["a) True", "b) False"], 
-    answer: "b" 
+    answer: "a" 
   },
   { 
     id: 180, 
@@ -718,13 +719,13 @@ const allQuestions = [
     id: 185, 
     question: "19. A single non-functional requirement may generate number of related functional requirements that define new system services that are required.", 
     options: ["a) True", "b) False"], 
-    answer: "b" 
+    answer: "a" 
   },
   { 
     id: 186, 
     question: "20. Ethnography could be considered as a complete approach for requirements elicitation.", 
     options: ["a) True", "b) False"], 
-    answer: "b" 
+    answer: "a" 
   },
   // mcqQuestions7
   { id: 187, question: "187) Advantage of reusing software components?", options: ["a) Better performance.", "b) Faster delivery.", "c) Full control over evolution.", "d) All."], answer: "b" },
@@ -1183,7 +1184,14 @@ const allQuestions = [
     question: "15. It is often possible to identify which system components implement specific non-functional requirements.", 
     options: ["a) True", "b) False"], 
     answer: "b" 
-  }
+  },
+  { 
+    id: 265, 
+    image: "./images/24-00.png",
+    question: "00. The following figure is an example of ", 
+    options: ["a) Use case diagram.", "b) Scenario.", "c) Sequence diagram.", "d) Class diagram."], 
+    answer: "a" 
+  },
 ];
 const QUESTIONS = [
   ...allQuestions
