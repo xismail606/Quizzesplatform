@@ -725,7 +725,7 @@ const allQuestions = [
     id: 186, 
     question: "20. Ethnography could be considered as a complete approach for requirements elicitation.", 
     options: ["a) True", "b) False"], 
-    answer: "a" 
+    answer: "b" 
   },
   // mcqQuestions7
   { id: 187, question: "187) Advantage of reusing software components?", options: ["a) Better performance.", "b) Faster delivery.", "c) Full control over evolution.", "d) All."], answer: "b" },
@@ -1195,4 +1195,5 @@ const allQuestions = [
 ];
 const QUESTIONS = [
   ...allQuestions
+
 ];
