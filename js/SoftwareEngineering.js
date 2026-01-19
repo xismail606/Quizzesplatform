@@ -1,97 +1,468 @@
 const allQuestions = [
-  { id: 1, question: "1) The software consists of……", options: ["a) Program + documentation operating procedures.", "b) Program + hardware manuals.", "c) Instruction + hardware manuals.", "d) Set of programs."], answer: "a" },
-  { id: 2, question: "2) What is the difference between software engineering and computer science?", options: ["a) Software engineering deals with hardware, while computer science deals with software", "b) Software engineering is concerned with the development and evolution of software systems, while computer science is concerned with the study of algorithms and data structures", "c) There is no difference.", "d) Computer science focuses on software engineering principles."], answer: "b" },
-  { id: 3, question: "3) What is the main goal of requirement engineering?", options: ["a) Designing software interfaces", "b) Testing software products", "c) Finding out and analyzing the services and constraints that the system should provide", "d) Managing software projects"], answer: "c" },
-  { id: 4, question: "4) Which of the following is not users of a system requirements document?", options: ["a) Client Engineer", "b) Software Engineer", "c) Client Manager", "d) System Architect"], answer: "c" },
-  { id: 5, question: "5) What is the primary difference between functional and not-functional requirements?", options: ["a) Functional requirements are statements of services the system should provide, while not-functional requirements are statements of how the system should react to particular inputs", "b) Functional requirements are statements of services the system should provide, while not-functional requirements are statements of how the system should behave in particular situations", "c) Functional requirements are statements of services the system should provide, while not-functional requirements are statements of constraints on the services or functions offered by the system", "d) None of the mentioned"], answer: "c" },
-  { id: 6, question: "6) Which of the following is a concern of product requirements?", options: ["a) Reliability", "b) Usability", "c) Security", "d) All of the mentioned"], answer: "d" },
-  { id: 7, question: "7) What is the main objective of Reuse-oriented software engineering?", options: ["a) To develop software systems by building everything from scratch", "b) To reuse existing software components to reduce development time and cost", "c) To ignore previous work and start fresh in every project", "d) To reinvent the wheel for every project"], answer: "b" },
-  { id: 8, question: "8) Which of the following is NOT a characteristic of software engineering?", options: ["a) Applying engineering principles to software development", "b) Focusing only on coding and implementation", "c) Using systematic approaches", "d) Incorporating knowledge from other disciplines"], answer: "b" },
-  { id: 9, question: "9) What does the term \"software process\" refer to?", options: ["a) A set of activities that lead to the production of a software system", "b) The physical environment in which software development takes place", "c) The tools and technologies used in software development", "d) The documentation produced during software development"], answer: "a" },
-  { id: 10, question: "10) What does SDLC stand for?", options: ["a) System Design Life Cycle", "b) Software Design Life Cycle", "c) Software Development Life Cycle", "d) System Development Life cycle"], answer: "c" },
-  { id: 11, question: "11) In Plan-driven processes, all of the process activities are planned in advance and progress is measured against this plan.", options: ["a) True", "b) False"], answer: "a" },
-  { id: 12, question: "12) Software costs more to maintain than it does to develop.", options: ["a) True", "b) False"], answer: "a" },
-  { id: 13, question: "13) The waterfall model is an example of an agile process.", options: ["a) True", "b) False"], answer: "b" },
-  { id: 14, question: "14) There is no ideal software process.", options: ["a) True", "b) False"], answer: "a" },
-  { id: 15, question: "15) For large and complex systems, it is practically impossible to achieve requirements consistency and completeness.", options: ["a) True", "b) False"], answer: "a" },
-  { id: 16, question: "16) Development processes are less challenging than maintenance processes.", options: ["a) True", "b) False"], answer: "b" },
-  { id: 17, question: "17) A prototype system is an example of 'change tolerance' approach.", options: ["a) True", "b) False"], answer: "b" },
-  { id: 18, question: "18) What is software?", options: ["a) Software is documentation and configuration of data.", "b) Software is a set of programs.", "c) Software is a set of programs, and documentation.", "d) None of the mentioned."], answer: "c" },
-  { id: 19, question: "19) Which of these software engineering activities are not a part of software processes?", options: ["a) Software development", "b) Software dependence", "c) Software validation", "d) Software specification"], answer: "b" },
-  { id: 20, question: "20) What does the term \"software process\" refer to?", options: ["a) A set of activities that lead to the production of a software system", "b) The physical environment in which software development takes place", "c) The tools and technologies used in software development", "d) The documentation produced during software development"], answer: "a" },
-  { id: 21, question: "21) What is the difference between software engineering and computer science?", options: ["a) Computer science focuses on theory and fundamentals, while software engineering is concerned with the practicalities of developing and delivering useful software.", "b) Computer science is concerned with the practicalities of developing and delivering useful software, while software engineering focuses on theory and fundamentals.", "c) None of the mentioned."], answer: "a" },
-  { id: 22, question: "22) What are the two fundamental types of software product?", options: ["a) System software and application software", "b) Freeware and shareware", "c) Open-source software and closed-source software", "d) Generic products and customized products"], answer: "d" },
-  { id: 23, question: "23) Confidentiality is a key ethical principle. This includes:", options: ["a) Sharing all project details openly on social media.", "b) Protecting sensitive client information even after the project ends.", "c) Discussing project challenges with online forums anonymously.", "d) Disclosing project details to a competitor for personal gain."], answer: "b" },
-  { id: 24, question: "24) What does SDLC stand for?", options: ["a) System Design Life Cycle", "b) Software Design Life Cycle", "c) Software Development Life Cycle", "d) System Development Life cycle"], answer: "c" },
-  { id: 25, question: "25) Agile methodologies typically:", options: ["a) Have long-term fixed plans and schedules", "b) Require detailed documentation before starting development", "c) Embrace change, even late in development", "d) Avoid customer involvement until software delivery"], answer: "c" },
-  { id: 26, question: "26) The goal of software process models is to…………", options: ["a) Manage risks.", "b) Produce high quality software.", "c) All of the mentioned."], answer: "c" },
-  { id: 27, question: "27) Software testing is one element of a broader topic that is often referred to as ……..", options: ["a) Verification", "b) Validation", "c) Verification and Validation.", "d) None of these"], answer: "c" },
-  { id: 28, question: "28) Which of the following is an example of a reusable software component?", options: ["a) Web services.", "b) .Net framework.", "c) J2EE.", "d) All of the mentioned."], answer: "d" },
-  { id: 29, question: "29) What is the main drawback of the waterfall model?", options: ["a) Lack of customer involvement", "b) Inability to handle large projects", "c) Limited documentation", "d) Slow development process"], answer: "a" },
-  { id: 30, question: "30) Which software engineering activity focuses on transforming requirements into an executable system?", options: ["a) Testing", "b) Maintenance", "c) Implementation", "d) Analysis"], answer: "c" },
-  { id: 31, question: "31) Which one is the functional requirement?", options: ["a) High performance of software.", "b) Find the basic salary of an employee.", "c) User friendly interface.", "d) Reliability of software."], answer: "b" },
-  { id: 32, question: "32) For custom software, evolution costs often exceed development costs.", options: ["a) True", "b) False"], answer: "a" },
-  { id: 33, question: "33) SDLC is not a well-defined, structured sequence of stages in software engineering to develop the intended software product.", options: ["a) True", "b) False"], answer: "b" },
-  { id: 34, question: "34) There are no universal software engineering methods and techniques that are suitable for all systems and all companies.", options: ["a) True", "b) False"], answer: "a" },
-  { id: 35, question: "35) The waterfall model is an example of an agile process.", options: ["a) True", "b) False"], answer: "b" },
-  { id: 36, question: "36) The intermediate stages in a reuse-oriented process are the same of the waterfall model.", options: ["a) True", "b) False"], answer: "b" },
-  { id: 37, question: "37) Change is inevitable in all large software projects.", options: ["a) True", "b) False"], answer: "a" },
-  { id: 38, question: "38) A prototype system is an example of 'Change avoidance' approach.", options: ["a) True", "b) False"], answer: "a" },
+  { 
+    id: 1, question: "1) The software consists of……", 
+    options: ["a) Program + documentation operating procedures.", "b) Program + hardware manuals.", "c) Instruction + hardware manuals.", "d) Set of programs."], 
+    answer: "a" 
+  },
+  { 
+    id: 2, question: "2) What is the difference between software engineering and computer science?", 
+    options: ["a) Software engineering deals with hardware, while computer science deals with software", "b) Software engineering is concerned with the development and evolution of software systems, while computer science is concerned with the study of algorithms and data structures", "c) There is no difference.", "d) Computer science focuses on software engineering principles."], 
+    answer: "b" 
+  },
+  { 
+    id: 3, question: "3) What is the main goal of requirement engineering?", 
+    options: ["a) Designing software interfaces", "b) Testing software products", "c) Finding out and analyzing the services and constraints that the system should provide", "d) Managing software projects"], 
+    answer: "c" 
+  },
+  { 
+    id: 4, question: "4) Which of the following is not users of a system requirements document?", 
+    options: ["a) Client Engineer", "b) Software Engineer", "c) Client Manager", "d) System Architect"], 
+    answer: "c" 
+  },
+  { 
+    id: 5, question: "5) What is the primary difference between functional and not-functional requirements?", 
+    options: ["a) Functional requirements are statements of services the system should provide, while not-functional requirements are statements of how the system should react to particular inputs", "b) Functional requirements are statements of services the system should provide, while not-functional requirements are statements of how the system should behave in particular situations", "c) Functional requirements are statements of services the system should provide, while not-functional requirements are statements of constraints on the services or functions offered by the system", "d) None of the mentioned"], 
+    answer: "c" 
+  },
+  { 
+    id: 6, question: "6) Which of the following is a concern of product requirements?", 
+    options: ["a) Reliability", "b) Usability", "c) Security", "d) All of the mentioned"], 
+    answer: "d" 
+  },
+  { 
+    id: 7, question: "7) What is the main objective of Reuse-oriented software engineering?", 
+    options: ["a) To develop software systems by building everything from scratch", "b) To reuse existing software components to reduce development time and cost", "c) To ignore previous work and start fresh in every project", "d) To reinvent the wheel for every project"], 
+    answer: "b" 
+  },
+  { 
+    id: 8, question: "8) Which of the following is NOT a characteristic of software engineering?", 
+    options: ["a) Applying engineering principles to software development", "b) Focusing only on coding and implementation", "c) Using systematic approaches", "d) Incorporating knowledge from other disciplines"], 
+    answer: "b" 
+  },
+  { 
+    id: 9, question: "9) What does the term \"software process\" refer to?", 
+    options: ["a) A set of activities that lead to the production of a software system", "b) The physical environment in which software development takes place", "c) The tools and technologies used in software development", "d) The documentation produced during software development"], 
+    answer: "a" 
+  },
+  { 
+    id: 10, question: "10) What does SDLC stand for?", 
+    options: ["a) System Design Life Cycle", "b) Software Design Life Cycle", "c) Software Development Life Cycle", "d) System Development Life cycle"], 
+    answer: "c" 
+  },
+  { 
+    id: 11, question: "11) In Plan-driven processes, all of the process activities are planned in advance and progress is measured against this plan.", 
+    options: ["a) True", "b) False"], 
+    answer: "a" 
+  },
+  { 
+    id: 12, question: "12) Software costs more to maintain than it does to develop.", 
+    options: ["a) True", "b) False"], 
+    answer: "a" 
+  },
+  { 
+    id: 13, question: "13) The waterfall model is an example of an agile process.", 
+    options: ["a) True", "b) False"], 
+    answer: "b"
+  },
+  { 
+    id: 14, question: "14) There is no ideal software process.", 
+    options: ["a) True", "b) False"], 
+    answer: "a" 
+  },
+  { 
+    id: 15, question: "15) For large and complex systems, it is practically impossible to achieve requirements consistency and completeness.", 
+    options: ["a) True", "b) False"], 
+    answer: "a"
+  },
+  { 
+    id: 16, question: "16) Development processes are less challenging than maintenance processes.", 
+    options: ["a) True", "b) False"], 
+    answer: "b" 
+  },
+  { 
+    id: 17, question: "17) A prototype system is an example of 'change tolerance' approach.", 
+    options: ["a) True", "b) False"], 
+    answer: "b" 
+  },
+  { 
+    id: 18, question: "18) What is software?", 
+    options: ["a) Software is documentation and configuration of data.", "b) Software is a set of programs.", "c) Software is a set of programs, and documentation.", "d) None of the mentioned."], 
+    answer: "c" 
+  },
+  { 
+    id: 19, question: "19) Which of these software engineering activities are not a part of software processes?", 
+    options: ["a) Software development", "b) Software dependence", "c) Software validation", "d) Software specification"], 
+    answer: "b" 
+  },
+  { 
+    id: 20, question: "20) What does the term \"software process\" refer to?", 
+    options: ["a) A set of activities that lead to the production of a software system", "b) The physical environment in which software development takes place", "c) The tools and technologies used in software development", "d) The documentation produced during software development"], 
+    answer: "a" 
+  },
+  { 
+    id: 21, question: "21) What is the difference between software engineering and computer science?", 
+    options: ["a) Computer science focuses on theory and fundamentals, while software engineering is concerned with the practicalities of developing and delivering useful software.", "b) Computer science is concerned with the practicalities of developing and delivering useful software, while software engineering focuses on theory and fundamentals.", "c) None of the mentioned."], 
+    answer: "a" 
+  },
+  { 
+    id: 22, question: "22) What are the two fundamental types of software product?", 
+    options: ["a) System software and application software", "b) Freeware and shareware", "c) Open-source software and closed-source software", "d) Generic products and customized products"], answer: "d" },
+  { 
+    id: 23, question: "23) Confidentiality is a key ethical principle. This includes:", 
+    options: ["a) Sharing all project details openly on social media.", "b) Protecting sensitive client information even after the project ends.", "c) Discussing project challenges with online forums anonymously.", "d) Disclosing project details to a competitor for personal gain."], answer: "b" },
+  { 
+    id: 24, question: "24) What does SDLC stand for?", 
+    options: ["a) System Design Life Cycle", "b) Software Design Life Cycle", "c) Software Development Life Cycle", "d) System Development Life cycle"], 
+    answer: "c" 
+  },
+  { 
+    id: 25, question: "25) Agile methodologies typically:", 
+    options: ["a) Have long-term fixed plans and schedules", "b) Require detailed documentation before starting development", "c) Embrace change, even late in development", "d) Avoid customer involvement until software delivery"], 
+    answer: "c" 
+  },
+  { 
+    id: 26, question: "26) The goal of software process models is to…………", 
+    options: ["a) Manage risks.", "b) Produce high quality software.", "c) All of the mentioned."], 
+    answer: "c" 
+  },
+  { 
+    id: 27, question: "27) Software testing is one element of a broader topic that is often referred to as ……..", 
+    options: ["a) Verification", "b) Validation", "c) Verification and Validation.", "d) None of these"], 
+    answer: "c" 
+  },
+  { 
+    id: 28, question: "28) Which of the following is an example of a reusable software component?", 
+    options: ["a) Web services.", "b) .Net framework.", "c) J2EE.", "d) All of the mentioned."], 
+    answer: "d" 
+  },
+  { 
+    id: 29, question: "29) What is the main drawback of the waterfall model?", 
+    options: ["a) Lack of customer involvement", "b) Inability to handle large projects", "c) Limited documentation", "d) Slow development process"], 
+    answer: "a"
+  },
+  { 
+    id: 30, question: "30) Which software engineering activity focuses on transforming requirements into an executable system?", 
+    options: ["a) Testing", "b) Maintenance", "c) Implementation", "d) Analysis"], 
+    answer: "c" 
+  },
+  { 
+    id: 31, question: "31) Which one is the functional requirement?", 
+    options: ["a) High performance of software.", "b) Find the basic salary of an employee.", "c) User friendly interface.", "d) Reliability of software."], 
+    answer: "b" 
+  },
+  { 
+    id: 32, question: "32) For custom software, evolution costs often exceed development costs.", 
+    options: ["a) True", "b) False"], 
+    answer: "a" 
+  },
+  { 
+    id: 33, question: "33) SDLC is not a well-defined, structured sequence of stages in software engineering to develop the intended software product.", 
+    options: ["a) True", "b) False"], 
+    answer: "b" 
+  },
+  { 
+    id: 34, question: "34) There are no universal software engineering methods and techniques that are suitable for all systems and all companies.", 
+    options: ["a) True", "b) False"], 
+    answer: "a"
+  },
+  { 
+    id: 35, question: "35) The waterfall model is an example of an agile process.", 
+    options: ["a) True", "b) False"], 
+    answer: "b" 
+  },
+  { 
+    id: 36, question: "36) The intermediate stages in a reuse-oriented process are the same of the waterfall model.", 
+    options: ["a) True", "b) False"], 
+    answer: "b" 
+  },
+  {
+    id: 37, question: "37) Change is inevitable in all large software projects.", 
+    options: ["a) True", "b) False"], 
+    answer: "a" 
+  },
+  { 
+    id: 38, question: "38) A prototype system is an example of 'Change avoidance' approach.", 
+    options: ["a) True", "b) False"], 
+    answer: "a" 
+  },
   // mcqQuestions3
-  { id: 39, question: "39) What is software?", options: ["a) Software is documentation and configuration of data.", "b) Software is a set of programs.", "c) A Software is a set of programs, and documentation.", "d) None of the mentioned."], answer: "c" },
-  { id: 40, question: "40) Which of these software engineering activities are not a part of software processes?", options: ["a) Software development", "b) Software dependence", "c) Software validation", "d) Software specification"], answer: "b" },
-  { id: 41, question: "41) The software development process is:", options: ["a) A rigid, step-by-step sequence of activities.", "b) A framework for planning, developing, deploying, and maintaining software.", "c) Entirely dependent on the programming language used.", "d) Not applicable in modern software engineering practices."], answer: "b" },
-  { id: 42, question: "42) What is the difference between software engineering and computer science?", options: ["a) Computer science focuses on theory and fundamentals, while software engineering is concerned with the practicalities of developing and delivering useful software.", "b) Computer science is concerned with the practicalities of developing and delivering useful software, while software engineering focuses on theory and fundamentals.", "c) None of the mentioned."], answer: "a" },
-  { id: 43, question: "43) What is software engineering ethics?", options: ["a) The principles that govern the behavior Of software engineers", "b) The study of computer ethics", "c) The principles that govern the behavior of computers", "d) All of the mentioned"], answer: "a" },
-  { id: 44, question: "44) What does the term \"competence\" mean in software engineering ethics?", options: ["a) You should knowingly accept work that is outside your competence.", "b) You should not misrepresent your level of competence.", "c) You should be careful to ensure that the intellectual property of employers.", "d) All of the mentioned."], answer: "b" },
-  { id: 45, question: "45) Which of the following best describes a plan-driven approach to software development?", options: ["a) Emphasizes flexibility and customer collaboration", "b) Involves detailed planning and predictable processes", "c) Focuses on rapid delivery of complete software products", "d) Prioritizes software development speed over all other factors"], answer: "b" },
-  { id: 46, question: "46) The waterfall model of software development is suitable when:", options: ["a) The project is short.", "b) The best approach to use for projects with large development teams.", "c) There are no ambiguous requirements.", "d) All of the mentioned."], answer: "d" },
-  { id: 47, question: "47) Which of the following best describes the incremental development approach?", options: ["a) Developing software in a single, large iteration.", "b) Developing software in small, manageable increments.", "c) Developing software without any planning or design.", "d) Developing software using a waterfall methodology"], answer: "b" },
-  { id: 48, question: "48) COTS stands for:", options: ["a) Commercial Off-The-Shelf systems", "b) Commercial Off-The-Shelf states", "c) Commercial Off-The-System state", "d) None of the mentioned"], answer: "a" },
-  { id: 49, question: "49) What is the main objective of Reuse-oriented software engineering?", options: ["a) To develop software systems by building everything from scratch.", "b) To reuse existing software components to reduce development time and cost.", "c) To ignore previous work and start fresh in every project", "d) To reinvent the wheel for every project"], answer: "b" },
-  { id: 50, question: "50) Requirement engineering process includes which of these steps?", options: ["a) Feasibility study", "b) Requirement Gathering", "c) Software Requirement specification & Validation", "d) All mentioned above"], answer: "d" },
-  { id: 51, question: "51) Which process activity involves transforming software design specifications into executable code?", options: ["a) Software deployment", "b) Software maintenance", "c) Software implementation", "d) Software documentation"], answer: "c" },
-  { id: 52, question: "52) Which of the following best describes 'Change tolerance'?", options: ["a) This normally involves some form of incremental development.", "b) Proposed changes may be implemented in increments that have not yet been developed.", "c) The software process includes activities that can anticipate possible changes before significant rework is required.", "d) Both a, and b."], answer: "d" },
-
+  { 
+    id: 39, question: "39) What is software?", 
+    options: ["a) Software is documentation and configuration of data.", "b) Software is a set of programs.", "c) A Software is a set of programs, and documentation.", "d) None of the mentioned."], 
+    answer: "c" 
+  },
+  { 
+    id: 40, question: "40) Which of these software engineering activities are not a part of software processes?", 
+    options: ["a) Software development", "b) Software dependence", "c) Software validation", "d) Software specification"], 
+    answer: "b" 
+  },
+  { 
+    id: 41, question: "41) The software development process is:", 
+    options: ["a) A rigid, step-by-step sequence of activities.", "b) A framework for planning, developing, deploying, and maintaining software.", "c) Entirely dependent on the programming language used.", "d) Not applicable in modern software engineering practices."], 
+    answer: "b" 
+  },
+  { 
+    id: 42, question: "42) What is the difference between software engineering and computer science?", 
+    options: ["a) Computer science focuses on theory and fundamentals, while software engineering is concerned with the practicalities of developing and delivering useful software.", "b) Computer science is concerned with the practicalities of developing and delivering useful software, while software engineering focuses on theory and fundamentals.", "c) None of the mentioned."], 
+    answer: "a" 
+  },
+  { 
+    id: 43, question: "43) What is software engineering ethics?", 
+    options: ["a) The principles that govern the behavior Of software engineers", "b) The study of computer ethics", "c) The principles that govern the behavior of computers", "d) All of the mentioned"], 
+    answer: "a" 
+  },
+  { 
+    id: 44, question: "44) What does the term \"competence\" mean in software engineering ethics?", 
+    options: ["a) You should knowingly accept work that is outside your competence.", "b) You should not misrepresent your level of competence.", "c) You should be careful to ensure that the intellectual property of employers.", "d) All of the mentioned."], 
+    answer: "b" 
+  },
+  { 
+    id: 45, question: "45) Which of the following best describes a plan-driven approach to software development?", 
+    options: ["a) Emphasizes flexibility and customer collaboration", "b) Involves detailed planning and predictable processes", "c) Focuses on rapid delivery of complete software products", "d) Prioritizes software development speed over all other factors"], 
+    answer: "b" 
+  },
+  { 
+    id: 46, question: "46) The waterfall model of software development is suitable when:", 
+    options: ["a) The project is short.", "b) The best approach to use for projects with large development teams.", "c) There are no ambiguous requirements.", "d) All of the mentioned."], 
+    answer: "d" 
+  },
+  { 
+    id: 47, question: "47) Which of the following best describes the incremental development approach?", 
+    options: ["a) Developing software in a single, large iteration.", "b) Developing software in small, manageable increments.", "c) Developing software without any planning or design.", "d) Developing software using a waterfall methodology"], 
+    answer: "b" 
+  },
+  { 
+    id: 48, question: "48) COTS stands for:", 
+    options: ["a) Commercial Off-The-Shelf systems", "b) Commercial Off-The-Shelf states", "c) Commercial Off-The-System state", "d) None of the mentioned"], 
+    answer: "a" 
+  },
+  { 
+    id: 49, question: "49) What is the main objective of Reuse-oriented software engineering?", 
+    options: ["a) To develop software systems by building everything from scratch.", "b) To reuse existing software components to reduce development time and cost.", "c) To ignore previous work and start fresh in every project", "d) To reinvent the wheel for every project"], 
+    answer: "b" 
+  },
+  { 
+    id: 50, question: "50) Requirement engineering process includes which of these steps?", 
+    options: ["a) Feasibility study", "b) Requirement Gathering", "c) Software Requirement specification & Validation", "d) All mentioned above"], 
+    answer: "d" 
+  },
+  { 
+    id: 51, question: "51) Which process activity involves transforming software design specifications into executable code?", 
+    options: ["a) Software deployment", "b) Software maintenance", "c) Software implementation", "d) Software documentation"], 
+    answer: "c" 
+  },
+  { 
+    id: 52, question: "52) Which of the following best describes 'Change tolerance'?", 
+    options: ["a) This normally involves some form of incremental development.", "b) Proposed changes may be implemented in increments that have not yet been developed.", "c) The software process includes activities that can anticipate possible changes before significant rework is required.", "d) Both a, and b."], 
+    answer: "d" 
+  },
   // tfQuestions3
-  { id: 53, question: "53) For custom software, evolution costs often exceed development costs.", options: ["a) True", "b) False"], answer: "a" },
-  { id: 54, question: "54) Examples of generic products of software are word processors and drawing packages.", options: ["a) True", "b) False"], answer: "a" },
-  { id: 55, question: "55) The waterfall model is a fundamental part of agile approaches.", options: ["a) True", "b) False"], answer: "b" },
-  { id: 56, question: "56) Late increments of the incremental development include the most important required functionality.", options: ["a) True", "b) False"], answer: "b" },
-  { id: 57, question: "57) In reuse-oriented software engineering, reused elements may be configured to adapt their behavior and functionality to a user's requirements.", options: ["a) True", "b) False"], answer: "a" },
-  { id: 58, question: "58) Development processes are less challenging than maintenance processes.", options: ["a) True", "b) False"], answer: "b" },
-  { id: 59, question: "59) Verification ensures that \"Are we building the product right?\"", options: ["a) True", "b) False"], answer: "a" },
-  { id: 60, question: "60) Real software processes are interleaved sequences of technical and managerial activities with the overall goal of specifying, designing, implementing, and testing a software system.", options: ["a) True", "b) False"], answer: "a" },
-  { id: 61, question: "61) There are no universal software engineering methods and techniques that are suitable for all systems and all companies.", options: ["a) True", "b) False"], answer: "a" },
-  { id: 62, question: "62) Program testing, where the system is executed using simulated test data, is the principal validation technique.", options: ["a) True", "b) False"], answer: "a" },
-
+  { 
+    id: 53, 
+    question: "53) For custom software, evolution costs often exceed development costs.", 
+    options: ["a) True", "b) False"], 
+    answer: "a" 
+  },
+  { 
+    id: 54, 
+    question: "54) Examples of generic products of software are word processors and drawing packages.", 
+    options: ["a) True", "b) False"], 
+    answer: "a" 
+  },
+  { 
+    id: 55, 
+    question: "55) The waterfall model is a fundamental part of agile approaches.", 
+    options: ["a) True", "b) False"], 
+    answer: "b" 
+  },
+  { 
+    id: 56, 
+    question: "56) Late increments of the incremental development include the most important required functionality.", 
+    options: ["a) True", "b) False"], 
+    answer: "b" 
+  },
+  { 
+    id: 57, 
+    question: "57) In reuse-oriented software engineering, reused elements may be configured to adapt their behavior and functionality to a user's requirements.", 
+    options: ["a) True", "b) False"], 
+    answer: "a" 
+  },
+  { 
+    id: 58, 
+    question: "58) Development processes are less challenging than maintenance processes.", 
+    options: ["a) True", "b) False"], 
+    answer: "b" 
+  },
+  { 
+    id: 59, 
+    question: "59) Verification ensures that \"Are we building the product right?\"", 
+    options: ["a) True", "b) False"], 
+    answer: "a" 
+  },
+  { 
+    id: 60, 
+    question: "60) Real software processes are interleaved sequences of technical and managerial activities with the overall goal of specifying, designing, implementing, and testing a software system.", 
+    options: ["a) True", "b) False"], 
+    answer: "a" 
+  },
+  { 
+    id: 61, 
+    question: "61) There are no universal software engineering methods and techniques that are suitable for all systems and all companies.", 
+    options: ["a) True", "b) False"], 
+    answer: "a" 
+  },
+  { 
+    id: 62, 
+    question: "62) Program testing, where the system is executed using simulated test data, is the principal validation technique.", 
+    options: ["a) True", "b) False"], 
+    answer: "a" 
+  },
   // mcqQuestions4
-  { id: 63, question: "63) Which of the following is NOT a characteristic of software engineering?", options: ["a) Applying engineering principles to software development.", "b) Focusing only on coding and implementation.", "c) Using systematic approaches.", "d) Incorporating knowledge from other disciplines."], answer: "b" },
-  { id: 64, question: "64) What does the term \"software process\" refer to?", options: ["a) A set of activities that lead to the production of a software system", "b) The physical environment in which software development takes place", "c) The tools and technologies used in software development", "d) The documentation produced during software development"], answer: "a" },
-  { id: 65, question: "65) Which of the following is NOT a benefit of using a software development methodology?", options: ["a) Improved communication and collaboration among stakeholders.", "b) Increased risk of project failure.", "c) Enhanced software quality.", "d) More efficient use of resources."], answer: "b" },
-  { id: 66, question: "66) What are the two fundamental types of software product?", options: ["a) System software and application software", "b) Freeware and shareware", "c) Open-source software and closed-source software", "d) Generic products and customized products"], answer: "d" },
-  { id: 67, question: "67) Which of the following is/are considered as general issues that affect different types of software?", options: ["a) Security", "b) Business change", "c) Heterogeneity", "d) All of the mentioned"], answer: "d" },
-  { id: 68, question: "68) What is the first step in the software development lifecycle?", options: ["a) System Design", "b) Coding", "c) System Testing", "d) Preliminary Investigation and Analysis"], answer: "d" },
-  { id: 69, question: "69) What is the main drawback of the waterfall model?", options: ["a) Difficulty of accommodating change", "b) Inability to handle large projects", "c) Limited documentation.", "d) Slow development process."], answer: "a" },
-  { id: 70, question: "70) Which of the following is a key advantage of the incremental development approach?", options: ["a) Easier to get customer feedback.", "b) More rapid delivery", "c) The cost of accommodating changing customer requirements is reduced.", "d) All of the mentioned."], answer: "d" },
-  { id: 71, question: "71) COTS stands for:", options: ["a) Commercial Off-The-Shelf systems", "b) Commercial Off-The-Shelf states", "c) Commercial Off-The-System state", "d) None of the mentioned"], answer: "a" },
-  { id: 72, question: "72) Requirement engineering process includes which of these steps?", options: ["a) Feasibility study", "b) Requirement Gathering", "c) Software Requirement specification & Validation", "d) All mentioned above"], answer: "d" },
-  { id: 73, question: "73) Which software engineering activity focuses on transforming requirements into an executable system?", options: ["a) Testing", "b) Maintenance", "c) Implementation", "d) Analysis"], answer: "c" },
-  { id: 74, question: "74) What is the main goal of requirement engineering?", options: ["a) Designing software interfaces", "b) Testing software products", "c) Finding out and analyzing the services and constraints that the system should provide.", "d) Managing software projects"], answer: "c" },
-  { id: 75, question: "75) Which of the following is not a user of a user requirements document?", options: ["a) Client Engineer", "b) Software Engineer", "c) Client Manager", "d) System Architect"], answer: "b" },
-  { id: 76, question: "76) What is the primary difference between functional and non-functional requirements?", options: ["a) Functional requirements are statements of services the system should provide...", "b) Functional requirements are statements of services the system should provide...", "c) Functional requirements are statements of services the system should provide, while non-functional requirements are statements of constraints...", "d) None of the mentioned."], answer: "c" },
-
+  { 
+    id: 63, 
+    question: "63) Which of the following is NOT a characteristic of software engineering?", 
+    options: ["a) Applying engineering principles to software development.", "b) Focusing only on coding and implementation.", "c) Using systematic approaches.", "d) Incorporating knowledge from other disciplines."], 
+    answer: "b" 
+  },
+  { 
+    id: 64, 
+    question: "64) What does the term \"software process\" refer to?", 
+    options: ["a) A set of activities that lead to the production of a software system", "b) The physical environment in which software development takes place", "c) The tools and technologies used in software development", "d) The documentation produced during software development"], 
+    answer: "a" 
+  },
+  { 
+    id: 65, 
+    question: "65) Which of the following is NOT a benefit of using a software development methodology?", 
+    options: ["a) Improved communication and collaboration among stakeholders.", "b) Increased risk of project failure.", "c) Enhanced software quality.", "d) More efficient use of resources."], 
+    answer: "b" 
+  },
+  { 
+    id: 66, 
+    question: "66) What are the two fundamental types of software product?", 
+    options: ["a) System software and application software", "b) Freeware and shareware", "c) Open-source software and closed-source software", "d) Generic products and customized products"], 
+    answer: "d" 
+  },
+  { 
+    id: 67, 
+    question: "67) Which of the following is/are considered as general issues that affect different types of software?", 
+    options: ["a) Security", "b) Business change", "c) Heterogeneity", "d) All of the mentioned"], 
+    answer: "d" 
+  },
+  { 
+    id: 68, 
+    question: "68) What is the first step in the software development lifecycle?", 
+    options: ["a) System Design", "b) Coding", "c) System Testing", "d) Preliminary Investigation and Analysis"], 
+    answer: "d" 
+  },
+  { 
+    id: 69, 
+    question: "69) What is the main drawback of the waterfall model?", 
+    options: ["a) Difficulty of accommodating change", "b) Inability to handle large projects", "c) Limited documentation.", "d) Slow development process."], 
+    answer: "a" 
+  },
+  { 
+    id: 70, 
+    question: "70) Which of the following is a key advantage of the incremental development approach?", 
+    options: ["a) Easier to get customer feedback.", "b) More rapid delivery", "c) The cost of accommodating changing customer requirements is reduced.", "d) All of the mentioned."], 
+    answer: "d" 
+  },
+  { 
+    id: 71, 
+    question: "71) COTS stands for:", 
+    options: ["a) Commercial Off-The-Shelf systems", "b) Commercial Off-The-Shelf states", "c) Commercial Off-The-System state", "d) None of the mentioned"], 
+    answer: "a" 
+  },
+  { 
+    id: 72, 
+    question: "72) Requirement engineering process includes which of these steps?", 
+    options: ["a) Feasibility study", "b) Requirement Gathering", "c) Software Requirement specification & Validation", "d) All mentioned above"], 
+    answer: "d" 
+  },
+  { 
+    id: 73, 
+    question: "73) Which software engineering activity focuses on transforming requirements into an executable system?", 
+    options: ["a) Testing", "b) Maintenance", "c) Implementation", "d) Analysis"], 
+    answer: "c" 
+  },
+  { 
+    id: 74, 
+    question: "74) What is the main goal of requirement engineering?", 
+    options: ["a) Designing software interfaces", "b) Testing software products", "c) Finding out and analyzing the services and constraints that the system should provide.", "d) Managing software projects"], 
+    answer: "c" 
+  },
+  { 
+    id: 75, 
+    question: "75) Which of the following is not a user of a user requirements document?", 
+    options: ["a) Client Engineer", "b) Software Engineer", "c) Client Manager", "d) System Architect"], 
+    answer: "b" 
+  },
+  { 
+    id: 76, 
+    question: "76) What is the primary difference between functional and non-functional requirements?", 
+    options: ["a) Functional requirements are statements of services the system should provide...", "b) Functional requirements are statements of services the system should provide...", "c) Functional requirements are statements of services the system should provide, while non-functional requirements are statements of constraints...", "d) None of the mentioned."], 
+    answer: "c" 
+  },
   // tfQuestions4
-  { id: 77, question: "77) It is often possible to identify which system components implement specific non-functional requirements.", options: ["a) True", "b) False"], answer: "b" },
-  { id: 78, question: "78) Non-functional requirements affect the overall architecture of a system.", options: ["a) True", "b) False"], answer: "a" },
-  { id: 79, question: "79) For large and complex systems, it is practically impossible to achieve consistency and completeness of requirements.", options: ["a) True", "b) False"], answer: "a" },
-  { id: 80, question: "80) Completeness of requirement means that requirements should not have contradictory definitions.", options: ["a) True", "b) False"], answer: "b" },
-  { id: 81, question: "81) Development processes are less challenging than maintenance processes.", options: ["a) True", "b) False"], answer: "b" },
-  { id: 82, question: "82) Change is inevitable in all large software projects.", options: ["a) True", "b) False"], answer: "a" },
-  { id: 83, question: "83) A prototype system is an example of 'Change tolerance' approach.", options: ["a) True", "b) False"], answer: "b" },
-  { id: 84, question: "84) Program testing, where the system is executed using simulated test data, is the principal validation technique.", options: ["a) True", "b) False"], answer: "a" },
-  { id: 85, question: "85) In incremental development, the customer can evaluate the system at an early stage to see if it delivers what is required.", options: ["a) True", "b) False"], answer: "a" },
-  { id: 86, question: "86) There is no ideal software process.", options: ["a) True", "b) False"], answer: "a" }, 
+  { 
+    id: 77, 
+    question: "77) It is often possible to identify which system components implement specific non-functional requirements.", 
+    options: ["a) True", "b) False"], 
+    answer: "b" 
+  },
+  { 
+    id: 78, 
+    question: "78) Non-functional requirements affect the overall architecture of a system.", 
+    options: ["a) True", "b) False"], 
+    answer: "a" 
+  },
+  { 
+    id: 79, 
+    question: "79) For large and complex systems, it is practically impossible to achieve consistency and completeness of requirements.", 
+    options: ["a) True", "b) False"], 
+    answer: "a" 
+  },
+  { 
+    id: 80, 
+    question: "80) Completeness of requirement means that requirements should not have contradictory definitions.", 
+    options: ["a) True", "b) False"], 
+    answer: "b" 
+  },
+  { 
+    id: 81, 
+    question: "81) Development processes are less challenging than maintenance processes.", 
+    options: ["a) True", "b) False"], 
+    answer: "b" 
+  },
+  { 
+    id: 82, 
+    question: "82) Change is inevitable in all large software projects.", 
+    options: ["a) True", "b) False"], 
+    answer: "a" 
+  },
+  { 
+    id: 83, 
+    question: "83) A prototype system is an example of 'Change tolerance' approach.", 
+    options: ["a) True", "b) False"], 
+    answer: "b" 
+  },
+  { 
+    id: 84, 
+    question: "84) Program testing, where the system is executed using simulated test data, is the principal validation technique.", 
+    options: ["a) True", "b) False"], 
+    answer: "a" 
+  },
+  { 
+    id: 85, 
+    question: "85) In incremental development, the customer can evaluate the system at an early stage to see if it delivers what is required.", 
+    options: ["a) True", "b) False"], 
+    answer: "a" 
+  },
+  { 
+    id: 86, 
+    question: "86) There is no ideal software process.", 
+    options: ["a) True", "b) False"], 
+    answer: "a" 
+  },
   // mcqQuestions5
   { 
     id: 87, 
@@ -728,20 +1099,68 @@ const allQuestions = [
     answer: "b" 
   },
   // mcqQuestions7
-  { id: 187, question: "187) Advantage of reusing software components?", options: ["a) Better performance.", "b) Faster delivery.", "c) Full control over evolution.", "d) All."], answer: "b" },
-  { id: 188, question: "188) Deriving requirements through observation is called ………", options: ["a) Feasibility", "b) elicitation", "c) specification", "d) validation"], answer: "b" },
-  { id: 189, question: "189) Purpose of feasibility study?", options: ["a) Technical viability", "b) schedule and budget", "c) Both a, and b."], answer: "c" },
-  { id: 190, question: "190) Activity in design phase?", options: ["a) Database design.", "b) Interface design.", "c) Architectural design.", "d) All."], answer: "d" },
-  { id: 191, question: "191) Different levels of Testing?", options: ["a) Component", "b) System", "c) Acceptance", "d) All of the above"], answer: "d" },
-  { id: 192, question: "192) Functional requirement?", options: ["a) High performance.", "b) Find basic salary.", "c) User friendly.", "d) Reliability."], answer: "b" },
-  { id: 193, question: "193) Purpose of code of ethics?", options: ["a) Restrict open-source.", "b) Establish guidelines for behavior.", "c) Enforce licensing.", "d) Promote competition."], answer: "b" },
+  { 
+    id: 187, question: "187) What is the advantage of reusing software components?", 
+    options: ["a) It ensures better performance.", "b) It leads to faster delivery of the software.", "c) Full control over the system evolution", "d) All of the mentioned."], 
+    answer: "b" 
+  },
+  { 
+    id: 188, question: "188) The process of deriving the system requirements through observation of existing systems and discussions with potential users is called ………", 
+    options: ["a) Feasibility study", "b) Requirements elicitation", "c) Requirements specification", "d) Requirements validation"], 
+    answer: "b" 
+  },
+  { 
+    id: 189, question: "189) What is the purpose of a feasibility study in requirement engineering?", 
+    options: ["a) To assess the technical viability of the proposed system", "b) To estimate the project schedule and budget", "c) Both a, and b."], 
+    answer: "c" 
+  },
+  { 
+    id: 190, question: "190) Which of the following is an activity in the design phase of software development?", 
+    options: ["a) Database design.", "b) Interface design.", "c) Architectural design.", "d) All of the mentioned.."],
+    answer: "d" 
+  },
+  { 
+    id: 191, question: "191) What are the different levels of Testing?", 
+    options: ["a) Component testing.", "b) System testing.", "c) Acceptance testing.", "d) All of the above."], 
+    answer: "d" 
+  },
+  { 
+    id: 192, question: "192) Which one is/are the functional requirement?", 
+    options: ["a) High performance of software.", "b) Find the basic salary of an employee.", "c) User friendly interface.", "d) Reliability of software."], 
+    answer: "b" 
+  },
+  { 
+    id: 193, question: "193) What is the purpose of a code of ethics in software engineering?", 
+    options: ["a) To restrict the use of open-source software.", "b) To establish guidelines for ethical behavior in the field.", "c) To enforce software licensing agreements.", "d) To promote competition among software developers."], 
+    answer: "b" 
+  },
 
   // tfQuestions7
-  { id: 194, question: "194) Validation ensures \"Are we building the product, right?\"", options: ["a) True", "b) False"], answer: "b" },
-  { id: 195, question: "195) A prototype is 'Change avoidance’ approach.", options: ["a) True", "b) False"], answer: "a" },
-  { id: 196, question: "196) Functional requirements specification should be complete and consistent.", options: ["a) True", "b) False"], answer: "a" },
-  { id: 197, question: "197) Non-functional requirements can be safely ignored.", options: ["a) True", "b) False"], answer: "b" },
-  { id: 198, question: "198) Common problem: users propose non-functional as general goals.", options: ["a) True", "b) False"], answer: "a" },
+  { 
+    id: 194, question: "194) Validation ensures \"Are we building the product, right?\"", 
+    options: ["a) True", "b) False"], 
+    answer: "b" 
+  },
+  { 
+    id: 195, question: "195) A prototype is 'Change avoidance’ approach.", 
+    options: ["a) True", "b) False"], 
+    answer: "a" 
+  },
+  { 
+    id: 196, question: "196) The functional requirements specification of a system should be both complete and consistent.", 
+    options: ["a) True", "b) False"], 
+    answer: "a" 
+  },
+  { 
+    id: 197, question: "197) Non-functional requirements can be safely ignored.", 
+    options: ["a) True", "b) False"], 
+    answer: "b" 
+  },
+  { 
+    id: 198, question: "198)A common problem with non-functional requirements is that users or customers often propose these requirements as general goals.", 
+    options: ["a) True", "b) False"], 
+    answer: "a" 
+  },
   { 
     id: 199, 
     question: "9) Which of the following is NOT a characteristic of software engineering?",

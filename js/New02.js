@@ -509,6 +509,21 @@ const MCQ_DATA_TF_FULL = [
     question: "Ethnography could be considered as a complete approach for requirements elicitation.", 
     options: ["a) True", "b) False"], 
     answer: "b" 
+  },
+  { 
+    id: 85, question: "194) Validation ensures \"Are we building the product, right?\"", 
+    options: ["a) True", "b) False"], 
+    answer: "b"
+  },
+  { 
+    id: 86, question: "198)A common problem with non-functional requirements is that users or customers often propose these requirements as general goals.", 
+    options: ["a) True", "b) False"], 
+    answer: "a" 
+  },
+  { 
+    id: 87, question: "196) The functional requirements specification of a system should be both complete and consistent.", 
+    options: ["a) True", "b) False"], 
+    answer: "a" 
   }
 ];
 

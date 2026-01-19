@@ -73,8 +73,8 @@ const quizzesData = [
     title: "Software Engineering",
     description: "true/false questions",
     icon: "💻",
-    questions: 84,
-    duration: 84,
+    questions: 87,
+    duration: 87,
     difficulty: "medium",
     isNew: true,
     enabled: true
