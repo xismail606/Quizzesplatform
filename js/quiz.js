@@ -58,12 +58,12 @@ const quizzesData = [
   },
   {
     id: 7,
-    title: "Coming Soon😴",
-    description: "—",
-    questions: 0,
-    duration: 0,
-    difficulty: "—",
-    enabled: false,
+    title: "Software Engineering",
+    description: "true/false questions",
+    questions: 84,
+    duration: 84,
+    difficulty: "medium",
+    enabled: true,
   },
   {
     id: 8,

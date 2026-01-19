@@ -1195,5 +1195,4 @@ const allQuestions = [
 ];
 const QUESTIONS = [
   ...allQuestions
-
 ];

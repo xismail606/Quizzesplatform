@@ -70,14 +70,14 @@ const quizzesData = [
   },
   {
     id: 7,
-    title: "Coming Soon",
-    description: "Coming Soon",
-    icon: "🔒",
-    questions: 0,
-    duration: 0,
-    difficulty: "Soon",
-    isNew: false,
-    enabled: false
+    title: "Software Engineering",
+    description: "true/false questions",
+    icon: "💻",
+    questions: 84,
+    duration: 84,
+    difficulty: "medium",
+    isNew: true,
+    enabled: true
   },
   {
     id: 8,
