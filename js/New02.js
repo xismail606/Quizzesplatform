@@ -465,7 +465,7 @@ const MCQ_DATA_TF_FULL = [
     id: 77, 
     question: "People usually find it easier to relate to abstract descriptions rather than real-life examples in requirements description.", 
     options: ["a) True", "b) False"], 
-    answer: "b" 
+    answer: "a" 
   },
   { 
     id: 78, 
