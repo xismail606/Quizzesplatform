@@ -1152,7 +1152,7 @@ const allQuestions = [
     answer: "a" 
   },
   { 
-    id: 197, question: "197) Non-functional requirements can be safely ignored.", 
+    id: 197, question: "197) Non-functional requirements can be safely ignored in modern software development projects.", 
     options: ["a) True", "b) False"], 
     answer: "b" 
   },
@@ -1616,3 +1616,4 @@ const QUESTIONS = [
   ...allQuestions
 
 ];
+
