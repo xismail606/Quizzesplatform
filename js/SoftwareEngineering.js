@@ -1066,7 +1066,7 @@ const allQuestions = [
     id: 181, 
     question: "15. Requirements should not specify 'how' but should only specify 'what'.", 
     options: ["a) True", "b) False"], 
-    answer: "b" 
+    answer: "a" 
   },
   { 
     id: 182, 
@@ -1614,4 +1614,5 @@ const allQuestions = [
 ];
 const QUESTIONS = [
   ...allQuestions
+
 ];
