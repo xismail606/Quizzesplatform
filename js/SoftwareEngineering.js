@@ -823,7 +823,7 @@ const allQuestions = [
     id: 145, 
     question: "19. Which of the following software development approach is ngt applicable to projects that demand continuous maintenance?", 
     options: ["a) Agile development.", "b) DevOps deployment.", "c) The waterfall model.", "d) None of these."], 
-    answer: "b" 
+    answer: "c" 
   },
   { 
     id: 146, 
@@ -1650,5 +1650,6 @@ const allQuestions = [
 
 const QUESTIONS = [
   ...allQuestions
+
 
 ];
