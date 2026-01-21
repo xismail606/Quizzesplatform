@@ -847,7 +847,7 @@ const allQuestions = [
     id: 149, 
     question: "23. Which of the following is a functional requitement", 
     options: ["a) The system should allow users to log in using their email address or facebook account.", "b) The system Shall generate any report within minutes.", "c) The system shall encrypt user password.", "d) All of the mentioned"], 
-    answer: "d" 
+    answer: "a" 
   },
   { 
     id: 150, 
@@ -1611,10 +1611,44 @@ const allQuestions = [
     options: ["a) Use case diagram.", "b) Scenario.", "c) Sequence diagram.", "d) Class diagram."], 
     answer: "a" 
   },
+  { 
+    id: 266, 
+    image: "./images/s26-00.png",
+    question: "4. The following figure is an example of....... ", 
+    options: ["a) Sequence diagram.", "b) Use case diagram.", "c) Use case.", "d) Class diagram."], 
+    answer: "a" 
+  },
+  { 
+    id: 267, 
+    image: "./images/c26-01.png",
+    question: "4. The following figure is an example of....... ", 
+    options: ["a) Context Models.", "b) Use case diagram.", "c) Sequence diagram.", "d) Class diagram."], 
+    answer: "a" 
+  },
+  { 
+    id: 268, 
+    image: "./images/t26-02.png",
+    question: "4. The following figure is an example of....... ", 
+    options: ["a) Test-case generation.", "b) Use case diagram.", "c) Prototyping.", "d) Requirements reviews."], 
+    answer: "a" 
+  },
+  { 
+    id: 269, 
+    image: "./images/ss26-03.png",
+    question: "35. The following figure describes..........", 
+    options: ["a) The waterfall model.", "b) Software Evolution", "c) Reuse-oriented software engineering", "d) None of the mentioned."], 
+    answer: "b" 
+  },
+  { 
+    id: 270, 
+    image: "./images/w25-04.png",
+    question: "35. The following figure describes..........", 
+    options: ["a) The waterfall model.", "b) Software specification", "c) Reuse-oriented software engineering", "d) None of the mentioned."], 
+    answer: "b" 
+  }
 ];
+
 const QUESTIONS = [
   ...allQuestions
 
 ];
-
-

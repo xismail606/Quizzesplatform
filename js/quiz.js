@@ -24,7 +24,7 @@ const quizzesData = [
     id: 3,
     title: "Software Engineering",
     description: "All Software Engineering Exams",
-    questions: 265,
+    questions: 270,
     duration: 265,
     difficulty: "hard",
     enabled: true,
