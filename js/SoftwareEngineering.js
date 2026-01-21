@@ -957,12 +957,12 @@ const allQuestions = [
   },
   { 
     id: 165, 
-    question: "39. Which of the following should be included in the scenario description.", 
+    question: "39. What is the main objective of Reuse-oriented software engineering?", 
     options: [
-      "a) A description of the normal flow of events in the scenario.", 
-      "b) A description of what can go wrong.", 
-      "c) A description of the system state when the scenario finishes.", 
-      "d) All of the mentioned"
+      "a) To develop software systems by building everything from scratch.", 
+      "b) To reuse existing software components to reduce development time and cost.", 
+      "c) To ignore previous work and start fresh in every project.", 
+      "d) To reinvent the wheel for every project."
     ], 
     answer: "b" 
   },
@@ -1616,4 +1616,5 @@ const QUESTIONS = [
   ...allQuestions
 
 ];
+
 
