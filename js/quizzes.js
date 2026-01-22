@@ -24,7 +24,7 @@ const quizzesData = [
     isNew: false,
     enabled: false
   },
-  {
+    {
     id: 3,
     title: "Software Engineering",
     description: "All Software Engineering Exams",
@@ -32,52 +32,52 @@ const quizzesData = [
     questions: 270,
     duration: 265,
     difficulty: "hard",
-    isNew: true,
-    enabled: true
+    isNew: false,
+    enabled: false
   },
-  {
+    {
     id: 4,
-    title: "Internet Engineering",
-    description: "Internet Engineering Gemini MCQ Questions from Lectures 1 to 10",
-    icon: "🛰️",
-    questions: 200,
-    duration: 200,
-    difficulty: "hard",
+    title: "Coming Soon",
+    description: "Coming Soon",
+    icon: "🔒",
+    questions: 0,
+    duration: 0,
+    difficulty: "Soon",
     isNew: false,
     enabled: false
   },
   {
     id: 5,
-    title: "Introduction to Computer Network",
-    description: "Computer Network Questions Bank",
-    icon: "🌐",
-    questions: 88,
-    duration: 88,
-    difficulty: "Medium",
+    title: "Coming Soon",
+    description: "Coming Soon",
+    icon: "🔒",
+    questions: 0,
+    duration: 0,
+    difficulty: "Soon",
     isNew: false,
     enabled: false
   },
   {
     id: 6,
-    title: "Internet Engineering",
-    description: "Internet Engineering bank",
-    icon: "🌐",
-    questions: 95,
-    duration: 95,
-    difficulty: "Medium",
+    title: "Coming Soon",
+    description: "Coming Soon",
+    icon: "🔒",
+    questions: 0,
+    duration: 0,
+    difficulty: "Soon",
     isNew: false,
     enabled: false
   },
   {
     id: 7,
-    title: "Software Engineering",
-    description: "true/false questions",
-    icon: "💻",
-    questions: 87,
-    duration: 87,
-    difficulty: "medium",
-    isNew: true,
-    enabled: true
+    title: "Coming Soon",
+    description: "Coming Soon",
+    icon: "🔒",
+    questions: 0,
+    duration: 0,
+    difficulty: "Soon",
+    isNew: false,
+    enabled: false
   },
   {
     id: 8,
