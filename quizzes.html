@@ -1,76 +1,234 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Select Your Quiz</title>
-  <link rel="stylesheet" href="./css/quizzes.css">
-  <link rel="stylesheet" href="./css/navigationbar.css">
+  <title>404 - Page Not Found</title>
+  <link rel="stylesheet" href="css/quizzes.css">
   <link rel="stylesheet" href="./css/snow.css">
-  <link rel="stylesheet" href="./css/theme.css">
+  <link rel="stylesheet" href="./css/navigationbar.css">
   <link rel="stylesheet" href="./css/socialmedia.css">
-  <link 
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-  integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☃️</text></svg>">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      overflow: hidden;
+    }
+
+    /* Canvas */
+    #canvas404 {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      display: block;
+    }
+
+    /* Center Content */
+    .center-content {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 10;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 3rem;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(74, 144, 226, 0.3);
+      color: white;
+    }
+
+    .center-content h1 {
+      font-size: 6rem;
+      color: #4a90e2;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 20px rgba(74, 144, 226, 0.5);
+    }
+
+    .center-content h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .center-content p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      opacity: 0.8;
+    }
+
+    .home-btn {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background: #4a90e2;
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      transition: all 0.3s;
+      box-shadow: 0 5px 15px rgba(74, 144, 226, 0.3);
+    }
+
+    .home-btn:hover {
+      background: #357abd;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(74, 144, 226, 0.5);
+    }
+
+    .hint {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      opacity: 0.6;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .center-content {
+        padding: 2rem;
+        width: 90%;
+      }
+
+      .center-content h1 {
+        font-size: 4rem;
+      }
+
+      .center-content h2 {
+        font-size: 1.5rem;
+      }
+
+      .center-content p {
+        font-size: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  <!-- Navigation Bar -->
+  <!-- Navigation -->
   <nav>
     <div class="logo">☃️ Quizzes Platform</div>
     <div class="links" id="navLinks">
       <a href="./index.html">Home</a>
-      <a href="./quizzes.html" class="active">Quizzes</a>
+      <a href="./quizzes.html">Quizzes</a>
       <a href="./about.html">About</a>
+      <a href="https://forms.gle/DDkpuuua3Wwb4aFj7">Support</a>
     </div>
     <button class="menu-toggle" id="menuToggle">
       <i class="fas fa-bars"></i>
     </button>
   </nav>
-    <!-- Theme Toggle Button -->
-    <button class="theme-toggle-btn" id="themeToggle">
-      <i class="fas fa-sun"></i>
-    </button>
+
   <!-- Snow Toggle Button -->
   <button class="snow-toggle-btn active" id="snowToggle">
     <i class="fas fa-snowflake"></i>
   </button>
-
-  <!-- Particles -->
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-
-  <!-- Floating Circles -->
-  <div class="circle"></div>
-  <div class="circle"></div>
-  <div class="circle"></div>
-
-  <!-- Page Header -->
-  <div class="page-header">
-    <h1 class="page-title">Select Your Quiz</h1>
-    <p class="page-subtitle">Choose a quiz to test your knowledge</p>
-  </div>
-
-  <!-- Quiz List -->
-  <div id="quizList">
-    <div class="loading">Loading quizzes</div>
-  </div>
-      <!-- Social Media Links -->
+    <!-- Social Media Links -->
     <div class="social">
       <ul>
         <li><a href="https://forms.gle/DDkpuuua3Wwb4aFj7">Support <i class="fas fa-envelope"></i></a></li>
+        
+        <li><a href="https://github.com/xismail606">Github <i class="fab fa-github"></i></a></li>
+        
+        <li><a href="https://www.linkedin.com/in/ismailabdelhameed">Linkedin <i class="fab fa-linkedin"></i></a></li>
       </ul>
     </div>
-        <!-- Script -->
-  <script src="./js/quizzes.js"></script>
+
+  <!-- Canvas Background -->
+  <canvas id="canvas404"></canvas>
+
+  <!-- Center Content -->
+  <div class="center-content">
+    <h1>404</h1>
+    <h2>The semester has ended</h2>
+    <p>The platform is temporarily closed and will reopen at the beginning of the new semester</p>
+    <a href="./index.html" class="home-btn">
+      <i class="fas fa-home"></i> Back to Home
+    </a>
+    <div class="hint">
+      Thank you for your understanding!
+    </div>
+  </div>
+
+  <script>
+    // Canvas Animation
+    const canvas = document.getElementById('canvas404');
+    const ctx = canvas.getContext('2d');
+    
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+
+    function random(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    function rangeMap(value, inMin, inMax, outMin, outMax) {
+      return (value - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
+    }
+
+    const words = [];
+    const txtMinSize = 5;
+    const txtMaxSize = 25;
+    let keyPressed = false;
+    const accelerate = 2;
+
+    const wordList = ['404', 'semester', 'has ended', '404'];
+
+    for (let i = 0; i < 25; i++) {
+      wordList.forEach(text => {
+        words.push({
+          x: random(0, canvas.width),
+          y: random(0, canvas.height),
+          text: text,
+          size: random(txtMinSize, txtMaxSize)
+        });
+      });
+    }
+
+    function render() {
+      ctx.fillStyle = 'rgba(0, 0, 0, 1)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = '#fff';
+      
+      words.forEach(word => {
+        ctx.font = `${word.size}px sans-serif`;
+        const textWidth = ctx.measureText(word.text).width;
+        ctx.fillText(word.text, word.x, word.y);
+
+        const speed = rangeMap(word.size, txtMinSize, txtMaxSize, 2, 3);
+        word.x += keyPressed ? speed * accelerate : speed;
+
+        if (word.x >= canvas.width) {
+          word.x = -textWidth * 2;
+          word.y = random(0, canvas.height);
+          word.size = random(txtMinSize, txtMaxSize);
+        }
+      });
+
+      requestAnimationFrame(render);
+    }
+
+    render();
+
+    window.addEventListener('keydown', () => keyPressed = true);
+    window.addEventListener('keyup', () => keyPressed = false);
+  </script>
+
+  <!-- External Scripts -->
   <script src="./js/navbar.js"></script>
   <script src="./js/snow.js"></script>
-  <script src="./js/theme.js"></script>
 </body>
 </html>
-<!-- BY X606 -->
