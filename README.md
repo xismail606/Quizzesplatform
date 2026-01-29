@@ -125,8 +125,6 @@ QuizzesPlatform/
 ├── loading.html
 ├── quiz.html
 └── quizzes.html
-
-
 ```
 
 ---
