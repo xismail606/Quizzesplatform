@@ -82,8 +82,8 @@ supported_devices:
 QuizzesPlatform/
 │
 ├── assets/
-│   ├── x606-logo.png
-│   └── x606-logo1.png
+│    ├── x606-logo.png
+│    └── x606-logo1.png
 │
 ├── images/
 │   └── *.png
@@ -100,22 +100,24 @@ QuizzesPlatform/
 │   ├── socialmedia.css
 │   └── theme.css
 │
-├── js/
-│   ├── Computer-Network.js
-│   ├── bigdata.js
-│   ├── interneteng.js
-│   ├── loading.js
+├── js/              # Operating logic
 │   ├── navbar.js
-│   ├── OS.js
 │   ├── quiz.js
 │   ├── quizzes.js
-│   ├── snow.js
-│   ├── SoftwareEngineering.js
-│   ├── New01.js
+│   ├── loading.js
+│   ├── snow.js    
+│   └── theme.js
+│   
+├── data/           # Quiz data
+│   ├── os.js
+│   ├── software-engineering.js
+│   ├── bigdata.js
+│   ├── New00.js
+│   ├── new01.js
 │   ├── New02.js
 │   ├── New03.js
 │   ├── New04.js
-│   └── theme.js
+│   └── New05.js
 │
 ├── README.md
 ├── about.html
@@ -123,6 +125,8 @@ QuizzesPlatform/
 ├── loading.html
 ├── quiz.html
 └── quizzes.html
+
+
 ```
 
 ---
