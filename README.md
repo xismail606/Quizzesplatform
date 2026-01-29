@@ -86,7 +86,7 @@ QuizzesPlatform/
 │    └── x606-logo1.png
 │
 ├── images/
-│   └── *.png
+│   └── *.webp
 │
 │
 ├── css/
@@ -108,7 +108,7 @@ QuizzesPlatform/
 │   ├── snow.js    
 │   └── theme.js
 │   
-├── data/           # Quiz data
+├── data/            # Quiz data
 │   ├── os.js
 │   ├── software-engineering.js
 │   ├── bigdata.js
