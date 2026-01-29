@@ -88,7 +88,6 @@ QuizzesPlatform/
 ├── images/
 │   └── *.webp
 │
-│
 ├── css/
 │   ├── about.css
 │   ├── loading.css
