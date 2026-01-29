@@ -484,7 +484,7 @@ const allQuestions = [
   },
   { 
     id: 90, 
-    image: "./images/25-28.png",
+    image: "./images/25-28.webp",
     question: "4. The following figure is an example of....... ", 
     options: ["a) Use case.", "b) Scenario.", "c) Sequence diagram.", "d) Class diagram."], 
     answer: "a" 
@@ -509,7 +509,7 @@ const allQuestions = [
   },
   { 
     id: 94, 
-    image: "./images/25-8.png", 
+    image: "./images/25-8.webp", 
     question: "8. The following figure describes ", 
     options: ["a) The waterfall model", "b) Incremental development.", "c) Reuse-oriented software engineering", "d) None of the mentioned."], 
     answer: "c" 
@@ -582,7 +582,7 @@ const allQuestions = [
   },
   { 
     id: 106, 
-    image: "./images/25-20.png",
+    image: "./images/25-20.webp",
     question: "20. The following figure represents........ ", 
     options: ["a) IEEE template", "b) Volere template", "c) Design description language.", "d) None of the mentioned"], 
     answer: "b" 
@@ -717,7 +717,7 @@ const allQuestions = [
   },
   { 
     id: 128, 
-    image: "./images/25-2.png",
+    image: "./images/25-2.webp",
     question: "2. The following figure describes ", 
     options: ["a) The waterfall model.", "b) Incremental development.", "c) Spiral model.", "d) None of the mentioned."], 
     answer: "a" 
@@ -766,7 +766,7 @@ const allQuestions = [
   },
   { 
     id: 136, 
-    image: "./images/25-35.png",
+    image: "./images/25-35.webp",
     question: "10. The following figure describes ", 
     options: ["a) a The waterfall model.", "b) Incremental development.", "c) Reuse-oriented software engineering.", "d) None of the mendoned."], 
     answer: "b" 
@@ -917,7 +917,7 @@ const allQuestions = [
   },
   { 
     id: 161, 
-    image: "./images/25-161.png",
+    image: "./images/25-161.webp",
     question: "35.following figure is an example of ", 
     options: ["a) Use case diagram.", "b) Scenario.", "c) Sequence diagram.", "d) Class diagram."], 
     answer: "a" 
@@ -1318,7 +1318,7 @@ const allQuestions = [
   },
   { 
     id: 218, 
-    image: "./images/25-4.png",
+    image: "./images/25-4.webp",
     question: "4. The following figure describes............", 
     options: ["a) The waterfall model.", "b) Incremental development.", "c) Reuse-oriented software engineering", "d) None of the mentioned."], 
     answer: "c" 
@@ -1427,7 +1427,7 @@ const allQuestions = [
   },
   { 
     id: 236, 
-    image: "./images/25-22.png",
+    image: "./images/25-22.webp",
     question: "22. The following figure represents....", 
     options: ["a) IEEE template", "b) Volere template", "c) Design description language.", "d) None of the mentioned"], 
     answer: "b" 
@@ -1464,7 +1464,7 @@ const allQuestions = [
   },
   { 
     id: 242, 
-    image: "./images/25-28.png",
+    image: "./images/25-28.webp",
     question: "28. The following figure is an example of ........... ", 
     options: ["a) Use case.", "b) Scenario.", "c) Sequence diagram.", "d) Class diagram."], 
     answer: "a" 
@@ -1507,7 +1507,7 @@ const allQuestions = [
   },
   { 
     id: 249, 
-    image: "./images/25-35.png",
+    image: "./images/25-35.webp",
     question: "35. The following figure describes..........", 
     options: ["a) The waterfall model.", "b) Incremental development.", "c) Reuse-oriented software engineering", "d) None of the mentioned."], 
     answer: "b" 
@@ -1606,42 +1606,42 @@ const allQuestions = [
   },
   { 
     id: 265, 
-    image: "./images/24-00.png",
+    image: "./images/24-00.webp",
     question: "00. The following figure is an example of ", 
     options: ["a) Use case diagram.", "b) Scenario.", "c) Sequence diagram.", "d) Class diagram."], 
     answer: "a" 
   },
   { 
     id: 266, 
-    image: "./images/s26-00.png",
+    image: "./images/s26-00.webp",
     question: "4. The following figure is an example of....... ", 
     options: ["a) Sequence diagram.", "b) Use case diagram.", "c) Use case.", "d) Class diagram."], 
     answer: "a" 
   },
   { 
     id: 267, 
-    image: "./images/c26-01.png",
+    image: "./images/c26-01.webp",
     question: "4. The following figure is an example of....... ", 
     options: ["a) Context Models.", "b) Use case diagram.", "c) Sequence diagram.", "d) Class diagram."], 
     answer: "a" 
   },
   { 
     id: 268, 
-    image: "./images/t26-02.png",
+    image: "./images/t26-02.webp",
     question: "4. The following figure is an example of....... ", 
     options: ["a) Test-case generation.", "b) Use case diagram.", "c) Prototyping.", "d) Requirements reviews."], 
     answer: "a" 
   },
   { 
     id: 269, 
-    image: "./images/ss26-03.png",
+    image: "./images/ss26-03.webp",
     question: "35. The following figure describes..........", 
     options: ["a) The waterfall model.", "b) Software Evolution", "c) Reuse-oriented software engineering", "d) None of the mentioned."], 
     answer: "b" 
   },
   { 
     id: 270, 
-    image: "./images/w25-04.png",
+    image: "./images/w25-04.webp",
     question: "35. The following figure describes..........", 
     options: ["a) The waterfall model.", "b) Software specification", "c) Reuse-oriented software engineering", "d) None of the mentioned."], 
     answer: "b" 
